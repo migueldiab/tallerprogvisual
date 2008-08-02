@@ -86,6 +86,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DAC\DAC.vbproj">
+      <Project>{3E637D19-4415-4932-8167-A8FC734B884E}</Project>
+      <Name>DAC</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Persistencia\Persistencia.vbproj">
       <Project>{A52F6E74-A8A4-4FB1-9C74-449270F4FC12}</Project>
       <Name>Persistencia</Name>
