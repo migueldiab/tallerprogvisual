@@ -20,14 +20,15 @@ Public Class pLog : Inherits Persistente
             Dim unLog As dsLog.RegistroLogsRow
             unDSLog = CType(objeto, dsLog)
             unLog = CType(unDSLog.RegistroLogs.Rows(0), dsLog.RegistroLogsRow)
-            pLog.EjecutarSQL("INSERT INTO RegistroLogs VALUES (" _
+            pLog.EjecutarSQL("INSERT INTO RegistroLogs (IdTipoEntradaEvento,NombreMaquina,OrigenEvento,NombreUsuario,Category,HoraEscritura,HoraGenerado,Mensaje) VALUES (" _
             & unLog.IdTipoEntradaEvento() & ",'" _
             & unLog.NombreMaquina.ToString() & "','" _
             & unLog.OrigenEvento.ToString() & "','" _
             & unLog.NombreUsuario.ToString() & "','" _
+            & unLog.Category.ToString() & "','" _
             & unLog.HoraEscritura.ToString() & "','" _
             & unLog.HoraGenerado.ToString() & "','" _
-            & unLog.Mensaje.ToString() & "'")
+            & unLog.Mensaje.ToString() & "')")
             Return True
         Catch ex As Exception
             Debug.WriteLine(ex.Message)
