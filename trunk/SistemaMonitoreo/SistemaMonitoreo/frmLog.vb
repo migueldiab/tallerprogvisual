@@ -18,7 +18,11 @@ Public Class frmLog
             NewLog.IdTipoEntradaEvento = unaEntry.CategoryNumber
             NewLog.NombreMaquina = unaEntry.MachineName
             NewLog.Mensaje = unaEntry.Message
-            NewLog.NombreUsuario = unaEntry.UserName
+            If unaEntry.UserName IsNot Nothing Then
+                NewLog.NombreUsuario = unaEntry.UserName
+            Else
+                NewLog.NombreUsuario = "N/A"
+            End If
             NewLog.OrigenEvento = unaEntry.Source
             NewLog.Guardar()
         Next

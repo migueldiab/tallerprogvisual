@@ -4,7 +4,7 @@ Imports System.Data.OleDb
 Public Class Persistente
     Private Shared mCadenaConexion As String
     Protected Shared Function leerConfig() As String
-        Dim strConnect As String = ConfigurationManager.ConnectionStrings("connString").ConnectionString
+        Dim strConnect As String = ConfigurationManager.ConnectionStrings("connectionString").ConnectionString
         Return strConnect
     End Function
     Protected Shared ReadOnly Property CadenaConexion() As String
@@ -16,7 +16,10 @@ Public Class Persistente
 
     Protected Shared Function Conectar() As OleDbConnection
         Try
-            Return New OleDbConnection(Persistente.CadenaConexion)
+            Dim unaC As OleDbConnection
+            unaC = New OleDbConnection(CadenaConexion)
+
+            Return unaC
         Catch ex As Exception
             Debug.WriteLine(ex.Message)
             Return Nothing
