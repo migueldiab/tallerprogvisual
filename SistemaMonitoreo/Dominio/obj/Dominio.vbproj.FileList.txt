@@ -1,0 +1,16 @@
+bin\Debug\DB.mdb
+bin\Debug\Dominio.dll
+bin\Debug\Dominio.pdb
+bin\Debug\Dominio.xml
+bin\Debug\DAC.dll
+bin\Debug\Persistencia.dll
+bin\Debug\DAC.pdb
+bin\Debug\DAC.xml
+bin\Debug\Persistencia.pdb
+bin\Debug\Persistencia.xml
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\Dominio.Resources.resources
+obj\Debug\Dominio.vbproj.GenerateResource.Cache
+obj\Debug\Dominio.dll
+obj\Debug\Dominio.xml
+obj\Debug\Dominio.pdb
