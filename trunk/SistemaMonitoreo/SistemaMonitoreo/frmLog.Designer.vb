@@ -49,7 +49,7 @@ Partial Class frmLog
         Me.txtLogs.Size = New System.Drawing.Size(100, 20)
         Me.txtLogs.TabIndex = 2
         '
-        'frmLogs
+        'frmLog
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -57,7 +57,7 @@ Partial Class frmLog
         Me.Controls.Add(Me.txtLogs)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnProcesar)
-        Me.Name = "frmLogs"
+        Me.Name = "frmLog"
         Me.Text = "Form2"
         Me.ResumeLayout(False)
         Me.PerformLayout()

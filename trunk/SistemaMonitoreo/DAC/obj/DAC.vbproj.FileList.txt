@@ -1,0 +1,11 @@
+bin\Debug\DB.mdb
+bin\Debug\DAC.dll.config
+bin\Debug\DAC.dll
+bin\Debug\DAC.pdb
+bin\Debug\DAC.xml
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\DAC.Resources.resources
+obj\Debug\DAC.vbproj.GenerateResource.Cache
+obj\Debug\DAC.dll
+obj\Debug\DAC.xml
+obj\Debug\DAC.pdb

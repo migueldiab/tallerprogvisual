@@ -1,0 +1,14 @@
+bin\Debug\DB.mdb
+bin\Debug\Persistencia.dll.config
+bin\Debug\Persistencia.dll
+bin\Debug\Persistencia.pdb
+bin\Debug\Persistencia.xml
+bin\Debug\DAC.dll
+bin\Debug\DAC.pdb
+bin\Debug\DAC.xml
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\Persistencia.Resources.resources
+obj\Debug\Persistencia.vbproj.GenerateResource.Cache
+obj\Debug\Persistencia.dll
+obj\Debug\Persistencia.xml
+obj\Debug\Persistencia.pdb
