@@ -89,16 +89,15 @@ Public Class Log
         Dim unPLog As New pLog
         Return unPLog.Guardar(Me.ToDataSet)
     End Function
-    Public Function Leer() As Boolean
+    Public Function Leer(ByVal objeto As DataSet) As DataSet
         Try
-            Dim unPLog As New pLog
-            Dim filaLeida As dsLog.RegistroLogsRow = Me.ToDataSet
-            If unPLog.Leer(filaLeida) Then
-                Me.FromDataSet(filaLeida)
-                Return True
-            Else
-                Return False
-            End If
+            Dim unDSLog As dsLog
+            Dim unLog As dsLog.RegistroLogsRow
+            Dim unDR As OleDb.OleDbDataReader
+            unDSLog = CType(objeto, dsLog)
+            unLog = CType(unDSLog.RegistroLogs.Rows(0), dsLog.RegistroLogsRow)
+            unDR = pLog.EjecutarReader("SELECT * FROM RegistroLogs")
+            Return unDSLog
         Catch ex As Exception
             Throw ex
         End Try

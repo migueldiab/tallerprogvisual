@@ -6,6 +6,13 @@ Persistencia
 </name>
 </assembly>
 <members>
-
+<member name="M:Persistencia.Persistente.EjecutarSQL(System.String,System.Data.DataSet,System.String)">
+	<summary>Ejecuta una sentencia SQL (consulta) y carga en resultado en el dataset que recibe,
+ especificamente en la tabla que se indica
+</summary>
+</member><member name="M:Persistencia.Persistente.EjecutarReader(System.String)">
+	<summary>Ejecuta una sentencia SQL (consulta) y retorna un OleDbDataReader</summary>
+	<returns>Retorna un DataSet con el resultado de la consulta</returns>
+</member>
 </members>
 </doc>

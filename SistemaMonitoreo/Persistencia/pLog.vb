@@ -21,13 +21,13 @@ Public Class pLog : Inherits Persistente
             unDSLog = CType(objeto, dsLog)
             unLog = CType(unDSLog.RegistroLogs.Rows(0), dsLog.RegistroLogsRow)
             pLog.EjecutarSQL("INSERT INTO RegistroLogs VALUES (" _
-            & unLog.IdTipoEntradaEvento() & "," _
-            & unLog.NombreMaquina.ToString() & "," _
-            & unLog.OrigenEvento.ToString() & "," _
-            & unLog.NombreUsuario.ToString() & "," _
-            & unLog.HoraEscritura.ToString() & "," _
-            & unLog.HoraGenerado.ToString() & "," _
-            & unLog.Mensaje.ToString() & ",")
+            & unLog.IdTipoEntradaEvento() & ",'" _
+            & unLog.NombreMaquina.ToString() & "','" _
+            & unLog.OrigenEvento.ToString() & "','" _
+            & unLog.NombreUsuario.ToString() & "','" _
+            & unLog.HoraEscritura.ToString() & "','" _
+            & unLog.HoraGenerado.ToString() & "','" _
+            & unLog.Mensaje.ToString() & "'")
             Return True
         Catch ex As Exception
             Debug.WriteLine(ex.Message)

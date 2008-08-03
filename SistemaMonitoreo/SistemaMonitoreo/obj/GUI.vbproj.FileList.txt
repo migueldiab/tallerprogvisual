@@ -17,3 +17,4 @@ obj\Debug\GUI.vbproj.GenerateResource.Cache
 obj\Debug\GUI.exe
 obj\Debug\GUI.xml
 obj\Debug\GUI.pdb
+bin\Debug\GUI.exe.config

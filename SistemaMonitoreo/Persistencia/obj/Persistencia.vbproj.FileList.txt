@@ -1,5 +1,4 @@
 bin\Debug\DB.mdb
-bin\Debug\Persistencia.dll.config
 bin\Debug\Persistencia.dll
 bin\Debug\Persistencia.pdb
 bin\Debug\Persistencia.xml
