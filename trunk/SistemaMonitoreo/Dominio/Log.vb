@@ -137,6 +137,7 @@ Public Class Log
         Dim ds As New dsLog
         Dim unaFila As dsLog.RegistroLogsRow
         unafila = ds.RegistroLogs.NewRegistroLogsRow
+        Me.Mensaje = Me.Mensaje.Replace("'", "''")
         unaFila.Mensaje = Left(Me.Mensaje, 255)
         unaFila.NombreMaquina = Me.NombreMaquina
         unaFila.NombreUsuario = Me.NombreUsuario
