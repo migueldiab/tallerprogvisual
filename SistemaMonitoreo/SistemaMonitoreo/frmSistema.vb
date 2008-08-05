@@ -2,6 +2,13 @@ Imports System.Windows.Forms
 
 Public Class frmSistema
     Dim importarLogs As System.Windows.Forms.Form
+    Dim abmEquipos As System.Windows.Forms.Form
+    Dim listadoEquipos As System.Windows.Forms.Form
+    Dim abmGrupos As System.Windows.Forms.Form
+    Dim abmUsuarios As System.Windows.Forms.Form
+    Dim importarUsuarios As System.Windows.Forms.Form
+    Dim permisosUsuario As System.Windows.Forms.Form
+    Dim logUsuarios As System.Windows.Forms.Form
 
     Public Sub New()
         ' Llamada necesaria para el Diseñador de Windows Forms.
@@ -71,7 +78,7 @@ Public Class frmSistema
 
     Private m_ChildFormNumber As Integer = 0
 
-    Private Sub ImportarLogsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ImportarLogsToolStripMenuItem.Click
+    Private Sub importarLogsMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mImportarLogs.Click
         If importarLogs Is Nothing Then
             importarLogs = New frmLog(Me)
         ElseIf importarLogs.IsDisposed Then
@@ -82,4 +89,90 @@ Public Class frmSistema
         importarLogs.Left = 0
         importarLogs.Top = 0
     End Sub
+
+    Private Sub abmUsuariosMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mAbmUsuarios.Click
+        If abmUsuarios Is Nothing Then
+            abmUsuarios = New frmAbmUsuario(Me)
+        ElseIf importarLogs.IsDisposed Then
+            abmUsuarios = New frmAbmUsuario(Me)
+        End If
+        abmUsuarios.Show()
+        abmUsuarios.BringToFront()
+        abmUsuarios.Left = 0
+        abmUsuarios.Top = 0
+    End Sub
+
+    Private Sub importarUsuariosMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mImportarUsuarios.Click
+        If importarUsuarios Is Nothing Then
+            importarUsuarios = New frmImportarUsuarios(Me)
+        ElseIf importarLogs.IsDisposed Then
+            importarUsuarios = New frmImportarUsuarios(Me)
+        End If
+        importarUsuarios.Show()
+        importarUsuarios.BringToFront()
+        importarUsuarios.Left = 0
+        importarUsuarios.Top = 0
+    End Sub
+
+    Private Sub logUsuariosMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mLogsUsuarios.Click
+        If logUsuarios Is Nothing Then
+            logUsuarios = New frmLogUsuarios(Me)
+        ElseIf importarLogs.IsDisposed Then
+            logUsuarios = New frmLogUsuarios(Me)
+        End If
+        logUsuarios.Show()
+        logUsuarios.BringToFront()
+        logUsuarios.Left = 0
+        logUsuarios.Top = 0
+    End Sub
+
+    Private Sub permisosUsuarioMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mPermisosUsuarios.Click
+        If permisosUsuario Is Nothing Then
+            permisosUsuario = New frmPermisosUsuarios(Me)
+        ElseIf importarLogs.IsDisposed Then
+            permisosUsuario = New frmPermisosUsuarios(Me)
+        End If
+        permisosUsuario.Show()
+        permisosUsuario.BringToFront()
+        permisosUsuario.Left = 0
+        permisosUsuario.Top = 0
+    End Sub
+
+    Private Sub abmEquiposMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mAbmEquipos.Click
+        If abmEquipos Is Nothing Then
+            abmEquipos = New frmAbmEquipo(Me)
+        ElseIf importarLogs.IsDisposed Then
+            abmEquipos = New frmAbmEquipo(Me)
+        End If
+        abmEquipos.Show()
+        abmEquipos.BringToFront()
+        abmEquipos.Left = 0
+        abmEquipos.Top = 0
+    End Sub
+
+    Private Sub listadoEquiposMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mListadoEquipos.Click
+        If listadoEquipos Is Nothing Then
+            listadoEquipos = New frmListadoEquipos(Me)
+        ElseIf importarLogs.IsDisposed Then
+            listadoEquipos = New frmListadoEquipos(Me)
+        End If
+        listadoEquipos.Show()
+        listadoEquipos.BringToFront()
+        listadoEquipos.Left = 0
+        listadoEquipos.Top = 0
+    End Sub
+
+    Private Sub abmGruposMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mAbmGrupos.Click
+        If abmGrupos Is Nothing Then
+            abmGrupos = New frmAbmGrupo(Me)
+        ElseIf importarLogs.IsDisposed Then
+            abmGrupos = New frmAbmGrupo(Me)
+        End If
+        abmGrupos.Show()
+        abmGrupos.BringToFront()
+        abmGrupos.Left = 0
+        abmGrupos.Top = 0
+    End Sub
+
+
 End Class

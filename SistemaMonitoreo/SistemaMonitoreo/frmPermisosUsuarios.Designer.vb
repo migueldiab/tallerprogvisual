@@ -1,5 +1,5 @@
 <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmAbmEquipo
+Partial Class frmPermisosUsuarios
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -21,7 +21,7 @@ Partial Class frmAbmEquipo
     Private Sub InitializeComponent()
         Me.SuspendLayout()
         '
-        'frmAbmEquipo
+        'frmPermisosUsuarios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -29,8 +29,8 @@ Partial Class frmAbmEquipo
         Me.Font = New System.Drawing.Font("Verdana", 11.25!)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.Name = "frmAbmEquipo"
-        Me.Text = "frmAbmEquipo"
+        Me.Name = "frmPermisosUsuarios"
+        Me.Text = "frmPermisosUsuarios"
         Me.ResumeLayout(False)
 
     End Sub

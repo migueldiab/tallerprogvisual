@@ -78,6 +78,12 @@
     <Compile Include="frmImportarUsuarios.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmListadoEquipos.Designer.vb">
+      <DependentUpon>frmListadoEquipos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmListadoEquipos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmLog.Designer.vb">
       <DependentUpon>frmLog.vb</DependentUpon>
     </Compile>
@@ -88,6 +94,12 @@
       <DependentUpon>frmLogUsuarios.vb</DependentUpon>
     </Compile>
     <Compile Include="frmLogUsuarios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPermisosUsuarios.Designer.vb">
+      <DependentUpon>frmPermisosUsuarios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmPermisosUsuarios.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmSistema.Designer.vb">
@@ -114,9 +126,37 @@
     <Compile Include="SistemaMonitoreo.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmAbmEquipo.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmAbmEquipo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAbmGrupo.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmAbmGrupo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAbmUsuario.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmAbmUsuario.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImportarUsuarios.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmImportarUsuarios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmListadoEquipos.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmListadoEquipos.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLog.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmLog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogUsuarios.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmLogUsuarios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPermisosUsuarios.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmPermisosUsuarios.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSistema.resx">
       <SubType>Designer</SubType>
