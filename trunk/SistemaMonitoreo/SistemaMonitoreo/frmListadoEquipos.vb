@@ -1,4 +1,4 @@
-Public Class frmAbmEquipo
+Public Class frmListadoEquipos
     Public Sub New(ByVal ventanaPadre As Form)
         ' Llamada necesaria para el Diseñador de Windows Forms.
         InitializeComponent()

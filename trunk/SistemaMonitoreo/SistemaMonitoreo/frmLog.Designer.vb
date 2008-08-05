@@ -26,9 +26,10 @@ Partial Class frmLog
         '
         'btnProcesar
         '
-        Me.btnProcesar.Location = New System.Drawing.Point(185, 20)
+        Me.btnProcesar.Location = New System.Drawing.Point(281, 13)
+        Me.btnProcesar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnProcesar.Name = "btnProcesar"
-        Me.btnProcesar.Size = New System.Drawing.Size(75, 23)
+        Me.btnProcesar.Size = New System.Drawing.Size(165, 28)
         Me.btnProcesar.TabIndex = 0
         Me.btnProcesar.Text = "Procesar"
         Me.btnProcesar.UseVisualStyleBackColor = True
@@ -36,28 +37,32 @@ Partial Class frmLog
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(39, 25)
+        Me.Label1.Location = New System.Drawing.Point(13, 9)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(111, 13)
+        Me.Label1.Size = New System.Drawing.Size(167, 18)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Actualizacion de Logs"
         '
         'txtLogs
         '
-        Me.txtLogs.Location = New System.Drawing.Point(75, 90)
+        Me.txtLogs.Location = New System.Drawing.Point(16, 56)
+        Me.txtLogs.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtLogs.Name = "txtLogs"
-        Me.txtLogs.Size = New System.Drawing.Size(100, 20)
+        Me.txtLogs.Size = New System.Drawing.Size(164, 26)
         Me.txtLogs.TabIndex = 2
         '
         'frmLog
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(306, 249)
+        Me.ClientSize = New System.Drawing.Size(459, 345)
         Me.Controls.Add(Me.txtLogs)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnProcesar)
+        Me.Font = New System.Drawing.Font("Verdana", 11.25!)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "frmLog"
         Me.Text = "Importar Logs"
         Me.ResumeLayout(False)
