@@ -102,7 +102,7 @@ Public Class Log
             Throw ex
         End Try
     End Function
-  
+
     Public Function Eliminar() As Boolean
         Try
             Dim unPLog As New pLog
@@ -136,7 +136,7 @@ Public Class Log
     Public Function ToDataSet() As DataSet
         Dim ds As New dsLog
         Dim unaFila As dsLog.RegistroLogsRow
-        unafila = ds.RegistroLogs.NewRegistroLogsRow
+        unaFila = ds.RegistroLogs.NewRegistroLogsRow
         Me.Mensaje = Me.Mensaje.Replace("'", "''")
         unaFila.Mensaje = Left(Me.Mensaje, 255)
         unaFila.NombreMaquina = Me.NombreMaquina
@@ -145,8 +145,8 @@ Public Class Log
         unaFila.HoraGenerado = Me.HoraGenerado
         unaFila.IdTipoEntradaEvento = Me.IdTipoEntradaEvento
         unaFila.Category = Me.Category
-        unafila.OrigenEvento = Me.OrigenEvento
-        ds.RegistroLogs.Rows.Add(unafila)
+        unaFila.OrigenEvento = Me.OrigenEvento
+        ds.RegistroLogs.Rows.Add(unaFila)
         Return ds
     End Function
 #End Region

@@ -1,7 +1,14 @@
 Imports System.Diagnostics
 Imports Dominio
+
 Public Class frmLog
 
+    Public Sub New(ByVal ventanaPadre As Form)
+        ' Llamada necesaria para el Diseñador de Windows Forms.
+        InitializeComponent()
+        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
+        Me.MdiParent = ventanaPadre
+    End Sub
 
     Private Sub btnProcesar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnProcesar.Click
 
@@ -27,7 +34,7 @@ Public Class frmLog
             NewLog.Guardar()
         Next
 
-        
+
 
 
     End Sub

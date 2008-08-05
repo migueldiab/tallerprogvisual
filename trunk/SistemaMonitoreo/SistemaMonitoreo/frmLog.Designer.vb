@@ -57,8 +57,9 @@ Partial Class frmLog
         Me.Controls.Add(Me.txtLogs)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnProcesar)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "frmLog"
-        Me.Text = "Form2"
+        Me.Text = "Importar Logs"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
