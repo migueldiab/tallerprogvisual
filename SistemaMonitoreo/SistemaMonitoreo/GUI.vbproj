@@ -54,10 +54,40 @@
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmAbmEquipo.Designer.vb">
+      <DependentUpon>frmAbmEquipo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAbmEquipo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAbmGrupo.Designer.vb">
+      <DependentUpon>frmAbmGrupo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAbmGrupo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAbmUsuario.Designer.vb">
+      <DependentUpon>frmAbmUsuario.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAbmUsuario.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImportarUsuarios.Designer.vb">
+      <DependentUpon>frmImportarUsuarios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmImportarUsuarios.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmLog.Designer.vb">
       <DependentUpon>frmLog.vb</DependentUpon>
     </Compile>
     <Compile Include="frmLog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogUsuarios.Designer.vb">
+      <DependentUpon>frmLogUsuarios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogUsuarios.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmSistema.Designer.vb">
