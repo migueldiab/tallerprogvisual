@@ -18,3 +18,4 @@ obj\Debug\GUI.exe
 obj\Debug\GUI.xml
 obj\Debug\GUI.pdb
 bin\Debug\GUI.exe.config
+obj\Debug\GUI.frmSistema.resources
