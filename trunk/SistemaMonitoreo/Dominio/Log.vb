@@ -87,7 +87,11 @@ Public Class Log
 
     Public Function Guardar() As Boolean
         Dim unPLog As New pLog
-        Return unPLog.Guardar(Me.ToDataSet)
+        If (unPLog.Guardar(Me.ToDataSet) = Persistente.errorBD.ok) Then
+            Return True
+        Else
+            Return False
+        End If
     End Function
     Public Function Leer(ByVal objeto As DataSet) As DataSet
         Try
@@ -96,7 +100,7 @@ Public Class Log
             Dim unDR As OleDb.OleDbDataReader
             unDSLog = CType(objeto, dsLog)
             unLog = CType(unDSLog.RegistroLogs.Rows(0), dsLog.RegistroLogsRow)
-            unDR = pLog.EjecutarReader("SELECT * FROM RegistroLogs")
+            ' unDR = pLog.EjecutarReader("SELECT * FROM RegistroLogs")
             Return unDSLog
         Catch ex As Exception
             Throw ex

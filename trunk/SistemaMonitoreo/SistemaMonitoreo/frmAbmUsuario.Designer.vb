@@ -19,10 +19,10 @@ Partial Class frmAbmUsuario
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.lstEmpleados = New System.Windows.Forms.ListBox
-        Me.txtTelefono = New System.Windows.Forms.TextBox
+        Me.lstUsuarios = New System.Windows.Forms.ListBox
+        Me.txtContrasenia = New System.Windows.Forms.TextBox
         Me.txtNombre = New System.Windows.Forms.TextBox
-        Me.txtFiltroEmpleados = New System.Windows.Forms.TextBox
+        Me.txtFiltroUsuarios = New System.Windows.Forms.TextBox
         Me.txtID = New System.Windows.Forms.TextBox
         Me.lblTelefono = New System.Windows.Forms.Label
         Me.btnCerrar = New System.Windows.Forms.Button
@@ -33,22 +33,22 @@ Partial Class frmAbmUsuario
         Me.lblID = New System.Windows.Forms.Label
         Me.SuspendLayout()
         '
-        'lstEmpleados
+        'lstUsuarios
         '
-        Me.lstEmpleados.FormattingEnabled = True
-        Me.lstEmpleados.ItemHeight = 18
-        Me.lstEmpleados.Location = New System.Drawing.Point(12, 45)
-        Me.lstEmpleados.Name = "lstEmpleados"
-        Me.lstEmpleados.Size = New System.Drawing.Size(205, 274)
-        Me.lstEmpleados.TabIndex = 20
+        Me.lstUsuarios.FormattingEnabled = True
+        Me.lstUsuarios.ItemHeight = 18
+        Me.lstUsuarios.Location = New System.Drawing.Point(12, 45)
+        Me.lstUsuarios.Name = "lstUsuarios"
+        Me.lstUsuarios.Size = New System.Drawing.Size(205, 274)
+        Me.lstUsuarios.TabIndex = 20
         '
-        'txtTelefono
+        'txtContrasenia
         '
-        Me.txtTelefono.Location = New System.Drawing.Point(356, 76)
-        Me.txtTelefono.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtTelefono.Name = "txtTelefono"
-        Me.txtTelefono.Size = New System.Drawing.Size(204, 26)
-        Me.txtTelefono.TabIndex = 24
+        Me.txtContrasenia.Location = New System.Drawing.Point(356, 76)
+        Me.txtContrasenia.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtContrasenia.Name = "txtContrasenia"
+        Me.txtContrasenia.Size = New System.Drawing.Size(204, 26)
+        Me.txtContrasenia.TabIndex = 24
         '
         'txtNombre
         '
@@ -58,13 +58,13 @@ Partial Class frmAbmUsuario
         Me.txtNombre.Size = New System.Drawing.Size(204, 26)
         Me.txtNombre.TabIndex = 22
         '
-        'txtFiltroEmpleados
+        'txtFiltroUsuarios
         '
-        Me.txtFiltroEmpleados.Location = New System.Drawing.Point(66, 10)
-        Me.txtFiltroEmpleados.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtFiltroEmpleados.Name = "txtFiltroEmpleados"
-        Me.txtFiltroEmpleados.Size = New System.Drawing.Size(150, 26)
-        Me.txtFiltroEmpleados.TabIndex = 14
+        Me.txtFiltroUsuarios.Location = New System.Drawing.Point(66, 10)
+        Me.txtFiltroUsuarios.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtFiltroUsuarios.Name = "txtFiltroUsuarios"
+        Me.txtFiltroUsuarios.Size = New System.Drawing.Size(150, 26)
+        Me.txtFiltroUsuarios.TabIndex = 14
         '
         'txtID
         '
@@ -149,10 +149,10 @@ Partial Class frmAbmUsuario
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(654, 333)
-        Me.Controls.Add(Me.lstEmpleados)
-        Me.Controls.Add(Me.txtTelefono)
+        Me.Controls.Add(Me.lstUsuarios)
+        Me.Controls.Add(Me.txtContrasenia)
         Me.Controls.Add(Me.txtNombre)
-        Me.Controls.Add(Me.txtFiltroEmpleados)
+        Me.Controls.Add(Me.txtFiltroUsuarios)
         Me.Controls.Add(Me.txtID)
         Me.Controls.Add(Me.lblTelefono)
         Me.Controls.Add(Me.btnCerrar)
@@ -165,15 +165,15 @@ Partial Class frmAbmUsuario
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmAbmUsuario"
-        Me.Text = "frmAbmUsuario"
+        Me.Text = "Administración de Usuarios"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents lstEmpleados As System.Windows.Forms.ListBox
-    Friend WithEvents txtTelefono As System.Windows.Forms.TextBox
+    Friend WithEvents lstUsuarios As System.Windows.Forms.ListBox
+    Friend WithEvents txtContrasenia As System.Windows.Forms.TextBox
     Friend WithEvents txtNombre As System.Windows.Forms.TextBox
-    Friend WithEvents txtFiltroEmpleados As System.Windows.Forms.TextBox
+    Friend WithEvents txtFiltroUsuarios As System.Windows.Forms.TextBox
     Friend WithEvents txtID As System.Windows.Forms.TextBox
     Friend WithEvents lblTelefono As System.Windows.Forms.Label
     Friend WithEvents btnCerrar As System.Windows.Forms.Button
