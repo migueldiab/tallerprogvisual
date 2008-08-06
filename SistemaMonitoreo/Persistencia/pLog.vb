@@ -62,7 +62,9 @@ Public Class pLog : Inherits Persistente
             & unLog.Category.ToString() & "','" _
             & unLog.HoraEscritura.ToString() & "','" _
             & unLog.HoraGenerado.ToString() & "','" _
-            & unLog.Mensaje.ToString() & "')")
+            & unLog.Mensaje.ToString() & "','" _
+            & unLog.EventoCapturado.ToString() & "')")
+
             Return errorBD.ok
         Catch ex As Exception
             Debug.WriteLine(ex.Message)
