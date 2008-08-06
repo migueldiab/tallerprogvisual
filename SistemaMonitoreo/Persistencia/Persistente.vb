@@ -1,12 +1,21 @@
 Imports System.Configuration
 Imports System.Collections.Specialized
 Imports System.Data.OleDb
-Public Class Persistente
+Public MustInherit Class Persistente
+
+    Public Enum errorBD
+        ok              '=0
+        claveDuplicada  '=1
+        sinRegistro     'etc.
+        DatosAsociadosEnOtraTabla
+        errorGeneral
+    End Enum
+
+#Region "Atributos"
     Private Shared mCadenaConexion As String
-    Protected Shared Function leerConfig() As String
-        Dim strConnect As String = ConfigurationManager.ConnectionStrings("connectionString").ConnectionString
-        Return strConnect
-    End Function
+
+#End Region
+#Region "Propiedades"
     Protected Shared ReadOnly Property CadenaConexion() As String
         Get
             Persistente.mCadenaConexion = Persistente.leerConfig
@@ -14,7 +23,17 @@ Public Class Persistente
         End Get
     End Property
 
-    Protected Shared Function Conectar() As OleDbConnection
+#End Region
+#Region "Constructores"
+
+#End Region
+#Region "Metodos"
+    Protected Shared Function leerConfig() As String
+        Dim strConnect As String = ConfigurationManager.ConnectionStrings("connectionString").ConnectionString
+        Return strConnect
+    End Function
+
+    Protected Function Conectar() As OleDbConnection
         Try
             Dim unaC As OleDbConnection
             unaC = New OleDbConnection(CadenaConexion)
@@ -25,7 +44,7 @@ Public Class Persistente
             Return Nothing
         End Try
     End Function
-    Public Shared Function EjecutarSQL(ByVal CadenaSQL As String) As DataSet
+    Protected Function EjecutarSQL(ByVal CadenaSQL As String) As DataSet
         Dim unaC As OleDbConnection
         Try
             unaC = Conectar()
@@ -50,11 +69,11 @@ Public Class Persistente
     ''' <summary>Ejecuta una sentencia SQL (consulta) y carga en resultado en el dataset que recibe,
     ''' especificamente en la tabla que se indica
     '''</summary>
-    Public Shared Function EjecutarSQL(ByVal cadenaSQL As String, ByVal unDataSet As DataSet, ByVal nombreTabla As String) As DataSet
+    Protected Function EjecutarSQL(ByVal cadenaSQL As String, ByVal unDataSet As DataSet, ByVal nombreTabla As String) As DataSet
         Dim unaC As OleDbConnection
         Dim unDA As OleDbDataAdapter
         Try
-            unaC = Conectar()
+            unaC = Me.Conectar()
             unDA = New OleDbDataAdapter(cadenaSQL, unaC)
             unDA.Fill(unDataSet, nombreTabla)
         Catch ex As OleDbException
@@ -72,12 +91,12 @@ Public Class Persistente
     End Function
     ''' <summary>Ejecuta una sentencia SQL (consulta) y retorna un OleDbDataReader</summary>
     ''' <returns>Retorna un DataSet con el resultado de la consulta</returns>
-    Public Shared Function EjecutarReader(ByVal cadenaSQL As String) As OleDbDataReader
+    Protected Function EjecutarReader(ByVal cadenaSQL As String) As OleDbDataReader
         Dim unDR As OleDbDataReader
         Dim unaC As OleDbConnection
         Dim unCommand As New OleDbCommand(cadenaSQL)
         Try
-            unaC = Conectar()
+            unaC = Me.Conectar()
             unCommand.Connection = unaC
             unCommand.Connection.Open()
             unDR = unCommand.ExecuteReader
@@ -87,5 +106,28 @@ Public Class Persistente
         Return unDR
     End Function
 
+    Protected Function actualizar(ByVal operacion As String, ByVal ds As DataSet) As errorBD
+        Dim conexion As OleDbConnection = Me.Conectar()
+        Try
+            Dim da As New OleDbDataAdapter(operacion, conexion)
+            Dim cb As New OleDbCommandBuilder(da)
+            da.UpdateCommand = cb.GetUpdateCommand
+            da.DeleteCommand = cb.GetDeleteCommand
+            da.InsertCommand = cb.GetInsertCommand
+            da.Update(ds, "tabla")
+            Return errorBD.ok
+        Catch ex As Exception
+            Return errorBD.errorGeneral
+        End Try
+    End Function
+
+    Public MustOverride Function buscar(ByVal filtro As String) As Data.DataRowCollection
+    Public MustOverride Function buscar(ByVal clave As Object) As Object
+    Public MustOverride Function buscar() As Data.DataRowCollection
+
+    Public MustOverride Function Guardar(ByVal objeto As Object) As errorBD
+    Public MustOverride Function Borrar(ByVal objeto As Object) As errorBD
+    Public MustOverride Function proximoId() As Integer
+#End Region
 
 End Class

@@ -93,7 +93,7 @@ Public Class frmSistema
     Private Sub abmUsuariosMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mAbmUsuarios.Click
         If abmUsuarios Is Nothing Then
             abmUsuarios = New frmAbmUsuario(Me)
-        ElseIf importarLogs.IsDisposed Then
+        ElseIf abmUsuarios.IsDisposed Then
             abmUsuarios = New frmAbmUsuario(Me)
         End If
         abmUsuarios.Show()
