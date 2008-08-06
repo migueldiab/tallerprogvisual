@@ -11,6 +11,7 @@ Public Class Log
     Private mHoraEscritura As String
     Private mHoraGenerado As String
     Private mMensaje As String
+    Private mEventoCapturado As String
 #End Region
 
 #Region "Properties"
@@ -78,6 +79,14 @@ Public Class Log
             Me.mMensaje = value
         End Set
     End Property
+    Public Property EventoCapturado() As String
+        Get
+            Return mEventoCapturado
+        End Get
+        Set(ByVal value As String)
+            mEventoCapturado = value
+        End Set
+    End Property
 #End Region
 
     Public Sub New()
@@ -132,6 +141,7 @@ Public Class Log
                 Me.IdTipoEntradaEvento = unaFila.IdTipoEntradaEvento
                 Me.Category = unaFila.Category
                 Me.OrigenEvento = unaFila.OrigenEvento
+                Me.EventoCapturado = unaFila.EventoCapturado
             End If
         Catch ex As Exception
             Throw ex
@@ -150,6 +160,7 @@ Public Class Log
         unaFila.IdTipoEntradaEvento = Me.IdTipoEntradaEvento
         unaFila.Category = Me.Category
         unaFila.OrigenEvento = Me.OrigenEvento
+        unaFila.EventoCapturado = Me.EventoCapturado
         ds.RegistroLogs.Rows.Add(unaFila)
         Return ds
     End Function

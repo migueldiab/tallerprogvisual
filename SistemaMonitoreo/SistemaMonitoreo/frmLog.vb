@@ -26,6 +26,7 @@ Public Class frmLog
             Dim unaEntry As EventLogEntry
             For Each unaEntry In unLog.Entries
                 Dim NewLog As New Log
+                NewLog.EventoCapturado = myEnumval.ToString
                 NewLog.Category = unaEntry.Category
                 NewLog.HoraEscritura = unaEntry.TimeWritten.ToString
                 NewLog.HoraGenerado = unaEntry.TimeGenerated.ToString

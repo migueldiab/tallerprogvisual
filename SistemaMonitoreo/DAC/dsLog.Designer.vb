@@ -244,6 +244,8 @@ Partial Public Class dsLog
         
         Private columnMensaje As System.Data.DataColumn
         
+        Private columnEventoCapturado As System.Data.DataColumn
+        
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Public Sub New()
             MyBase.New
@@ -339,6 +341,13 @@ Partial Public Class dsLog
             End Get
         End Property
         
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public ReadOnly Property EventoCapturadoColumn() As System.Data.DataColumn
+            Get
+                Return Me.columnEventoCapturado
+            End Get
+        End Property
+        
         <System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -368,9 +377,9 @@ Partial Public Class dsLog
         End Sub
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Overloads Function AddRegistroLogsRow(ByVal IdTipoEntradaEvento As Integer, ByVal NombreMaquina As String, ByVal OrigenEvento As String, ByVal NombreUsuario As String, ByVal Category As String, ByVal HoraEscritura As String, ByVal HoraGenerado As String, ByVal Mensaje As String) As RegistroLogsRow
+        Public Overloads Function AddRegistroLogsRow(ByVal IdTipoEntradaEvento As Integer, ByVal NombreMaquina As String, ByVal OrigenEvento As String, ByVal NombreUsuario As String, ByVal Category As String, ByVal HoraEscritura As String, ByVal HoraGenerado As String, ByVal Mensaje As String, ByVal EventoCapturado As String) As RegistroLogsRow
             Dim rowRegistroLogsRow As RegistroLogsRow = CType(Me.NewRow,RegistroLogsRow)
-            rowRegistroLogsRow.ItemArray = New Object() {Nothing, IdTipoEntradaEvento, NombreMaquina, OrigenEvento, NombreUsuario, Category, HoraEscritura, HoraGenerado, Mensaje}
+            rowRegistroLogsRow.ItemArray = New Object() {Nothing, IdTipoEntradaEvento, NombreMaquina, OrigenEvento, NombreUsuario, Category, HoraEscritura, HoraGenerado, Mensaje, EventoCapturado}
             Me.Rows.Add(rowRegistroLogsRow)
             Return rowRegistroLogsRow
         End Function
@@ -408,6 +417,7 @@ Partial Public Class dsLog
             Me.columnHoraEscritura = MyBase.Columns("HoraEscritura")
             Me.columnHoraGenerado = MyBase.Columns("HoraGenerado")
             Me.columnMensaje = MyBase.Columns("Mensaje")
+            Me.columnEventoCapturado = MyBase.Columns("EventoCapturado")
         End Sub
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
@@ -430,6 +440,8 @@ Partial Public Class dsLog
             MyBase.Columns.Add(Me.columnHoraGenerado)
             Me.columnMensaje = New System.Data.DataColumn("Mensaje", GetType(String), Nothing, System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnMensaje)
+            Me.columnEventoCapturado = New System.Data.DataColumn("EventoCapturado", GetType(String), Nothing, System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEventoCapturado)
             Me.Constraints.Add(New System.Data.UniqueConstraint("Constraint1", New System.Data.DataColumn() {Me.columnId}, true))
             Me.columnId.AutoIncrement = true
             Me.columnId.AllowDBNull = false
@@ -441,6 +453,7 @@ Partial Public Class dsLog
             Me.columnHoraEscritura.MaxLength = 255
             Me.columnHoraGenerado.MaxLength = 255
             Me.columnMensaje.MaxLength = 255
+            Me.columnEventoCapturado.MaxLength = 255
         End Sub
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
@@ -660,6 +673,20 @@ Partial Public Class dsLog
         End Property
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property EventoCapturado() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableRegistroLogs.EventoCapturadoColumn),String)
+                Catch e As System.InvalidCastException
+                    Throw New System.Data.StrongTypingException("The value for column 'EventoCapturado' in table 'RegistroLogs' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRegistroLogs.EventoCapturadoColumn) = value
+            End Set
+        End Property
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Public Function IsIdTipoEntradaEventoNull() As Boolean
             Return Me.IsNull(Me.tableRegistroLogs.IdTipoEntradaEventoColumn)
         End Function
@@ -737,6 +764,16 @@ Partial Public Class dsLog
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Public Sub SetMensajeNull()
             Me(Me.tableRegistroLogs.MensajeColumn) = System.Convert.DBNull
+        End Sub
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Function IsEventoCapturadoNull() As Boolean
+            Return Me.IsNull(Me.tableRegistroLogs.EventoCapturadoColumn)
+        End Function
+        
+        <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Sub SetEventoCapturadoNull()
+            Me(Me.tableRegistroLogs.EventoCapturadoColumn) = System.Convert.DBNull
         End Sub
     End Class
     
@@ -871,6 +908,7 @@ Namespace dsLogTableAdapters
             tableMapping.ColumnMappings.Add("HoraEscritura", "HoraEscritura")
             tableMapping.ColumnMappings.Add("HoraGenerado", "HoraGenerado")
             tableMapping.ColumnMappings.Add("Mensaje", "Mensaje")
+            tableMapping.ColumnMappings.Add("EventoCapturado", "EventoCapturado")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New System.Data.OleDb.OleDbCommand
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -881,7 +919,7 @@ Namespace dsLogTableAdapters
                 ") AND ((? = 1 AND `Category` IS NULL) OR (`Category` = ?)) AND ((? = 1 AND `Hora"& _ 
                 "Escritura` IS NULL) OR (`HoraEscritura` = ?)) AND ((? = 1 AND `HoraGenerado` IS "& _ 
                 "NULL) OR (`HoraGenerado` = ?)) AND ((? = 1 AND `Mensaje` IS NULL) OR (`Mensaje` "& _ 
-                "= ?)))"
+                "= ?)) AND ((? = 1 AND `EventoCapturado` IS NULL) OR (`EventoCapturado` = ?)))"
             Me._adapter.DeleteCommand.CommandType = System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New System.Data.OleDb.OleDbParameter("Original_Id", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Id", System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New System.Data.OleDb.OleDbParameter("IsNull_IdTipoEntradaEvento", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "IdTipoEntradaEvento", System.Data.DataRowVersion.Original, true, Nothing))
@@ -900,11 +938,13 @@ Namespace dsLogTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New System.Data.OleDb.OleDbParameter("Original_HoraGenerado", System.Data.OleDb.OleDbType.VarWChar, 0, System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HoraGenerado", System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New System.Data.OleDb.OleDbParameter("IsNull_Mensaje", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Mensaje", System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New System.Data.OleDb.OleDbParameter("Original_Mensaje", System.Data.OleDb.OleDbType.VarWChar, 0, System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Mensaje", System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New System.Data.OleDb.OleDbParameter("IsNull_EventoCapturado", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "EventoCapturado", System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New System.Data.OleDb.OleDbParameter("Original_EventoCapturado", System.Data.OleDb.OleDbType.VarWChar, 0, System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "EventoCapturado", System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.InsertCommand = New System.Data.OleDb.OleDbCommand
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO `RegistroLogs` (`IdTipoEntradaEvento`, `NombreMaquina`, `OrigenEvento"& _ 
-                "`, `NombreUsuario`, `Category`, `HoraEscritura`, `HoraGenerado`, `Mensaje`) VALU"& _ 
-                "ES (?, ?, ?, ?, ?, ?, ?, ?)"
+                "`, `NombreUsuario`, `Category`, `HoraEscritura`, `HoraGenerado`, `Mensaje`, `Eve"& _ 
+                "ntoCapturado`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
             Me._adapter.InsertCommand.CommandType = System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New System.Data.OleDb.OleDbParameter("IdTipoEntradaEvento", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "IdTipoEntradaEvento", System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New System.Data.OleDb.OleDbParameter("NombreMaquina", System.Data.OleDb.OleDbType.VarWChar, 0, System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NombreMaquina", System.Data.DataRowVersion.Current, false, Nothing))
@@ -914,18 +954,20 @@ Namespace dsLogTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New System.Data.OleDb.OleDbParameter("HoraEscritura", System.Data.OleDb.OleDbType.VarWChar, 0, System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HoraEscritura", System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New System.Data.OleDb.OleDbParameter("HoraGenerado", System.Data.OleDb.OleDbType.VarWChar, 0, System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HoraGenerado", System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New System.Data.OleDb.OleDbParameter("Mensaje", System.Data.OleDb.OleDbType.VarWChar, 0, System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Mensaje", System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New System.Data.OleDb.OleDbParameter("EventoCapturado", System.Data.OleDb.OleDbType.VarWChar, 0, System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "EventoCapturado", System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand = New System.Data.OleDb.OleDbCommand
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE `RegistroLogs` SET `IdTipoEntradaEvento` = ?, `NombreMaquina` = ?, `Origen"& _ 
                 "Evento` = ?, `NombreUsuario` = ?, `Category` = ?, `HoraEscritura` = ?, `HoraGene"& _ 
-                "rado` = ?, `Mensaje` = ? WHERE ((`Id` = ?) AND ((? = 1 AND `IdTipoEntradaEvento`"& _ 
-                " IS NULL) OR (`IdTipoEntradaEvento` = ?)) AND ((? = 1 AND `NombreMaquina` IS NUL"& _ 
-                "L) OR (`NombreMaquina` = ?)) AND ((? = 1 AND `OrigenEvento` IS NULL) OR (`Origen"& _ 
-                "Evento` = ?)) AND ((? = 1 AND `NombreUsuario` IS NULL) OR (`NombreUsuario` = ?))"& _ 
-                " AND ((? = 1 AND `Category` IS NULL) OR (`Category` = ?)) AND ((? = 1 AND `HoraE"& _ 
-                "scritura` IS NULL) OR (`HoraEscritura` = ?)) AND ((? = 1 AND `HoraGenerado` IS N"& _ 
-                "ULL) OR (`HoraGenerado` = ?)) AND ((? = 1 AND `Mensaje` IS NULL) OR (`Mensaje` ="& _ 
-                " ?)))"
+                "rado` = ?, `Mensaje` = ?, `EventoCapturado` = ? WHERE ((`Id` = ?) AND ((? = 1 AN"& _ 
+                "D `IdTipoEntradaEvento` IS NULL) OR (`IdTipoEntradaEvento` = ?)) AND ((? = 1 AND"& _ 
+                " `NombreMaquina` IS NULL) OR (`NombreMaquina` = ?)) AND ((? = 1 AND `OrigenEvent"& _ 
+                "o` IS NULL) OR (`OrigenEvento` = ?)) AND ((? = 1 AND `NombreUsuario` IS NULL) OR"& _ 
+                " (`NombreUsuario` = ?)) AND ((? = 1 AND `Category` IS NULL) OR (`Category` = ?))"& _ 
+                " AND ((? = 1 AND `HoraEscritura` IS NULL) OR (`HoraEscritura` = ?)) AND ((? = 1 "& _ 
+                "AND `HoraGenerado` IS NULL) OR (`HoraGenerado` = ?)) AND ((? = 1 AND `Mensaje` I"& _ 
+                "S NULL) OR (`Mensaje` = ?)) AND ((? = 1 AND `EventoCapturado` IS NULL) OR (`Even"& _ 
+                "toCapturado` = ?)))"
             Me._adapter.UpdateCommand.CommandType = System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New System.Data.OleDb.OleDbParameter("IdTipoEntradaEvento", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "IdTipoEntradaEvento", System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New System.Data.OleDb.OleDbParameter("NombreMaquina", System.Data.OleDb.OleDbType.VarWChar, 0, System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NombreMaquina", System.Data.DataRowVersion.Current, false, Nothing))
@@ -935,6 +977,7 @@ Namespace dsLogTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New System.Data.OleDb.OleDbParameter("HoraEscritura", System.Data.OleDb.OleDbType.VarWChar, 0, System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HoraEscritura", System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New System.Data.OleDb.OleDbParameter("HoraGenerado", System.Data.OleDb.OleDbType.VarWChar, 0, System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HoraGenerado", System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New System.Data.OleDb.OleDbParameter("Mensaje", System.Data.OleDb.OleDbType.VarWChar, 0, System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Mensaje", System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New System.Data.OleDb.OleDbParameter("EventoCapturado", System.Data.OleDb.OleDbType.VarWChar, 0, System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "EventoCapturado", System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New System.Data.OleDb.OleDbParameter("Original_Id", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Id", System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New System.Data.OleDb.OleDbParameter("IsNull_IdTipoEntradaEvento", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "IdTipoEntradaEvento", System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New System.Data.OleDb.OleDbParameter("Original_IdTipoEntradaEvento", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "IdTipoEntradaEvento", System.Data.DataRowVersion.Original, false, Nothing))
@@ -952,12 +995,14 @@ Namespace dsLogTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New System.Data.OleDb.OleDbParameter("Original_HoraGenerado", System.Data.OleDb.OleDbType.VarWChar, 0, System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HoraGenerado", System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New System.Data.OleDb.OleDbParameter("IsNull_Mensaje", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Mensaje", System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New System.Data.OleDb.OleDbParameter("Original_Mensaje", System.Data.OleDb.OleDbType.VarWChar, 0, System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Mensaje", System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New System.Data.OleDb.OleDbParameter("IsNull_EventoCapturado", System.Data.OleDb.OleDbType.[Integer], 0, System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "EventoCapturado", System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New System.Data.OleDb.OleDbParameter("Original_EventoCapturado", System.Data.OleDb.OleDbType.VarWChar, 0, System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "EventoCapturado", System.Data.DataRowVersion.Original, false, Nothing))
         End Sub
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Private Sub InitConnection()
             Me._connection = New System.Data.OleDb.OleDbConnection
-            Me._connection.ConnectionString = Global.DAC.My.MySettings.Default.DBConnectionString
+            Me._connection.ConnectionString = Global.DAC.My.MySettings.Default.DBConnectionString1
         End Sub
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
@@ -966,7 +1011,7 @@ Namespace dsLogTableAdapters
             Me._commandCollection(0) = New System.Data.OleDb.OleDbCommand
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT Id, IdTipoEntradaEvento, NombreMaquina, OrigenEvento, NombreUsuario, Categ"& _ 
-                "ory, HoraEscritura, HoraGenerado, Mensaje FROM RegistroLogs"
+                "ory, HoraEscritura, HoraGenerado, Mensaje, EventoCapturado FROM RegistroLogs"
             Me._commandCollection(0).CommandType = System.Data.CommandType.Text
         End Sub
         
@@ -1019,7 +1064,7 @@ Namespace dsLogTableAdapters
         <System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_Id As Integer, ByVal Original_IdTipoEntradaEvento As System.Nullable(Of Integer), ByVal Original_NombreMaquina As String, ByVal Original_OrigenEvento As String, ByVal Original_NombreUsuario As String, ByVal Original_Category As String, ByVal Original_HoraEscritura As String, ByVal Original_HoraGenerado As String, ByVal Original_Mensaje As String) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_Id As Integer, ByVal Original_IdTipoEntradaEvento As System.Nullable(Of Integer), ByVal Original_NombreMaquina As String, ByVal Original_OrigenEvento As String, ByVal Original_NombreUsuario As String, ByVal Original_Category As String, ByVal Original_HoraEscritura As String, ByVal Original_HoraGenerado As String, ByVal Original_Mensaje As String, ByVal Original_EventoCapturado As String) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_Id,Integer)
             If (Original_IdTipoEntradaEvento.HasValue = true) Then
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(0,Object)
@@ -1077,6 +1122,13 @@ Namespace dsLogTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(15).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(16).Value = CType(Original_Mensaje,String)
             End If
+            If (Original_EventoCapturado Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(18).Value = System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(17).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(18).Value = CType(Original_EventoCapturado,String)
+            End If
             Dim previousConnectionState As System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And System.Data.ConnectionState.Open)  _
                         <> System.Data.ConnectionState.Open) Then
@@ -1095,7 +1147,7 @@ Namespace dsLogTableAdapters
         <System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal IdTipoEntradaEvento As System.Nullable(Of Integer), ByVal NombreMaquina As String, ByVal OrigenEvento As String, ByVal NombreUsuario As String, ByVal Category As String, ByVal HoraEscritura As String, ByVal HoraGenerado As String, ByVal Mensaje As String) As Integer
+        Public Overloads Overridable Function Insert(ByVal IdTipoEntradaEvento As System.Nullable(Of Integer), ByVal NombreMaquina As String, ByVal OrigenEvento As String, ByVal NombreUsuario As String, ByVal Category As String, ByVal HoraEscritura As String, ByVal HoraGenerado As String, ByVal Mensaje As String, ByVal EventoCapturado As String) As Integer
             If (IdTipoEntradaEvento.HasValue = true) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = CType(IdTipoEntradaEvento.Value,Integer)
             Else
@@ -1136,6 +1188,11 @@ Namespace dsLogTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(7).Value = CType(Mensaje,String)
             End If
+            If (EventoCapturado Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(8).Value = System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(8).Value = CType(EventoCapturado,String)
+            End If
             Dim previousConnectionState As System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And System.Data.ConnectionState.Open)  _
                         <> System.Data.ConnectionState.Open) Then
@@ -1163,6 +1220,7 @@ Namespace dsLogTableAdapters
                     ByVal HoraEscritura As String,  _
                     ByVal HoraGenerado As String,  _
                     ByVal Mensaje As String,  _
+                    ByVal EventoCapturado As String,  _
                     ByVal Original_Id As Integer,  _
                     ByVal Original_IdTipoEntradaEvento As System.Nullable(Of Integer),  _
                     ByVal Original_NombreMaquina As String,  _
@@ -1171,7 +1229,8 @@ Namespace dsLogTableAdapters
                     ByVal Original_Category As String,  _
                     ByVal Original_HoraEscritura As String,  _
                     ByVal Original_HoraGenerado As String,  _
-                    ByVal Original_Mensaje As String) As Integer
+                    ByVal Original_Mensaje As String,  _
+                    ByVal Original_EventoCapturado As String) As Integer
             If (IdTipoEntradaEvento.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = CType(IdTipoEntradaEvento.Value,Integer)
             Else
@@ -1212,62 +1271,74 @@ Namespace dsLogTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Mensaje,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_Id,Integer)
-            If (Original_IdTipoEntradaEvento.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_IdTipoEntradaEvento.Value,Integer)
+            If (EventoCapturado Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(8).Value = System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(10).Value = System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(EventoCapturado,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Original_Id,Integer)
+            If (Original_IdTipoEntradaEvento.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_IdTipoEntradaEvento.Value,Integer)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(11).Value = System.DBNull.Value
             End If
             If (Original_NombreMaquina Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(12).Value = System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(13).Value = System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_NombreMaquina,String)
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_NombreMaquina,String)
             End If
             If (Original_OrigenEvento Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(14).Value = System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(15).Value = System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_OrigenEvento,String)
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_OrigenEvento,String)
             End If
             If (Original_NombreUsuario Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(16).Value = System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(17).Value = System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_NombreUsuario,String)
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_NombreUsuario,String)
             End If
             If (Original_Category Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(18).Value = System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(19).Value = System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_Category,String)
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_Category,String)
             End If
             If (Original_HoraEscritura Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(20).Value = System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(21).Value = System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_HoraEscritura,String)
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_HoraEscritura,String)
             End If
             If (Original_HoraGenerado Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(22).Value = System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(23).Value = System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_HoraGenerado,String)
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(Original_HoraGenerado,String)
             End If
             If (Original_Mensaje Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(24).Value = System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(25).Value = System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(Original_Mensaje,String)
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(Original_Mensaje,String)
+            End If
+            If (Original_EventoCapturado Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(Original_EventoCapturado,String)
             End If
             Dim previousConnectionState As System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And System.Data.ConnectionState.Open)  _
