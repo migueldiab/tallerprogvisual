@@ -88,24 +88,44 @@ Public Class Usuario
     ' Entrada   : 
     ' Salida    : 
     ' Notas     :
-    Public Sub guardar()
+    Public Function guardar() As Boolean
+
         Dim pUsuario As New pUsuario
-        pUsuario.Guardar(Me.ToDataSet())
-    End Sub
+        If (pUsuario.Guardar(Me.ToDataSet) = Persistente.errorBD.ok) Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
     ' Función   : Elimina un usuario de la BD
     ' Entrada   : 
     ' Salida    : 
     ' Notas     :
-    Public Function borrar() As Persistente.errorBD
+    Public Function borrar() As Boolean
         Dim pUsuario As New pUsuario
-        Return pUsuario.Borrar(CType(Me, Usuario))
+        If pUsuario.Borrar(Me.id) = Persistente.errorBD.ok Then
+            Return True
+        Else
+            Return False
+        End If
     End Function
+
+    'Public Function ToDataSet() As DataSet
+    '    Dim ds As New dsUsuario
+    '    Dim unaFila As dsUsuario.UsuariosRow
+    '    unaFila = ds.Usuarios.NewUsuariosRow
+    '    unaFila.Id = Integer.Parse(Me.id)
+    '    unaFila.Nombre = Me.nombre
+    '    unaFila.Contrasenia = Me.contrasenia
+    '    ds.Usuarios.Rows.Add(unaFila)
+    '    Return ds
+    'End Function
 
     Public Function ToDataSet() As dsUsuario.UsuariosRow
         Dim ds As New dsUsuario
         Dim unaFila As dsUsuario.UsuariosRow
         unaFila = ds.Usuarios.NewUsuariosRow
-        unaFila.Id = Integer.Parse(Me.id())
+        'unaFila.Id = Integer.Parse(Me.id())
         unaFila.Nombre = Me.nombre
         unaFila.Contrasenia = Me.contrasenia
         Return unaFila

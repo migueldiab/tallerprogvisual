@@ -10,9 +10,9 @@ Public Class Sistema
         Dim rawDataUsuarios As DataRowCollection
         Dim arrayUsuarios As New ArrayList
         Dim pUsuario As New pUsuario
-        Dim tempUsuario As New Usuario
         rawDataUsuarios = pUsuario.buscar()
         For Each unUsuario As DataRow In rawDataUsuarios
+            Dim tempUsuario As New Usuario
             tempUsuario.id = unUsuario.Item(0).ToString()
             tempUsuario.nombre = unUsuario.Item(1).ToString()
             tempUsuario.contrasenia = unUsuario.Item(2).ToString()

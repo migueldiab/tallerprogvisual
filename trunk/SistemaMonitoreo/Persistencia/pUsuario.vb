@@ -4,7 +4,18 @@ Public Class pUsuario : Inherits Persistente
 
 
     Public Overrides Function Borrar(ByVal objeto As Object) As Persistente.errorBD
-
+        Dim query As String
+        Dim id As String = CType(objeto, String)
+        Try
+            query = "DELETE FROM usuarios " _
+                    & " WHERE id = " & id & ";"
+            Debug.Print(query)
+            Me.EjecutarSQL(query)
+            Return errorBD.ok
+        Catch ex As Exception
+            Debug.WriteLine(ex.Message)
+        End Try
+        Return Nothing
     End Function
 
     Public Overloads Overrides Function buscar() As DataRowCollection
@@ -38,23 +49,37 @@ Public Class pUsuario : Inherits Persistente
     End Function
 
     Public Overloads Overrides Function buscar(ByVal filtro As String) As DataRowCollection
+        Dim query As String
+        Try
+            query = "SELECT * FROM usuarios " _
+                    & " WHERE nombre = '" & filtro & "';"
+            Debug.Print(query)
+            Return Me.EjecutarSQL(query).Tables(0).Rows
+        Catch ex As Exception
+            Debug.WriteLine(ex.Message)
+        End Try
         Return Nothing
     End Function
 
     Public Overrides Function Guardar(ByVal objeto As Object) As Persistente.errorBD
         Try
             Dim unUsuario As dsUsuario.UsuariosRow
-            unUsuario = CType(objeto, dsUsuario.UsuariosRow)
             Dim query As String
+            Dim busqueda As DataRowCollection
 
-            me.buscar(
-
-            query = "INSERT INTO Usuarios VALUES (" _
-                & unUsuario.Id() & ",'" _
-                & unUsuario.Nombre() & "','" _
-                & unUsuario.Contrasenia() _
-                & "')"
-
+            unUsuario = CType(objeto, dsUsuario.UsuariosRow)
+            busqueda = Me.buscar(unUsuario.Nombre)
+            If busqueda.Count = 0 Then
+                query = "INSERT INTO Usuarios (nombre, contrasenia) VALUES (" _
+                    & "'" & unUsuario.Nombre() & "'," _
+                    & "'" & unUsuario.Contrasenia() & "')"
+            ElseIf busqueda.Count = 1 Then
+                query = "UPDATE Usuarios SET " _
+                    & " contrasenia = '" & unUsuario.Contrasenia() & "'" _
+                    & " WHERE nombre = '" & unUsuario.Nombre() & "';"
+            Else
+                Return errorBD.errorGeneral
+            End If
             Debug.Print(query)
             Me.EjecutarSQL(query)
 
