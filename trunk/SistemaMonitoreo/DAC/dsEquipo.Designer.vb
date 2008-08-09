@@ -19,9 +19,9 @@ Imports System
  System.ComponentModel.DesignerCategoryAttribute("code"),  _
  System.ComponentModel.ToolboxItem(true),  _
  System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema"),  _
- System.Xml.Serialization.XmlRootAttribute("Equipo"),  _
+ System.Xml.Serialization.XmlRootAttribute("dsEquipo"),  _
  System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")>  _
-Partial Public Class Equipo
+Partial Public Class dsEquipo
     Inherits System.Data.DataSet
     
     Private tableEquipos As EquiposDataTable
@@ -119,7 +119,7 @@ Partial Public Class Equipo
     
     <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
     Public Overrides Function Clone() As System.Data.DataSet
-        Dim cln As Equipo = CType(MyBase.Clone,Equipo)
+        Dim cln As dsEquipo = CType(MyBase.Clone,dsEquipo)
         cln.InitVars
         cln.SchemaSerializationMode = Me.SchemaSerializationMode
         Return cln
@@ -183,9 +183,9 @@ Partial Public Class Equipo
     
     <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
     Private Sub InitClass()
-        Me.DataSetName = "Equipo"
+        Me.DataSetName = "dsEquipo"
         Me.Prefix = ""
-        Me.Namespace = "http://tempuri.org/Equipo.xsd"
+        Me.Namespace = "http://tempuri.org/dsEquipo.xsd"
         Me.EnforceConstraints = true
         Me.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         Me.tableEquipos = New EquiposDataTable
@@ -206,7 +206,7 @@ Partial Public Class Equipo
     
     <System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
     Public Shared Function GetTypedDataSetSchema(ByVal xs As System.Xml.Schema.XmlSchemaSet) As System.Xml.Schema.XmlSchemaComplexType
-        Dim ds As Equipo = New Equipo
+        Dim ds As dsEquipo = New dsEquipo
         Dim type As System.Xml.Schema.XmlSchemaComplexType = New System.Xml.Schema.XmlSchemaComplexType
         Dim sequence As System.Xml.Schema.XmlSchemaSequence = New System.Xml.Schema.XmlSchemaSequence
         xs.Add(ds.GetSchemaSerializable)
@@ -448,7 +448,7 @@ Partial Public Class Equipo
         Public Shared Function GetTypedTableSchema(ByVal xs As System.Xml.Schema.XmlSchemaSet) As System.Xml.Schema.XmlSchemaComplexType
             Dim type As System.Xml.Schema.XmlSchemaComplexType = New System.Xml.Schema.XmlSchemaComplexType
             Dim sequence As System.Xml.Schema.XmlSchemaSequence = New System.Xml.Schema.XmlSchemaSequence
-            Dim ds As Equipo = New Equipo
+            Dim ds As dsEquipo = New dsEquipo
             xs.Add(ds.GetSchemaSerializable)
             Dim any1 As System.Xml.Schema.XmlSchemaAny = New System.Xml.Schema.XmlSchemaAny
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
@@ -624,7 +624,7 @@ Partial Public Class Equipo
     End Class
 End Class
 
-Namespace EquipoTableAdapters
+Namespace dsEquipoTableAdapters
     
     <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0"),  _
      System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -787,7 +787,7 @@ Namespace EquipoTableAdapters
         <System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As Equipo.EquiposDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As dsEquipo.EquiposDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -799,22 +799,22 @@ Namespace EquipoTableAdapters
         <System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          System.ComponentModel.DataObjectMethodAttribute(System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As Equipo.EquiposDataTable
+        Public Overloads Overridable Function GetData() As dsEquipo.EquiposDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As Equipo.EquiposDataTable = New Equipo.EquiposDataTable
+            Dim dataTable As dsEquipo.EquiposDataTable = New dsEquipo.EquiposDataTable
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataTable As Equipo.EquiposDataTable) As Integer
+        Public Overloads Overridable Function Update(ByVal dataTable As dsEquipo.EquiposDataTable) As Integer
             Return Me.Adapter.Update(dataTable)
         End Function
         
         <System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-        Public Overloads Overridable Function Update(ByVal dataSet As Equipo) As Integer
+        Public Overloads Overridable Function Update(ByVal dataSet As dsEquipo) As Integer
             Return Me.Adapter.Update(dataSet, "Equipos")
         End Function
         

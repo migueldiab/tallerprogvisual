@@ -39,14 +39,14 @@ Partial Class frmAbmUsuario
         '
         Me.lstUsuarios.FormattingEnabled = True
         Me.lstUsuarios.ItemHeight = 18
-        Me.lstUsuarios.Location = New System.Drawing.Point(12, 45)
+        Me.lstUsuarios.Location = New System.Drawing.Point(12, 41)
         Me.lstUsuarios.Name = "lstUsuarios"
         Me.lstUsuarios.Size = New System.Drawing.Size(205, 274)
         Me.lstUsuarios.TabIndex = 9
         '
         'txtContrasenia
         '
-        Me.txtContrasenia.Location = New System.Drawing.Point(356, 76)
+        Me.txtContrasenia.Location = New System.Drawing.Point(356, 72)
         Me.txtContrasenia.Margin = New System.Windows.Forms.Padding(4)
         Me.txtContrasenia.Name = "txtContrasenia"
         Me.txtContrasenia.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
@@ -55,7 +55,7 @@ Partial Class frmAbmUsuario
         '
         'txtNombre
         '
-        Me.txtNombre.Location = New System.Drawing.Point(356, 42)
+        Me.txtNombre.Location = New System.Drawing.Point(356, 38)
         Me.txtNombre.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNombre.Name = "txtNombre"
         Me.txtNombre.Size = New System.Drawing.Size(204, 26)
@@ -63,7 +63,7 @@ Partial Class frmAbmUsuario
         '
         'txtFiltroUsuarios
         '
-        Me.txtFiltroUsuarios.Location = New System.Drawing.Point(66, 10)
+        Me.txtFiltroUsuarios.Location = New System.Drawing.Point(66, 6)
         Me.txtFiltroUsuarios.Margin = New System.Windows.Forms.Padding(4)
         Me.txtFiltroUsuarios.Name = "txtFiltroUsuarios"
         Me.txtFiltroUsuarios.Size = New System.Drawing.Size(150, 26)
@@ -72,7 +72,7 @@ Partial Class frmAbmUsuario
         'txtID
         '
         Me.txtID.Enabled = False
-        Me.txtID.Location = New System.Drawing.Point(356, 8)
+        Me.txtID.Location = New System.Drawing.Point(356, 4)
         Me.txtID.Margin = New System.Windows.Forms.Padding(4)
         Me.txtID.Name = "txtID"
         Me.txtID.Size = New System.Drawing.Size(103, 26)
@@ -81,7 +81,7 @@ Partial Class frmAbmUsuario
         'lblContrasenia
         '
         Me.lblContrasenia.AutoSize = True
-        Me.lblContrasenia.Location = New System.Drawing.Point(239, 79)
+        Me.lblContrasenia.Location = New System.Drawing.Point(239, 75)
         Me.lblContrasenia.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblContrasenia.Name = "lblContrasenia"
         Me.lblContrasenia.Size = New System.Drawing.Size(94, 18)
@@ -90,7 +90,7 @@ Partial Class frmAbmUsuario
         '
         'btnCerrar
         '
-        Me.btnCerrar.Location = New System.Drawing.Point(498, 287)
+        Me.btnCerrar.Location = New System.Drawing.Point(498, 283)
         Me.btnCerrar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnCerrar.Name = "btnCerrar"
         Me.btnCerrar.Size = New System.Drawing.Size(112, 32)
@@ -100,7 +100,7 @@ Partial Class frmAbmUsuario
         '
         'txtEliminar
         '
-        Me.txtEliminar.Location = New System.Drawing.Point(378, 287)
+        Me.txtEliminar.Location = New System.Drawing.Point(378, 283)
         Me.txtEliminar.Margin = New System.Windows.Forms.Padding(4)
         Me.txtEliminar.Name = "txtEliminar"
         Me.txtEliminar.Size = New System.Drawing.Size(112, 32)
@@ -110,7 +110,7 @@ Partial Class frmAbmUsuario
         '
         'btnGuardar
         '
-        Me.btnGuardar.Location = New System.Drawing.Point(258, 287)
+        Me.btnGuardar.Location = New System.Drawing.Point(258, 283)
         Me.btnGuardar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnGuardar.Name = "btnGuardar"
         Me.btnGuardar.Size = New System.Drawing.Size(112, 32)
@@ -121,7 +121,7 @@ Partial Class frmAbmUsuario
         'lblNombre
         '
         Me.lblNombre.AutoSize = True
-        Me.lblNombre.Location = New System.Drawing.Point(239, 45)
+        Me.lblNombre.Location = New System.Drawing.Point(239, 41)
         Me.lblNombre.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblNombre.Name = "lblNombre"
         Me.lblNombre.Size = New System.Drawing.Size(68, 18)
@@ -131,7 +131,7 @@ Partial Class frmAbmUsuario
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(13, 13)
+        Me.Label1.Location = New System.Drawing.Point(13, 9)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(45, 18)
@@ -141,7 +141,7 @@ Partial Class frmAbmUsuario
         'lblID
         '
         Me.lblID.AutoSize = True
-        Me.lblID.Location = New System.Drawing.Point(239, 11)
+        Me.lblID.Location = New System.Drawing.Point(239, 7)
         Me.lblID.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblID.Name = "lblID"
         Me.lblID.Size = New System.Drawing.Size(24, 18)
@@ -151,7 +151,7 @@ Partial Class frmAbmUsuario
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(239, 113)
+        Me.Label2.Location = New System.Drawing.Point(239, 109)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(60, 18)
@@ -160,7 +160,7 @@ Partial Class frmAbmUsuario
         '
         'txtRepetir
         '
-        Me.txtRepetir.Location = New System.Drawing.Point(356, 110)
+        Me.txtRepetir.Location = New System.Drawing.Point(356, 106)
         Me.txtRepetir.Margin = New System.Windows.Forms.Padding(4)
         Me.txtRepetir.Name = "txtRepetir"
         Me.txtRepetir.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
@@ -171,7 +171,7 @@ Partial Class frmAbmUsuario
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(620, 333)
+        Me.ClientSize = New System.Drawing.Size(620, 327)
         Me.Controls.Add(Me.lstUsuarios)
         Me.Controls.Add(Me.txtRepetir)
         Me.Controls.Add(Me.txtContrasenia)

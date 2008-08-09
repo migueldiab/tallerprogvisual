@@ -27,7 +27,28 @@ Public Class Sistema
         Next
         Return arrayUsuarios
     End Function
-
+    ' Función   : Devuelve todos los equipos
+    ' Entrada   : 
+    ' Salida    : Lista con todos los equipos ordenados alfabeticamente
+    ' Notas     :
+    Public Shared Function listaEquipos() As ArrayList
+        Dim rawDataEquipos As DataRowCollection
+        Dim arrayEquipos As New ArrayList
+        Dim pEquipo As New pEquipo
+        rawDataEquipos = pEquipo.buscar()
+        If rawDataEquipos IsNot Nothing Then
+            For Each unEquipo As DataRow In rawDataEquipos
+                Dim tempEquipo As New Equipo
+                tempEquipo.id = unEquipo.Item(0).ToString()
+                tempEquipo.nombre = unEquipo.Item(1).ToString()
+                tempEquipo.IP = unEquipo.Item(2).ToString()
+                tempEquipo.dominio = unEquipo.Item(3).ToString()
+                tempEquipo.destino = unEquipo.Item(4).ToString()
+                arrayEquipos.Add(tempEquipo)
+            Next
+        End If
+        Return arrayEquipos
+    End Function
     Public Shared Function getLogs() As ArrayList
         Dim colLogs As ArrayList
         Try

@@ -142,7 +142,7 @@ Public Class frmSistema
     Private Sub abmEquiposMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mAbmEquipos.Click
         If abmEquipos Is Nothing Then
             abmEquipos = New frmAbmEquipo(Me)
-        ElseIf importarLogs.IsDisposed Then
+        ElseIf abmEquipos.IsDisposed Then
             abmEquipos = New frmAbmEquipo(Me)
         End If
         abmEquipos.Show()

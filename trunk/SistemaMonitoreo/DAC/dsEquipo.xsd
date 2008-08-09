@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="Equipo" targetNamespace="http://tempuri.org/Equipo.xsd" xmlns:mstns="http://tempuri.org/Equipo.xsd" xmlns="http://tempuri.org/Equipo.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+<xs:schema id="dsEquipo" targetNamespace="http://tempuri.org/dsEquipo.xsd" xmlns:mstns="http://tempuri.org/dsEquipo.xsd" xmlns="http://tempuri.org/dsEquipo.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
@@ -109,7 +109,7 @@
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="Equipo" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="Equipo" msprop:Generator_DataSetName="Equipo">
+  <xs:element name="dsEquipo" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsEquipo" msprop:Generator_DataSetName="dsEquipo">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="Equipos" msprop:Generator_UserTableName="Equipos" msprop:Generator_RowDeletedName="EquiposRowDeleted" msprop:Generator_TableClassName="EquiposDataTable" msprop:Generator_RowChangedName="EquiposRowChanged" msprop:Generator_RowClassName="EquiposRow" msprop:Generator_RowChangingName="EquiposRowChanging" msprop:Generator_RowEvArgName="EquiposRowChangeEvent" msprop:Generator_RowEvHandlerName="EquiposRowChangeEventHandler" msprop:Generator_TablePropName="Equipos" msprop:Generator_TableVarName="tableEquipos" msprop:Generator_RowDeletingName="EquiposRowDeleting">
