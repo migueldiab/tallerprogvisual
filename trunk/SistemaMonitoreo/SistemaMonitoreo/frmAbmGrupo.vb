@@ -34,6 +34,10 @@ Public Class frmAbmGrupo
     Private Sub mostrarDatos(ByVal grupo As Grupo)
         txtNombre.Text = grupo.nombre.ToString
         txtID.Text = grupo.id.ToString
+        chkUsuariosRead.Checked = (grupo.usuarios.IndexOf("R") <> -1)
+        chkUsuariosWrite.Checked = (grupo.usuarios.IndexOf("W") <> -1)
+        chkEquiposRead.Checked = (grupo.equipos.IndexOf("R") <> -1)
+        chkEquiposWrite.Checked = (grupo.equipos.IndexOf("W") <> -1)
         If grupo.id <> "" Then
             txtNombre.Enabled = False
         Else
@@ -44,13 +48,34 @@ Public Class frmAbmGrupo
     Public Sub limpiarDatos()
         txtNombre.Text = ""
         txtID.Text = ""
+        chkUsuariosRead.Checked = False
+        chkUsuariosWrite.Checked = False
+        chkEquiposRead.Checked = False
+        chkEquiposWrite.Checked = False
         txtNombre.Enabled = True
     End Sub
 
     Private Sub btnGuardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGuardar.Click
         If controlarDatos() Then
             Dim uGrupo As New Grupo(txtID.Text.ToString)
+            Dim permisos As String
             uGrupo.nombre = txtNombre.Text
+            permisos = ""
+            If chkUsuariosRead.Checked Then
+                permisos = permisos & "R"
+            End If
+            If chkUsuariosWrite.Checked Then
+                permisos = permisos & "W"
+            End If
+            uGrupo.usuarios = permisos
+            permisos = ""
+            If chkEquiposRead.Checked Then
+                permisos = permisos & "R"
+            End If
+            If chkEquiposWrite.Checked Then
+                permisos = permisos & "W"
+            End If
+            uGrupo.equipos = permisos
             uGrupo.guardar()
             txtFiltroGrupos.Text = ""
             limpiarDatos()

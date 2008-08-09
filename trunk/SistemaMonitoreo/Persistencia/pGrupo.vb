@@ -12,7 +12,7 @@ Public Class pGrupo : Inherits Persistente
             query = "DELETE FROM grupos " _
                     & " WHERE id = " & id & ";"
             Debug.Print(query)
-            Me.EjecutarSQL(query)
+            EjecutarSQL(query)
             Return errorBD.ok
         Catch ex As Exception
             Debug.WriteLine(ex.Message)
@@ -24,7 +24,7 @@ Public Class pGrupo : Inherits Persistente
         Dim lista As New ArrayList
         Dim ds As DataSet
         Try
-            ds = Me.EjecutarSQL("select * from grupos order by nombre")
+            ds = EjecutarSQL("select * from grupos order by nombre")
             Return ds.Tables(0).Rows
         Catch ex As Exception
             Debug.WriteLine(ex.Message)
@@ -33,7 +33,7 @@ Public Class pGrupo : Inherits Persistente
     End Function
 
     Public Overloads Overrides Function buscar(ByVal clave As Object) As Object
-
+        Return Nothing
     End Function
 
     Public Overloads Overrides Function buscar(ByVal filtro As String) As DataRowCollection
@@ -42,7 +42,7 @@ Public Class pGrupo : Inherits Persistente
             query = "SELECT * FROM grupos " _
                     & " WHERE nombre = '" & filtro & "';"
             Debug.Print(query)
-            Return Me.EjecutarSQL(query).Tables(0).Rows
+            Return EjecutarSQL(query).Tables(0).Rows
         Catch ex As Exception
             Debug.WriteLine(ex.Message)
         End Try
@@ -64,16 +64,16 @@ Public Class pGrupo : Inherits Persistente
                     & "'" & unGrupo.PermisosSobreEquipos() & "'," _
                     & "'" & unGrupo.PermisosSobreLogs() & "')"
             ElseIf busqueda.Count = 1 Then
-                query = "UPDATE Grupos SET (" _
+                query = "UPDATE Grupos SET " _
                     & " permisosSobreUsuarios = '" & unGrupo.PermisosSobreUsuarios() & "'," _
                     & " permisosSobreEquipos  = '" & unGrupo.PermisosSobreEquipos() & "'," _
-                    & " permisosSobreLogs     = '" & unGrupo.PermisosSobreLogs() & "')" _
+                    & " permisosSobreLogs     = '" & unGrupo.PermisosSobreLogs() & "'" _
                     & " WHERE nombre = '" & unGrupo.Nombre() & "';"
             Else
                 Return errorBD.errorGeneral
             End If
             Debug.Print(query)
-            Me.EjecutarSQL(query)
+            EjecutarSQL(query)
 
             Return errorBD.ok
         Catch ex As Exception

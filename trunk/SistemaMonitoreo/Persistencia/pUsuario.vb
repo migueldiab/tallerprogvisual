@@ -10,7 +10,7 @@ Public Class pUsuario : Inherits Persistente
             query = "DELETE FROM usuarios " _
                     & " WHERE id = " & id & ";"
             Debug.Print(query)
-            Me.EjecutarSQL(query)
+            EjecutarSQL(query)
             Return errorBD.ok
         Catch ex As Exception
             Debug.WriteLine(ex.Message)
@@ -22,7 +22,7 @@ Public Class pUsuario : Inherits Persistente
         Dim lista As New ArrayList
         Dim ds As DataSet
         Try
-            ds = Me.EjecutarSQL("select * from usuarios order by nombre")
+            ds = EjecutarSQL("select * from usuarios order by nombre")
             Return ds.Tables(0).Rows
         Catch ex As Exception
             Debug.WriteLine(ex.Message)
@@ -54,7 +54,7 @@ Public Class pUsuario : Inherits Persistente
             query = "SELECT * FROM usuarios " _
                     & " WHERE nombre = '" & filtro & "';"
             Debug.Print(query)
-            Return Me.EjecutarSQL(query).Tables(0).Rows
+            Return EjecutarSQL(query).Tables(0).Rows
         Catch ex As Exception
             Debug.WriteLine(ex.Message)
         End Try
@@ -81,7 +81,7 @@ Public Class pUsuario : Inherits Persistente
                 Return errorBD.errorGeneral
             End If
             Debug.Print(query)
-            Me.EjecutarSQL(query)
+            EjecutarSQL(query)
 
             Return errorBD.ok
         Catch ex As Exception
