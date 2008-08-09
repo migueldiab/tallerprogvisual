@@ -63,6 +63,21 @@
     <Import Include="System.Diagnostics" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dsGrupo.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsGrupo.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsPertenenciaGrupo.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsPertenenciaGrupo.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsTipoEntradaEvento.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsTipoEntradaEvento.xsd</DependentUpon>
+    </Compile>
     <Compile Include="dsUsuario.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -78,6 +93,11 @@
     </Compile>
     <Compile Include="dsUsuario.vb">
       <DependentUpon>dsUsuario.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsEquipo.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsEquipo.xsd</DependentUpon>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -105,6 +125,39 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="dsGrupo.xsc">
+      <DependentUpon>dsGrupo.xsd</DependentUpon>
+    </None>
+    <None Include="dsGrupo.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsGrupo.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="dsGrupo.xss">
+      <DependentUpon>dsGrupo.xsd</DependentUpon>
+    </None>
+    <None Include="dsPertenenciaGrupo.xsc">
+      <DependentUpon>dsPertenenciaGrupo.xsd</DependentUpon>
+    </None>
+    <None Include="dsPertenenciaGrupo.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPertenenciaGrupo.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="dsPertenenciaGrupo.xss">
+      <DependentUpon>dsPertenenciaGrupo.xsd</DependentUpon>
+    </None>
+    <None Include="dsTipoEntradaEvento.xsc">
+      <DependentUpon>dsTipoEntradaEvento.xsd</DependentUpon>
+    </None>
+    <None Include="dsTipoEntradaEvento.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsTipoEntradaEvento.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="dsTipoEntradaEvento.xss">
+      <DependentUpon>dsTipoEntradaEvento.xsd</DependentUpon>
+    </None>
     <None Include="dsUsuario.xsc">
       <DependentUpon>dsUsuario.xsd</DependentUpon>
     </None>
@@ -126,6 +179,17 @@
     </None>
     <None Include="dsLog.xss">
       <DependentUpon>dsLog.xsd</DependentUpon>
+    </None>
+    <None Include="dsEquipo.xsc">
+      <DependentUpon>dsEquipo.xsd</DependentUpon>
+    </None>
+    <None Include="dsEquipo.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsEquipo.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="dsEquipo.xss">
+      <DependentUpon>dsEquipo.xsd</DependentUpon>
     </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>

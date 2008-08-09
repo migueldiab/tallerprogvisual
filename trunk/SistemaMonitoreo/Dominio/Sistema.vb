@@ -20,6 +20,25 @@ Public Class Sistema
         Next
         Return arrayUsuarios
     End Function
+
+    ' Función   : Devuelve todos los Grupos
+    ' Entrada   : 
+    ' Salida    : Lista con todos los Grupos ordenados alfabeticamente
+    ' Notas     :
+    Public Shared Function listaGrupos() As ArrayList
+        Dim rawDataGrupos As DataRowCollection
+        Dim arrayGrupos As New ArrayList
+        Dim pGrupo As New pGrupo
+        rawDataGrupos = pGrupo.buscar()
+        For Each unGrupo As DataRow In rawDataGrupos
+            Dim tempGrupo As New Grupo
+            tempGrupo.id = unGrupo.Item(0).ToString()
+            tempGrupo.nombre = unGrupo.Item(1).ToString()
+            tempGrupo.contrasenia = unGrupo.Item(2).ToString()
+            arrayGrupos.Add(tempGrupo)
+        Next
+        Return arrayGrupos
+    End Function
 #End Region
 
 End Class
