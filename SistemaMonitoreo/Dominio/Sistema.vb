@@ -34,7 +34,6 @@ Public Class Sistema
             Dim tempGrupo As New Grupo
             tempGrupo.id = unGrupo.Item(0).ToString()
             tempGrupo.nombre = unGrupo.Item(1).ToString()
-            tempGrupo.contrasenia = unGrupo.Item(2).ToString()
             arrayGrupos.Add(tempGrupo)
         Next
         Return arrayGrupos

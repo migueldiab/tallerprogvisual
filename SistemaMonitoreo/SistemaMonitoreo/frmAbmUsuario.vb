@@ -8,16 +8,14 @@ Public Class frmAbmUsuario
         MdiParent = ventanaPadre
     End Sub
 
-
     Private Sub frmAbmUsuario_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         cargarListaUsuarios(Sistema.listaUsuarios())
-
     End Sub
 
     Public Sub cargarListaUsuarios(ByVal listaUsuarios As ArrayList)
         lstUsuarios.Items.Clear()
         Dim nuevoUsuario As New Usuario()
-        nuevoUsuario.nombre = "--Nuevo empleado--"
+        nuevoUsuario.nombre = "--Nuevo usuario--"
         lstUsuarios.Items.Add(nuevoUsuario)
         For Each unUsuario As Usuario In listaUsuarios
             lstUsuarios.Items.Add(unUsuario)

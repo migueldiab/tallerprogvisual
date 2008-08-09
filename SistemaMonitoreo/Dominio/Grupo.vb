@@ -148,9 +148,10 @@ Public Class Grupo
         unaFila = ds.Grupos.NewGruposRow
         'unaFila.Id = Integer.Parse(Me.id())
         unaFila.Nombre = Me.nombre
-        unaFila.Contrasenia = Me.contrasenia
+        unaFila.PermisosSobreEquipos = Me.equipos
+        unaFila.PermisosSobreUsuarios = Me.usuarios
+        unaFila.PermisosSobreLogs = Me.logs().ToString
         Return unaFila
-
     End Function
 #End Region
 
