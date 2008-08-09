@@ -166,7 +166,7 @@ Public Class frmSistema
     Private Sub abmGruposMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mAbmGrupos.Click
         If abmGrupos Is Nothing Then
             abmGrupos = New frmAbmGrupo(Me)
-        ElseIf importarLogs.IsDisposed Then
+        ElseIf abmGrupos.IsDisposed Then
             abmGrupos = New frmAbmGrupo(Me)
         End If
         abmGrupos.Show()

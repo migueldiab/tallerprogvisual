@@ -69,6 +69,9 @@ Public Class Sistema
             Dim tempGrupo As New Grupo
             tempGrupo.id = unGrupo.Item(0).ToString()
             tempGrupo.nombre = unGrupo.Item(1).ToString()
+            tempGrupo.usuarios = unGrupo.Item(2).ToString()
+            tempGrupo.equipos = unGrupo.Item(3).ToString()
+            tempGrupo.logs = Integer.Parse(unGrupo.Item(4).ToString())
             arrayGrupos.Add(tempGrupo)
         Next
         Return arrayGrupos
