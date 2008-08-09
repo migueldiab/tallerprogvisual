@@ -43,14 +43,14 @@ Partial Class frmAbmGrupo
         '
         Me.lstGrupos.FormattingEnabled = True
         Me.lstGrupos.ItemHeight = 18
-        Me.lstGrupos.Location = New System.Drawing.Point(12, 48)
+        Me.lstGrupos.Location = New System.Drawing.Point(12, 41)
         Me.lstGrupos.Name = "lstGrupos"
         Me.lstGrupos.Size = New System.Drawing.Size(205, 274)
         Me.lstGrupos.TabIndex = 27
         '
         'txtNombre
         '
-        Me.txtNombre.Location = New System.Drawing.Point(356, 45)
+        Me.txtNombre.Location = New System.Drawing.Point(356, 38)
         Me.txtNombre.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNombre.Name = "txtNombre"
         Me.txtNombre.Size = New System.Drawing.Size(204, 26)
@@ -58,7 +58,7 @@ Partial Class frmAbmGrupo
         '
         'txtFiltroGrupos
         '
-        Me.txtFiltroGrupos.Location = New System.Drawing.Point(66, 13)
+        Me.txtFiltroGrupos.Location = New System.Drawing.Point(66, 6)
         Me.txtFiltroGrupos.Margin = New System.Windows.Forms.Padding(4)
         Me.txtFiltroGrupos.Name = "txtFiltroGrupos"
         Me.txtFiltroGrupos.Size = New System.Drawing.Size(150, 26)
@@ -67,7 +67,7 @@ Partial Class frmAbmGrupo
         'lblEquipos
         '
         Me.lblEquipos.AutoSize = True
-        Me.lblEquipos.Location = New System.Drawing.Point(239, 116)
+        Me.lblEquipos.Location = New System.Drawing.Point(239, 109)
         Me.lblEquipos.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblEquipos.Name = "lblEquipos"
         Me.lblEquipos.Size = New System.Drawing.Size(65, 18)
@@ -77,7 +77,7 @@ Partial Class frmAbmGrupo
         'txtID
         '
         Me.txtID.Enabled = False
-        Me.txtID.Location = New System.Drawing.Point(356, 11)
+        Me.txtID.Location = New System.Drawing.Point(356, 4)
         Me.txtID.Margin = New System.Windows.Forms.Padding(4)
         Me.txtID.Name = "txtID"
         Me.txtID.Size = New System.Drawing.Size(103, 26)
@@ -86,7 +86,7 @@ Partial Class frmAbmGrupo
         'lblUsuarios
         '
         Me.lblUsuarios.AutoSize = True
-        Me.lblUsuarios.Location = New System.Drawing.Point(239, 82)
+        Me.lblUsuarios.Location = New System.Drawing.Point(239, 75)
         Me.lblUsuarios.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblUsuarios.Name = "lblUsuarios"
         Me.lblUsuarios.Size = New System.Drawing.Size(72, 18)
@@ -95,7 +95,7 @@ Partial Class frmAbmGrupo
         '
         'btnCerrar
         '
-        Me.btnCerrar.Location = New System.Drawing.Point(498, 290)
+        Me.btnCerrar.Location = New System.Drawing.Point(498, 283)
         Me.btnCerrar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnCerrar.Name = "btnCerrar"
         Me.btnCerrar.Size = New System.Drawing.Size(112, 32)
@@ -105,7 +105,7 @@ Partial Class frmAbmGrupo
         '
         'txtEliminar
         '
-        Me.txtEliminar.Location = New System.Drawing.Point(378, 290)
+        Me.txtEliminar.Location = New System.Drawing.Point(378, 283)
         Me.txtEliminar.Margin = New System.Windows.Forms.Padding(4)
         Me.txtEliminar.Name = "txtEliminar"
         Me.txtEliminar.Size = New System.Drawing.Size(112, 32)
@@ -115,7 +115,7 @@ Partial Class frmAbmGrupo
         '
         'btnGuardar
         '
-        Me.btnGuardar.Location = New System.Drawing.Point(258, 290)
+        Me.btnGuardar.Location = New System.Drawing.Point(258, 283)
         Me.btnGuardar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnGuardar.Name = "btnGuardar"
         Me.btnGuardar.Size = New System.Drawing.Size(112, 32)
@@ -126,7 +126,7 @@ Partial Class frmAbmGrupo
         'lblNombre
         '
         Me.lblNombre.AutoSize = True
-        Me.lblNombre.Location = New System.Drawing.Point(239, 48)
+        Me.lblNombre.Location = New System.Drawing.Point(239, 41)
         Me.lblNombre.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblNombre.Name = "lblNombre"
         Me.lblNombre.Size = New System.Drawing.Size(68, 18)
@@ -136,7 +136,7 @@ Partial Class frmAbmGrupo
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(13, 16)
+        Me.Label1.Location = New System.Drawing.Point(13, 9)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(45, 18)
@@ -146,7 +146,7 @@ Partial Class frmAbmGrupo
         'lblID
         '
         Me.lblID.AutoSize = True
-        Me.lblID.Location = New System.Drawing.Point(239, 14)
+        Me.lblID.Location = New System.Drawing.Point(239, 7)
         Me.lblID.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblID.Name = "lblID"
         Me.lblID.Size = New System.Drawing.Size(24, 18)
@@ -156,7 +156,7 @@ Partial Class frmAbmGrupo
         'lblLogs
         '
         Me.lblLogs.AutoSize = True
-        Me.lblLogs.Location = New System.Drawing.Point(239, 150)
+        Me.lblLogs.Location = New System.Drawing.Point(239, 143)
         Me.lblLogs.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblLogs.Name = "lblLogs"
         Me.lblLogs.Size = New System.Drawing.Size(43, 18)
@@ -166,7 +166,7 @@ Partial Class frmAbmGrupo
         'chkUsuariosRead
         '
         Me.chkUsuariosRead.AutoSize = True
-        Me.chkUsuariosRead.Location = New System.Drawing.Point(356, 82)
+        Me.chkUsuariosRead.Location = New System.Drawing.Point(356, 75)
         Me.chkUsuariosRead.Name = "chkUsuariosRead"
         Me.chkUsuariosRead.Size = New System.Drawing.Size(64, 22)
         Me.chkUsuariosRead.TabIndex = 33
@@ -176,7 +176,7 @@ Partial Class frmAbmGrupo
         'chkUsuariosWrite
         '
         Me.chkUsuariosWrite.AutoSize = True
-        Me.chkUsuariosWrite.Location = New System.Drawing.Point(426, 82)
+        Me.chkUsuariosWrite.Location = New System.Drawing.Point(426, 75)
         Me.chkUsuariosWrite.Name = "chkUsuariosWrite"
         Me.chkUsuariosWrite.Size = New System.Drawing.Size(66, 22)
         Me.chkUsuariosWrite.TabIndex = 33
@@ -186,7 +186,7 @@ Partial Class frmAbmGrupo
         'chkEquiposRead
         '
         Me.chkEquiposRead.AutoSize = True
-        Me.chkEquiposRead.Location = New System.Drawing.Point(356, 116)
+        Me.chkEquiposRead.Location = New System.Drawing.Point(356, 109)
         Me.chkEquiposRead.Name = "chkEquiposRead"
         Me.chkEquiposRead.Size = New System.Drawing.Size(64, 22)
         Me.chkEquiposRead.TabIndex = 33
@@ -196,7 +196,7 @@ Partial Class frmAbmGrupo
         'chkEquiposWrite
         '
         Me.chkEquiposWrite.AutoSize = True
-        Me.chkEquiposWrite.Location = New System.Drawing.Point(426, 116)
+        Me.chkEquiposWrite.Location = New System.Drawing.Point(426, 109)
         Me.chkEquiposWrite.Name = "chkEquiposWrite"
         Me.chkEquiposWrite.Size = New System.Drawing.Size(66, 22)
         Me.chkEquiposWrite.TabIndex = 33
@@ -206,7 +206,7 @@ Partial Class frmAbmGrupo
         'selLogs
         '
         Me.selLogs.FormattingEnabled = True
-        Me.selLogs.Location = New System.Drawing.Point(356, 150)
+        Me.selLogs.Location = New System.Drawing.Point(356, 143)
         Me.selLogs.Name = "selLogs"
         Me.selLogs.Size = New System.Drawing.Size(204, 26)
         Me.selLogs.TabIndex = 34
@@ -215,7 +215,7 @@ Partial Class frmAbmGrupo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(623, 332)
+        Me.ClientSize = New System.Drawing.Size(620, 326)
         Me.Controls.Add(Me.selLogs)
         Me.Controls.Add(Me.chkEquiposWrite)
         Me.Controls.Add(Me.chkEquiposRead)
