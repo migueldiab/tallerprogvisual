@@ -24,13 +24,15 @@ Partial Class frmAbmUsuario
         Me.txtNombre = New System.Windows.Forms.TextBox
         Me.txtFiltroUsuarios = New System.Windows.Forms.TextBox
         Me.txtID = New System.Windows.Forms.TextBox
-        Me.lblTelefono = New System.Windows.Forms.Label
+        Me.lblContrasenia = New System.Windows.Forms.Label
         Me.btnCerrar = New System.Windows.Forms.Button
         Me.txtEliminar = New System.Windows.Forms.Button
         Me.btnGuardar = New System.Windows.Forms.Button
         Me.lblNombre = New System.Windows.Forms.Label
         Me.Label1 = New System.Windows.Forms.Label
         Me.lblID = New System.Windows.Forms.Label
+        Me.Label2 = New System.Windows.Forms.Label
+        Me.txtRepetir = New System.Windows.Forms.TextBox
         Me.SuspendLayout()
         '
         'lstUsuarios
@@ -40,15 +42,16 @@ Partial Class frmAbmUsuario
         Me.lstUsuarios.Location = New System.Drawing.Point(12, 45)
         Me.lstUsuarios.Name = "lstUsuarios"
         Me.lstUsuarios.Size = New System.Drawing.Size(205, 274)
-        Me.lstUsuarios.TabIndex = 20
+        Me.lstUsuarios.TabIndex = 9
         '
         'txtContrasenia
         '
         Me.txtContrasenia.Location = New System.Drawing.Point(356, 76)
         Me.txtContrasenia.Margin = New System.Windows.Forms.Padding(4)
         Me.txtContrasenia.Name = "txtContrasenia"
+        Me.txtContrasenia.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtContrasenia.Size = New System.Drawing.Size(204, 26)
-        Me.txtContrasenia.TabIndex = 24
+        Me.txtContrasenia.TabIndex = 4
         '
         'txtNombre
         '
@@ -56,7 +59,7 @@ Partial Class frmAbmUsuario
         Me.txtNombre.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNombre.Name = "txtNombre"
         Me.txtNombre.Size = New System.Drawing.Size(204, 26)
-        Me.txtNombre.TabIndex = 22
+        Me.txtNombre.TabIndex = 3
         '
         'txtFiltroUsuarios
         '
@@ -64,25 +67,26 @@ Partial Class frmAbmUsuario
         Me.txtFiltroUsuarios.Margin = New System.Windows.Forms.Padding(4)
         Me.txtFiltroUsuarios.Name = "txtFiltroUsuarios"
         Me.txtFiltroUsuarios.Size = New System.Drawing.Size(150, 26)
-        Me.txtFiltroUsuarios.TabIndex = 14
+        Me.txtFiltroUsuarios.TabIndex = 1
         '
         'txtID
         '
+        Me.txtID.Enabled = False
         Me.txtID.Location = New System.Drawing.Point(356, 8)
         Me.txtID.Margin = New System.Windows.Forms.Padding(4)
         Me.txtID.Name = "txtID"
         Me.txtID.Size = New System.Drawing.Size(103, 26)
-        Me.txtID.TabIndex = 21
+        Me.txtID.TabIndex = 2
         '
-        'lblTelefono
+        'lblContrasenia
         '
-        Me.lblTelefono.AutoSize = True
-        Me.lblTelefono.Location = New System.Drawing.Point(239, 79)
-        Me.lblTelefono.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lblTelefono.Name = "lblTelefono"
-        Me.lblTelefono.Size = New System.Drawing.Size(94, 18)
-        Me.lblTelefono.TabIndex = 17
-        Me.lblTelefono.Text = "Contraseña"
+        Me.lblContrasenia.AutoSize = True
+        Me.lblContrasenia.Location = New System.Drawing.Point(239, 79)
+        Me.lblContrasenia.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lblContrasenia.Name = "lblContrasenia"
+        Me.lblContrasenia.Size = New System.Drawing.Size(94, 18)
+        Me.lblContrasenia.TabIndex = 17
+        Me.lblContrasenia.Text = "Contraseña"
         '
         'btnCerrar
         '
@@ -90,7 +94,7 @@ Partial Class frmAbmUsuario
         Me.btnCerrar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnCerrar.Name = "btnCerrar"
         Me.btnCerrar.Size = New System.Drawing.Size(112, 32)
-        Me.btnCerrar.TabIndex = 31
+        Me.btnCerrar.TabIndex = 8
         Me.btnCerrar.Text = "Cerrar"
         Me.btnCerrar.UseVisualStyleBackColor = True
         '
@@ -100,7 +104,7 @@ Partial Class frmAbmUsuario
         Me.txtEliminar.Margin = New System.Windows.Forms.Padding(4)
         Me.txtEliminar.Name = "txtEliminar"
         Me.txtEliminar.Size = New System.Drawing.Size(112, 32)
-        Me.txtEliminar.TabIndex = 30
+        Me.txtEliminar.TabIndex = 7
         Me.txtEliminar.Text = "Eliminar"
         Me.txtEliminar.UseVisualStyleBackColor = True
         '
@@ -110,7 +114,7 @@ Partial Class frmAbmUsuario
         Me.btnGuardar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnGuardar.Name = "btnGuardar"
         Me.btnGuardar.Size = New System.Drawing.Size(112, 32)
-        Me.btnGuardar.TabIndex = 29
+        Me.btnGuardar.TabIndex = 6
         Me.btnGuardar.Text = "Guardar"
         Me.btnGuardar.UseVisualStyleBackColor = True
         '
@@ -144,17 +148,38 @@ Partial Class frmAbmUsuario
         Me.lblID.TabIndex = 16
         Me.lblID.Text = "ID"
         '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(239, 113)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(60, 18)
+        Me.Label2.TabIndex = 17
+        Me.Label2.Text = "Repetir"
+        '
+        'txtRepetir
+        '
+        Me.txtRepetir.Location = New System.Drawing.Point(356, 110)
+        Me.txtRepetir.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtRepetir.Name = "txtRepetir"
+        Me.txtRepetir.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.txtRepetir.Size = New System.Drawing.Size(204, 26)
+        Me.txtRepetir.TabIndex = 5
+        '
         'frmAbmUsuario
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(654, 333)
+        Me.ClientSize = New System.Drawing.Size(620, 333)
         Me.Controls.Add(Me.lstUsuarios)
+        Me.Controls.Add(Me.txtRepetir)
         Me.Controls.Add(Me.txtContrasenia)
         Me.Controls.Add(Me.txtNombre)
         Me.Controls.Add(Me.txtFiltroUsuarios)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.txtID)
-        Me.Controls.Add(Me.lblTelefono)
+        Me.Controls.Add(Me.lblContrasenia)
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.txtEliminar)
         Me.Controls.Add(Me.btnGuardar)
@@ -175,11 +200,13 @@ Partial Class frmAbmUsuario
     Friend WithEvents txtNombre As System.Windows.Forms.TextBox
     Friend WithEvents txtFiltroUsuarios As System.Windows.Forms.TextBox
     Friend WithEvents txtID As System.Windows.Forms.TextBox
-    Friend WithEvents lblTelefono As System.Windows.Forms.Label
+    Friend WithEvents lblContrasenia As System.Windows.Forms.Label
     Friend WithEvents btnCerrar As System.Windows.Forms.Button
     Friend WithEvents txtEliminar As System.Windows.Forms.Button
     Friend WithEvents btnGuardar As System.Windows.Forms.Button
     Friend WithEvents lblNombre As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents lblID As System.Windows.Forms.Label
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents txtRepetir As System.Windows.Forms.TextBox
 End Class
