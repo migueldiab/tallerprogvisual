@@ -33,7 +33,7 @@ Public MustInherit Class Persistente
         Return strConnect
     End Function
 
-    Protected Function Conectar() As OleDbConnection
+    Protected Shared Function Conectar() As OleDbConnection
         Try
             Dim unaC As OleDbConnection
             unaC = New OleDbConnection(CadenaConexion)
@@ -44,7 +44,7 @@ Public MustInherit Class Persistente
             Return Nothing
         End Try
     End Function
-    Protected Function EjecutarSQL(ByVal CadenaSQL As String) As DataSet
+    Public Shared Function EjecutarSQL(ByVal CadenaSQL As String) As DataSet
         Dim unaC As OleDbConnection
         Try
             unaC = Conectar()
@@ -73,7 +73,7 @@ Public MustInherit Class Persistente
         Dim unaC As OleDbConnection
         Dim unDA As OleDbDataAdapter
         Try
-            unaC = Me.Conectar()
+            unaC = Persistente.Conectar()
             unDA = New OleDbDataAdapter(cadenaSQL, unaC)
             unDA.Fill(unDataSet, nombreTabla)
         Catch ex As OleDbException
@@ -96,7 +96,7 @@ Public MustInherit Class Persistente
         Dim unaC As OleDbConnection
         Dim unCommand As New OleDbCommand(cadenaSQL)
         Try
-            unaC = Me.Conectar()
+            unaC = Persistente.Conectar()
             unCommand.Connection = unaC
             unCommand.Connection.Open()
             unDR = unCommand.ExecuteReader
@@ -107,7 +107,7 @@ Public MustInherit Class Persistente
     End Function
 
     Protected Function actualizar(ByVal operacion As String, ByVal ds As DataSet) As errorBD
-        Dim conexion As OleDbConnection = Me.Conectar()
+        Dim conexion As OleDbConnection = Persistente.Conectar()
         Try
             Dim da As New OleDbDataAdapter(operacion, conexion)
             Dim cb As New OleDbCommandBuilder(da)

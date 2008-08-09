@@ -5,4 +5,6 @@ Public Class frmLogUsuarios
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
         Me.MdiParent = ventanaPadre
     End Sub
+
+
 End Class

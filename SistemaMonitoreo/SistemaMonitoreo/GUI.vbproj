@@ -55,10 +55,30 @@
     <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\WINDOWS\assembly\GAC_MSIL\CrystalDecisions.CrystalReports.Engine\10.2.3600.0__692fbea5521e1304\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Enterprise.Framework, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Enterprise.InfoStore, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\WINDOWS\assembly\GAC_MSIL\CrystalDecisions.ReportSource\10.2.3600.0__692fbea5521e1304\CrystalDecisions.ReportSource.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Shared, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\WINDOWS\assembly\GAC_MSIL\CrystalDecisions.Shared\10.2.3600.0__692fbea5521e1304\CrystalDecisions.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\WINDOWS\assembly\GAC_MSIL\System.Web.Services\2.0.0.0__b03f5f7f11d50a3a\System.Web.Services.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -73,6 +93,12 @@
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmConsultaLog.Designer.vb">
+      <DependentUpon>frmConsultaLog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmConsultaLog.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmAbmEquipo.Designer.vb">
       <DependentUpon>frmAbmEquipo.vb</DependentUpon>
     </Compile>
@@ -145,6 +171,10 @@
     <Compile Include="SistemaMonitoreo.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmConsultaLog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmConsultaLog.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAbmEquipo.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmAbmEquipo.vb</DependentUpon>
@@ -201,6 +231,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DAC\DAC.vbproj">
+      <Project>{3E637D19-4415-4932-8167-A8FC734B884E}</Project>
+      <Name>DAC</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Dominio\Dominio.vbproj">
       <Project>{84F9DD6B-E8BA-4EA3-BA24-50D5289E9825}</Project>
       <Name>Dominio</Name>
