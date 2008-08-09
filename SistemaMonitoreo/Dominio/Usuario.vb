@@ -1,4 +1,5 @@
 Imports Persistencia
+Imports DAC
 
 Public Class Usuario
 #Region "Atributos"
@@ -89,7 +90,7 @@ Public Class Usuario
     ' Notas     :
     Public Sub guardar()
         Dim pUsuario As New pUsuario
-        pUsuario.Guardar(CType(Me, Usuario))
+        pUsuario.Guardar(Me.ToDataSet())
     End Sub
     ' Función   : Elimina un usuario de la BD
     ' Entrada   : 
@@ -100,6 +101,16 @@ Public Class Usuario
         Return pUsuario.Borrar(CType(Me, Usuario))
     End Function
 
+    Public Function ToDataSet() As dsUsuario.UsuariosRow
+        Dim ds As New dsUsuario
+        Dim unaFila As dsUsuario.UsuariosRow
+        unaFila = ds.Usuarios.NewUsuariosRow
+        unaFila.Id = Integer.Parse(Me.id())
+        unaFila.Nombre = Me.nombre
+        unaFila.Contrasenia = Me.contrasenia
+        Return unaFila
+
+    End Function
 #End Region
 
 End Class
