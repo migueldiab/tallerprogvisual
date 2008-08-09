@@ -1,6 +1,7 @@
 Imports Persistencia
 Imports DAC
 
+
 Public Class Log
 #Region "Atributos"
     Private mIdTipoEntradaEvento As Integer
@@ -92,6 +93,20 @@ Public Class Log
     Public Sub New()
 
     End Sub
+
+    Public Function testdv(ByVal tipo As String) As LogReport
+        Dim unSistema As Sistema = Sistema.getInstancia
+        Dim retorno As New LogReport
+        Dim getlogs As DataSet
+        getlogs = Me.Leer
+        Dim dv As New DataView(getlogs.Tables(0))
+        '  retorno.SetDataSource(unsistema.)
+
+
+
+        Return retorno
+    End Function
+
 #Region "Metodos Persistencia"
 
     Public Function Guardar() As Boolean
@@ -102,15 +117,12 @@ Public Class Log
             Return False
         End If
     End Function
-    Public Function Leer(ByVal objeto As DataSet) As DataSet
+    Public Function Leer() As DataSet
         Try
-            Dim unDSLog As dsLog
-            Dim unLog As dsLog.RegistroLogsRow
-            Dim unDR As OleDb.OleDbDataReader
-            unDSLog = CType(objeto, dsLog)
-            unLog = CType(unDSLog.RegistroLogs.Rows(0), dsLog.RegistroLogsRow)
-            ' unDR = pLog.EjecutarReader("SELECT * FROM RegistroLogs")
-            Return unDSLog
+            Dim unplog As New pLog
+            Dim unds As DataSet
+            unds = unplog.Leer()
+            Return unds
         Catch ex As Exception
             Throw ex
         End Try
@@ -165,5 +177,6 @@ Public Class Log
         Return ds
     End Function
 #End Region
+
 
 End Class

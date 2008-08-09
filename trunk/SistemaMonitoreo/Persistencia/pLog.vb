@@ -9,22 +9,20 @@ Public Class pLog : Inherits Persistente
             Dim unLog As dsLog.RegistroLogsRow
             unDSLog = CType(objeto, dsLog)
             unLog = CType(unDSLog.RegistroLogs.Rows(0), dsLog.RegistroLogsRow)
-            Me.EjecutarSQL("DELETE FROM RegistroLogs")
+            Persistente.EjecutarSQL("DELETE FROM RegistroLogs")
             Return True
         Catch ex As Exception
             Debug.WriteLine(ex.Message)
         End Try
     End Function
 
-    Public Function Leer(ByVal objeto As DataSet) As DataSet
+    Public Function Leer() As DataSet
         Try
-            Dim unDSLog As dsLog
+            Dim unDSLog As New dsLog
             Dim unLog As dsLog.RegistroLogsRow
             Dim unDR As OleDb.OleDbDataReader
-            unDSLog = CType(objeto, dsLog)
             unLog = CType(unDSLog.RegistroLogs.Rows(0), dsLog.RegistroLogsRow)
-            ' unDR = pLog.EjecutarReader("SELECT * FROM RegistroLogs")
-
+            unDR = EjecutarReader("SELECT * FROM RegistroLogs")
             Return unDSLog
         Catch ex As Exception
             Debug.WriteLine(ex.Message)
@@ -54,7 +52,7 @@ Public Class pLog : Inherits Persistente
             Dim unLog As dsLog.RegistroLogsRow
             unDSLog = CType(objeto, dsLog)
             unLog = CType(unDSLog.RegistroLogs.Rows(0), dsLog.RegistroLogsRow)
-            Me.EjecutarSQL("INSERT INTO RegistroLogs (IdTipoEntradaEvento,NombreMaquina,OrigenEvento,NombreUsuario,Category,HoraEscritura,HoraGenerado,Mensaje,EventoCapturado) VALUES (" _
+            Persistente.EjecutarSQL("INSERT INTO RegistroLogs (IdTipoEntradaEvento,NombreMaquina,OrigenEvento,NombreUsuario,Category,HoraEscritura,HoraGenerado,Mensaje,EventoCapturado) VALUES (" _
             & unLog.IdTipoEntradaEvento() & ",'" _
             & unLog.NombreMaquina.ToString() & "','" _
             & unLog.OrigenEvento.ToString() & "','" _

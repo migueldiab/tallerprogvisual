@@ -9,6 +9,7 @@ Public Class frmSistema
     Dim importarUsuarios As System.Windows.Forms.Form
     Dim permisosUsuario As System.Windows.Forms.Form
     Dim logUsuarios As System.Windows.Forms.Form
+    Dim consultaLogs As System.Windows.Forms.Form
 
     Public Sub New()
         ' Llamada necesaria para el Diseñador de Windows Forms.
@@ -175,4 +176,19 @@ Public Class frmSistema
     End Sub
 
 
+    Private Sub mConsultaLogs_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mConsultaLogs.Click
+        If consultaLogs Is Nothing Then
+            consultaLogs = New frmConsultaLog(Me)
+        ElseIf importarLogs.IsDisposed Then
+            consultaLogs = New frmConsultaLog(Me)
+        End If
+        consultaLogs.Show()
+        consultaLogs.BringToFront()
+        consultaLogs.Left = 0
+        consultaLogs.Top = 0
+    End Sub
+
+    Private Sub frmSistema_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class

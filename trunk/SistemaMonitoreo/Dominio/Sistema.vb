@@ -1,7 +1,14 @@
 Imports Persistencia
 Public Class Sistema
-
+    Private Shared Instancia As Sistema
 #Region "Metodos"
+    Public Shared Function getInstancia() As Sistema
+        If Instancia Is Nothing Then
+            Instancia = New Sistema
+        End If
+        Return Instancia
+    End Function
+
     ' Función   : Devuelve todos los usuarios
     ' Entrada   : 
     ' Salida    : Lista con todos los usuarios ordenados alfabeticamente
@@ -20,6 +27,34 @@ Public Class Sistema
         Next
         Return arrayUsuarios
     End Function
+
+    Public Shared Function getLogs() As ArrayList
+        Dim colLogs As ArrayList
+        Try
+            Dim unDs As DataSet
+            Dim cadena As String
+            cadena = "SELECT cedula FROM Docentes"
+            unDs = Persistente.EjecutarSQL(cadena)
+            If Not unDs Is Nothing AndAlso _
+                            unDs.Tables.Count > 0 Then
+                colLogs = New ArrayList
+                For Each fila As DataRow In _
+                                                unDs.Tables(0).Rows
+                    Dim nuevoLog As New Log
+                    '       If nuevoLog.Leer() Then
+                    colLogs.Add(nuevoLog)
+                    '        End If
+                    nuevoLog = Nothing
+                Next
+                Return colLogs
+            End If
+            Return Nothing
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Function
+
+
 
     ' Función   : Devuelve todos los Grupos
     ' Entrada   : 
