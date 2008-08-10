@@ -106,12 +106,12 @@ Partial Class frmConsultaLog
         'rdbSistema
         '
         Me.rdbSistema.AutoSize = True
-        Me.rdbSistema.Location = New System.Drawing.Point(277, 77)
+        Me.rdbSistema.Location = New System.Drawing.Point(277, 70)
         Me.rdbSistema.Name = "rdbSistema"
-        Me.rdbSistema.Size = New System.Drawing.Size(127, 22)
+        Me.rdbSistema.Size = New System.Drawing.Size(86, 22)
         Me.rdbSistema.TabIndex = 11
         Me.rdbSistema.TabStop = True
-        Me.rdbSistema.Text = "RadioButton3"
+        Me.rdbSistema.Text = "Sistema"
         Me.rdbSistema.UseVisualStyleBackColor = True
         '
         'frmConsultaLog
