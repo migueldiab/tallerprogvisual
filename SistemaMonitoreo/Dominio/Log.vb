@@ -94,19 +94,6 @@ Public Class Log
 
     End Sub
 
-    Public Function testdv(ByVal tipo As String) As LogReport
-        Dim unSistema As Sistema = Sistema.getInstancia
-        Dim retorno As New LogReport
-        Dim getlogs As DataSet
-        getlogs = Me.Leer
-        Dim dv As New DataView(getlogs.Tables(0))
-        '  retorno.SetDataSource(unsistema.)
-
-
-
-        Return retorno
-    End Function
-
 #Region "Metodos Persistencia"
 
     Public Function Guardar() As Boolean
@@ -117,17 +104,7 @@ Public Class Log
             Return False
         End If
     End Function
-    Public Function Leer() As DataSet
-        Try
-            Dim unplog As New pLog
-            Dim unds As DataSet
-            unds = unplog.Leer()
-            Return unds
-        Catch ex As Exception
-            Throw ex
-        End Try
-    End Function
-
+ 
     Public Function Eliminar() As Boolean
         Try
             Dim unPLog As New pLog

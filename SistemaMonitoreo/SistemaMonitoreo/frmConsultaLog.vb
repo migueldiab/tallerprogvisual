@@ -18,10 +18,18 @@ Public Class frmConsultaLog
 
 
     Private Sub btnVerReporte_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnVerReporte.Click
+        Dim unDS As DataSet
+        unDS = Sistema.getLogs
+        Dim unDV As DataView
+        If Me.chkSeguridad.Checked = True Then
 
+        End If
+
+
+        unDV = unDS.Tables("RegistroLogs").DefaultView
         Dim reporte As New DAC.LogReport
-
-
+        reporte.SetDataSource(unDV)
+        Me.CrystalReportViewer.ReportSource = reporte
     End Sub
 
     Private Sub CrystalReportViewer_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CrystalReportViewer.Load

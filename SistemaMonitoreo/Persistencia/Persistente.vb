@@ -1,6 +1,7 @@
 Imports System.Configuration
 Imports System.Collections.Specialized
 Imports System.Data.OleDb
+Imports DAC
 Public MustInherit Class Persistente
 
     Public Enum errorBD
@@ -104,6 +105,28 @@ Public MustInherit Class Persistente
             Throw New Exception("Error al acceder a la base de datos", ex)
         End Try
         Return unDR
+    End Function
+
+    Public Shared Function LeerLogs() As DataSet
+
+        Try
+            Dim dsTraido As New dsLog
+            Dim unaConexion As OleDbConnection = pLog.Conectar
+            'Se llena un dataset auxiliar para pasar los valores de ambas tablas
+            Dim cadSQL As String
+            cadSQL = "SELECT * FROM RegistroLogs"
+            Dim unDa As OleDbDataAdapter = New OleDbDataAdapter(cadSQL, unaConexion)
+            dsTraido.Clear()
+            unDa.Fill(dsTraido, "RegistroLogs")
+            ' Se limpia el dataset original para llenarlo con los valores
+            unDa.Dispose()
+            unaConexion.Close()
+            unaConexion.Dispose()
+            Return dsTraido
+
+        Catch ex As Exception
+            Return Nothing
+        End Try
     End Function
 
     Protected Function actualizar(ByVal operacion As String, ByVal ds As DataSet) As errorBD

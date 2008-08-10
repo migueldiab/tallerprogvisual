@@ -16,17 +16,17 @@ Public Class pLog : Inherits Persistente
         End Try
     End Function
 
-    Public Function Leer() As DataSet
+    Public Function Leer() As Boolean
         Try
             Dim unDSLog As New dsLog
             Dim unLog As dsLog.RegistroLogsRow
             Dim unDR As OleDb.OleDbDataReader
             unLog = CType(unDSLog.RegistroLogs.Rows(0), dsLog.RegistroLogsRow)
             unDR = EjecutarReader("SELECT * FROM RegistroLogs")
-            Return unDSLog
+            Return True
         Catch ex As Exception
             Debug.WriteLine(ex.Message)
-            Return Nothing
+            Return False
         End Try
     End Function
 

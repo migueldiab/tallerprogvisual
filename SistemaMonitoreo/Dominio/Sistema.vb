@@ -49,30 +49,13 @@ Public Class Sistema
         End If
         Return arrayEquipos
     End Function
-    Public Shared Function getLogs() As ArrayList
-        Dim colLogs As ArrayList
-        Try
-            Dim unDs As DataSet
-            Dim cadena As String
-            cadena = "SELECT cedula FROM Docentes"
-            unDs = Persistente.EjecutarSQL(cadena)
-            If Not unDs Is Nothing AndAlso _
-                            unDs.Tables.Count > 0 Then
-                colLogs = New ArrayList
-                For Each fila As DataRow In _
-                                                unDs.Tables(0).Rows
-                    Dim nuevoLog As New Log
-                    '       If nuevoLog.Leer() Then
-                    colLogs.Add(nuevoLog)
-                    '        End If
-                    nuevoLog = Nothing
-                Next
-                Return colLogs
-            End If
-            Return Nothing
-        Catch ex As Exception
-            Throw ex
-        End Try
+
+
+    Public Shared Function getLogs() As DataSet
+        Dim unds As DataSet
+        unds = Persistente.LeerLogs()
+
+        Return unds
     End Function
 
 
