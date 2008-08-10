@@ -28,8 +28,8 @@ Public Class frmLog
                 Dim NewLog As New Log
                 NewLog.EventoCapturado = myEnumval.ToString
                 NewLog.Category = unaEntry.Category
-                NewLog.HoraEscritura = unaEntry.TimeWritten.ToString
-                NewLog.HoraGenerado = unaEntry.TimeGenerated.ToString
+                NewLog.HoraEscritura = unaEntry.TimeWritten.Date.ToShortDateString
+                NewLog.HoraGenerado = unaEntry.TimeGenerated.Date.ToShortDateString
                 NewLog.IdTipoEntradaEvento = unaEntry.CategoryNumber
                 NewLog.NombreMaquina = unaEntry.MachineName
                 NewLog.Mensaje = unaEntry.Message
