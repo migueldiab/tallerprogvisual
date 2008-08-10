@@ -31,9 +31,10 @@ Partial Class frmConsultaLog
         '
         'btnVerReporte
         '
-        Me.btnVerReporte.Location = New System.Drawing.Point(336, 59)
+        Me.btnVerReporte.Location = New System.Drawing.Point(401, 13)
+        Me.btnVerReporte.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnVerReporte.Name = "btnVerReporte"
-        Me.btnVerReporte.Size = New System.Drawing.Size(75, 23)
+        Me.btnVerReporte.Size = New System.Drawing.Size(181, 32)
         Me.btnVerReporte.TabIndex = 0
         Me.btnVerReporte.Text = "Ver reporte"
         Me.btnVerReporte.UseVisualStyleBackColor = True
@@ -41,9 +42,10 @@ Partial Class frmConsultaLog
         'chkAplicaciones
         '
         Me.chkAplicaciones.AutoSize = True
-        Me.chkAplicaciones.Location = New System.Drawing.Point(37, 65)
+        Me.chkAplicaciones.Location = New System.Drawing.Point(277, 13)
+        Me.chkAplicaciones.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.chkAplicaciones.Name = "chkAplicaciones"
-        Me.chkAplicaciones.Size = New System.Drawing.Size(86, 17)
+        Me.chkAplicaciones.Size = New System.Drawing.Size(116, 22)
         Me.chkAplicaciones.TabIndex = 1
         Me.chkAplicaciones.Text = "Aplicaciones"
         Me.chkAplicaciones.UseVisualStyleBackColor = True
@@ -51,9 +53,10 @@ Partial Class frmConsultaLog
         'chkSeguridad
         '
         Me.chkSeguridad.AutoSize = True
-        Me.chkSeguridad.Location = New System.Drawing.Point(37, 88)
+        Me.chkSeguridad.Location = New System.Drawing.Point(277, 43)
+        Me.chkSeguridad.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.chkSeguridad.Name = "chkSeguridad"
-        Me.chkSeguridad.Size = New System.Drawing.Size(74, 17)
+        Me.chkSeguridad.Size = New System.Drawing.Size(100, 22)
         Me.chkSeguridad.TabIndex = 2
         Me.chkSeguridad.Text = "Seguridad"
         Me.chkSeguridad.UseVisualStyleBackColor = True
@@ -61,9 +64,10 @@ Partial Class frmConsultaLog
         'chkSistema
         '
         Me.chkSistema.AutoSize = True
-        Me.chkSistema.Location = New System.Drawing.Point(37, 111)
+        Me.chkSistema.Location = New System.Drawing.Point(277, 73)
+        Me.chkSistema.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.chkSistema.Name = "chkSistema"
-        Me.chkSistema.Size = New System.Drawing.Size(63, 17)
+        Me.chkSistema.Size = New System.Drawing.Size(87, 22)
         Me.chkSistema.TabIndex = 3
         Me.chkSistema.Text = "Sistema"
         Me.chkSistema.UseVisualStyleBackColor = True
@@ -71,9 +75,10 @@ Partial Class frmConsultaLog
         'chkFecha
         '
         Me.chkFecha.AutoSize = True
-        Me.chkFecha.Location = New System.Drawing.Point(244, 111)
+        Me.chkFecha.Location = New System.Drawing.Point(401, 73)
+        Me.chkFecha.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.chkFecha.Name = "chkFecha"
-        Me.chkFecha.Size = New System.Drawing.Size(72, 17)
+        Me.chkFecha.Size = New System.Drawing.Size(97, 22)
         Me.chkFecha.TabIndex = 5
         Me.chkFecha.Text = "Por fecha"
         Me.chkFecha.UseVisualStyleBackColor = True
@@ -81,36 +86,39 @@ Partial Class frmConsultaLog
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(34, 36)
+        Me.Label1.Location = New System.Drawing.Point(13, 9)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(166, 13)
+        Me.Label1.Size = New System.Drawing.Size(256, 18)
         Me.Label1.TabIndex = 6
         Me.Label1.Text = "Seleccione Tipo de Log a mostrar"
         '
         'clbTipoLog
         '
         Me.clbTipoLog.FormattingEnabled = True
-        Me.clbTipoLog.Location = New System.Drawing.Point(354, 111)
+        Me.clbTipoLog.Location = New System.Drawing.Point(590, 13)
+        Me.clbTipoLog.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.clbTipoLog.Name = "clbTipoLog"
-        Me.clbTipoLog.Size = New System.Drawing.Size(120, 94)
+        Me.clbTipoLog.Size = New System.Drawing.Size(172, 88)
         Me.clbTipoLog.TabIndex = 7
         '
         'CrystalReportViewer
         '
         Me.CrystalReportViewer.ActiveViewIndex = -1
         Me.CrystalReportViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.CrystalReportViewer.Location = New System.Drawing.Point(12, 249)
+        Me.CrystalReportViewer.Location = New System.Drawing.Point(16, 109)
+        Me.CrystalReportViewer.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.CrystalReportViewer.Name = "CrystalReportViewer"
         Me.CrystalReportViewer.SelectionFormula = ""
-        Me.CrystalReportViewer.Size = New System.Drawing.Size(538, 230)
+        Me.CrystalReportViewer.Size = New System.Drawing.Size(806, 352)
         Me.CrystalReportViewer.TabIndex = 8
         Me.CrystalReportViewer.ViewTimeSelectionFormula = ""
         '
         'frmConsultaLog
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(573, 491)
+        Me.ClientSize = New System.Drawing.Size(832, 474)
         Me.Controls.Add(Me.CrystalReportViewer)
         Me.Controls.Add(Me.clbTipoLog)
         Me.Controls.Add(Me.Label1)
@@ -119,6 +127,9 @@ Partial Class frmConsultaLog
         Me.Controls.Add(Me.chkSeguridad)
         Me.Controls.Add(Me.chkAplicaciones)
         Me.Controls.Add(Me.btnVerReporte)
+        Me.Font = New System.Drawing.Font("Verdana", 11.25!)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "frmConsultaLog"
         Me.Text = "Consulta de Logs"
         Me.ResumeLayout(False)
