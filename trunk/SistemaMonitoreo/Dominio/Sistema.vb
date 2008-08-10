@@ -1,6 +1,7 @@
 Imports Persistencia
 Public Class Sistema
     Private Shared Instancia As Sistema
+
 #Region "Metodos"
     Public Shared Function getInstancia() As Sistema
         If Instancia Is Nothing Then
@@ -52,13 +53,11 @@ Public Class Sistema
 
 
     Public Shared Function getLogs() As DataSet
-        Dim unds As DataSet
-        unds = Persistente.LeerLogs()
-
-        Return unds
+        Dim allLogs As New DataSet()
+        allLogs = Persistente.LeerLogs()
+        Return allLogs
     End Function
-
-
+    
 
     ' Función   : Devuelve todos los Grupos
     ' Entrada   : 

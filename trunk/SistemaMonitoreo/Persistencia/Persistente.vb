@@ -111,6 +111,7 @@ Public MustInherit Class Persistente
 
         Try
             Dim dsTraido As New dsLog
+
             Dim unaConexion As OleDbConnection = pLog.Conectar
             'Se llena un dataset auxiliar para pasar los valores de ambas tablas
             Dim cadSQL As String
@@ -128,6 +129,7 @@ Public MustInherit Class Persistente
             Return Nothing
         End Try
     End Function
+
 
     Protected Function actualizar(ByVal operacion As String, ByVal ds As DataSet) As errorBD
         Dim conexion As OleDbConnection = Persistente.Conectar()
