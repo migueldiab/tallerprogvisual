@@ -32,6 +32,7 @@ Partial Class frmImportarUsuarios
         Me.lblNombre = New System.Windows.Forms.Label
         Me.Label1 = New System.Windows.Forms.Label
         Me.lblID = New System.Windows.Forms.Label
+        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog
         Me.SuspendLayout()
         '
         'lstUsuarios
@@ -159,6 +160,10 @@ Partial Class frmImportarUsuarios
         Me.lblID.TabIndex = 29
         Me.lblID.Text = "ID"
         '
+        'OpenFileDialog1
+        '
+        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
+        '
         'frmImportarUsuarios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
@@ -199,4 +204,5 @@ Partial Class frmImportarUsuarios
     Friend WithEvents lblNombre As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents lblID As System.Windows.Forms.Label
+    Friend WithEvents OpenFileDialog1 As System.Windows.Forms.OpenFileDialog
 End Class
