@@ -210,7 +210,7 @@ Partial Class frmAbmEquipo
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmAbmEquipo"
-        Me.Text = "frmAbmEquipo"
+        Me.Text = "Administración de Equipos"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
