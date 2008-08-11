@@ -21,13 +21,15 @@ Partial Class frmLog
     Private Sub InitializeComponent()
         Me.btnProcesar = New System.Windows.Forms.Button
         Me.Label1 = New System.Windows.Forms.Label
-        Me.txtLogs = New System.Windows.Forms.TextBox
+        Me.Progress = New System.Windows.Forms.ProgressBar
+        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker
+        Me.lblLog = New System.Windows.Forms.Label
         Me.SuspendLayout()
         '
         'btnProcesar
         '
         Me.btnProcesar.Location = New System.Drawing.Point(281, 13)
-        Me.btnProcesar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnProcesar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnProcesar.Name = "btnProcesar"
         Me.btnProcesar.Size = New System.Drawing.Size(165, 28)
         Me.btnProcesar.TabIndex = 0
@@ -44,25 +46,37 @@ Partial Class frmLog
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Actualizacion de Logs"
         '
-        'txtLogs
+        'Progress
         '
-        Me.txtLogs.Location = New System.Drawing.Point(16, 56)
-        Me.txtLogs.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.txtLogs.Name = "txtLogs"
-        Me.txtLogs.Size = New System.Drawing.Size(164, 26)
-        Me.txtLogs.TabIndex = 2
+        Me.Progress.Location = New System.Drawing.Point(38, 82)
+        Me.Progress.Name = "Progress"
+        Me.Progress.Size = New System.Drawing.Size(379, 23)
+        Me.Progress.TabIndex = 3
+        '
+        'BackgroundWorker1
+        '
+        Me.BackgroundWorker1.WorkerReportsProgress = True
+        '
+        'lblLog
+        '
+        Me.lblLog.AutoSize = True
+        Me.lblLog.Location = New System.Drawing.Point(35, 40)
+        Me.lblLog.Name = "lblLog"
+        Me.lblLog.Size = New System.Drawing.Size(0, 18)
+        Me.lblLog.TabIndex = 4
         '
         'frmLog
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(459, 345)
-        Me.Controls.Add(Me.txtLogs)
+        Me.Controls.Add(Me.lblLog)
+        Me.Controls.Add(Me.Progress)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnProcesar)
         Me.Font = New System.Drawing.Font("Verdana", 11.25!)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmLog"
         Me.Text = "Importar Logs"
         Me.ResumeLayout(False)
@@ -71,5 +85,7 @@ Partial Class frmLog
     End Sub
     Friend WithEvents btnProcesar As System.Windows.Forms.Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents txtLogs As System.Windows.Forms.TextBox
+    Friend WithEvents Progress As System.Windows.Forms.ProgressBar
+    Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
+    Friend WithEvents lblLog As System.Windows.Forms.Label
 End Class
