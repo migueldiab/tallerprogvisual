@@ -72,6 +72,9 @@ Partial Class frmConsultaLog
         'CrystalReportViewer
         '
         Me.CrystalReportViewer.ActiveViewIndex = -1
+        Me.CrystalReportViewer.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CrystalReportViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.CrystalReportViewer.Location = New System.Drawing.Point(16, 109)
         Me.CrystalReportViewer.Margin = New System.Windows.Forms.Padding(4)

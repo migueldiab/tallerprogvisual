@@ -48,7 +48,7 @@ Partial Class frmLog
         '
         'Progress
         '
-        Me.Progress.Location = New System.Drawing.Point(38, 82)
+        Me.Progress.Location = New System.Drawing.Point(38, 67)
         Me.Progress.Name = "Progress"
         Me.Progress.Size = New System.Drawing.Size(379, 23)
         Me.Progress.TabIndex = 3
@@ -69,7 +69,7 @@ Partial Class frmLog
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(459, 345)
+        Me.ClientSize = New System.Drawing.Size(459, 140)
         Me.Controls.Add(Me.lblLog)
         Me.Controls.Add(Me.Progress)
         Me.Controls.Add(Me.Label1)

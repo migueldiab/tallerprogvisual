@@ -106,7 +106,7 @@ Public Class frmSistema
     Private Sub importarUsuariosMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mImportarUsuarios.Click
         If importarUsuarios Is Nothing Then
             importarUsuarios = New frmImportarUsuarios(Me)
-        ElseIf importarLogs.IsDisposed Then
+        ElseIf importarUsuarios.IsDisposed Then
             importarUsuarios = New frmImportarUsuarios(Me)
         End If
         importarUsuarios.Show()
@@ -118,7 +118,7 @@ Public Class frmSistema
     Private Sub logUsuariosMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mLogsUsuarios.Click
         If logUsuarios Is Nothing Then
             logUsuarios = New frmLogUsuarios(Me)
-        ElseIf importarLogs.IsDisposed Then
+        ElseIf logUsuarios.IsDisposed Then
             logUsuarios = New frmLogUsuarios(Me)
         End If
         logUsuarios.Show()
@@ -130,7 +130,7 @@ Public Class frmSistema
     Private Sub permisosUsuarioMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mPermisosUsuarios.Click
         If permisosUsuario Is Nothing Then
             permisosUsuario = New frmPermisosUsuarios(Me)
-        ElseIf importarLogs.IsDisposed Then
+        ElseIf permisosUsuario.IsDisposed Then
             permisosUsuario = New frmPermisosUsuarios(Me)
         End If
         permisosUsuario.Show()
@@ -154,7 +154,7 @@ Public Class frmSistema
     Private Sub listadoEquiposMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mListadoEquipos.Click
         If listadoEquipos Is Nothing Then
             listadoEquipos = New frmListadoEquipos(Me)
-        ElseIf importarLogs.IsDisposed Then
+        ElseIf listadoEquipos.IsDisposed Then
             listadoEquipos = New frmListadoEquipos(Me)
         End If
         listadoEquipos.Show()
@@ -179,7 +179,7 @@ Public Class frmSistema
     Private Sub mConsultaLogs_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mConsultaLogs.Click
         If consultaLogs Is Nothing Then
             consultaLogs = New frmConsultaLog(Me)
-        ElseIf importarLogs.IsDisposed Then
+        ElseIf consultaLogs.IsDisposed Then
             consultaLogs = New frmConsultaLog(Me)
         End If
         consultaLogs.Show()
