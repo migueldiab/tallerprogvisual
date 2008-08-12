@@ -6,6 +6,7 @@ Public Class Usuario
     Private mId As String
     Private mNombre As String
     Private mContrasenia As String
+    Private mGrupos As ArrayList
 #End Region
 
 #Region "Propiedades"
@@ -91,7 +92,8 @@ Public Class Usuario
     Public Function guardar() As Boolean
 
         Dim pUsuario As New pUsuario
-        If (pUsuario.Guardar(Me.ToDataSet) = Persistente.errorBD.ok) Then
+        If (pUsuario.Guardar(Me.ToUsuarioDataSet) = Persistente.errorBD.ok) Then
+            'And (pPertenenciaUsuario.Guardar(Me.ToPertenenciaGrupoDataSet) = Persistente.errorBD.ok) Then
             Return True
         Else
             Return False
@@ -121,7 +123,17 @@ Public Class Usuario
     '    Return ds
     'End Function
 
-    Public Function ToDataSet() As dsUsuario.UsuariosRow
+    Public Function ToUsuarioDataSet() As dsUsuario.UsuariosRow
+        Dim ds As New dsUsuario
+        Dim unaFila As dsUsuario.UsuariosRow
+        unaFila = ds.Usuarios.NewUsuariosRow
+        'unaFila.Id = Integer.Parse(Me.id())
+        unaFila.Nombre = Me.nombre
+        unaFila.Contrasenia = Me.contrasenia
+        Return unaFila
+
+    End Function
+    Public Function ToPertenenciaGrupoDataSet() As dsUsuario.UsuariosRow
         Dim ds As New dsUsuario
         Dim unaFila As dsUsuario.UsuariosRow
         unaFila = ds.Usuarios.NewUsuariosRow
