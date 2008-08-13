@@ -50,11 +50,17 @@ Public Class pUsuario : Inherits Persistente
 
     Public Overloads Overrides Function buscar(ByVal filtro As String) As DataRowCollection
         Dim query As String
+        Dim drc As DataRowCollection
         Try
             query = "SELECT * FROM usuarios " _
                     & " WHERE nombre = '" & filtro & "';"
             Debug.Print(query)
-            Return EjecutarSQL(query).Tables(0).Rows
+            drc = EjecutarSQL(query).Tables(0).Rows
+            If drc.Count = 0 Then
+                Return Nothing
+            Else
+                Return drc
+            End If
         Catch ex As Exception
             Debug.WriteLine(ex.Message)
         End Try

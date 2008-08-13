@@ -34,6 +34,14 @@ Public Class Usuario
             Me.mContrasenia = value
         End Set
     End Property
+    Public Property grupos() As ArrayList
+        Get
+            Return Me.mGrupos
+        End Get
+        Set(ByVal value As ArrayList)
+            Me.mGrupos = value
+        End Set
+    End Property
 #End Region
 
 #Region "Constructores"
@@ -44,11 +52,21 @@ Public Class Usuario
     End Sub
     Public Sub New(ByVal id As String)
         If id <> "" Then
-            Me.id = id
+            Dim pUsuario As New pUsuario
+            Dim Usuarios As DataRowCollection
+            Usuarios = pUsuario.buscar(id)
+            If Usuarios Is Nothing Or Usuarios.Count > 1 Then
+                Me.nombre = ""
+                Me.contrasenia = ""
+                Me.grupos = Nothing
+            ElseIf Usuarios.Count = 1 Then
+                Dim usuario As DataRow = Usuarios.Item(0)
+                Me.id = usuario.Item(0).ToString
+                Me.nombre = usuario.Item(1).ToString
+                Me.contrasenia = usuario.Item(2).ToString
+                Me.grupos = Nothing
+            End If
         End If
-        Me.nombre = ""
-
-        Me.contrasenia = ""
     End Sub
 #End Region
 
@@ -60,31 +78,62 @@ Public Class Usuario
     Public Overrides Function ToString() As String
         Return Me.nombre.ToString() + " (" + Me.id.ToString + ")"
     End Function
+    Public Function login(ByVal contrasenia As String) As Boolean
+        If Me.contrasenia = contrasenia Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
+    Public Function obtenerGrupos(ByVal id As String) As ArrayList
+        Dim arrayGrupos As New ArrayList
+        Dim rawDataPermisos As DataRowCollection
+        Dim pPermisos As New pPertenenciaUsuario
+        rawDataPermisos = pPermisos.buscar(id)
+        If rawDataPermisos Is Nothing Then
+            Return Nothing
+        Else
+            For Each unGrupo As DataRow In rawDataPermisos
+                Dim tempGrupo As New Grupo
+                tempGrupo.id = unGrupo.Item(0).ToString()
+                tempGrupo.nombre = unGrupo.Item(1).ToString()
+                tempGrupo.usuarios = unGrupo.Item(2).ToString()
+                tempGrupo.equipos = unGrupo.Item(3).ToString()
+                tempGrupo.logs = Integer.Parse(unGrupo.Item(4).ToString)
+                arrayGrupos.Add(tempGrupo)
+            Next
+            Return arrayGrupos
+        End If
+    End Function
+
+
+
     ' Función   : Busca un usuario único en base a una ID. Al ser clave primaria retorna una única coincidencia
     ' Entrada   : ID de Usuario
     ' Salida    : objeto Usuario
     ' Notas     :
-    Public Shared Function buscarUsuario(ByVal id As String) As Usuario
-        Dim pUsuario As New pUsuario
-        Dim uUsuario As New Usuario
-        uUsuario = CType(pUsuario.buscar(CType(id, Object)), Usuario)
+    'Public Shared Function buscarUsuario(ByVal id As String) As Usuario
+    '    Dim pUsuario As New pUsuario
+    '    Dim uUsuario As New Usuario
+    '    uUsuario = CType(pUsuario.buscar(CType(id, Object)), Usuario)
 
-        Return uUsuario
-    End Function
+    '    Return uUsuario
+    'End Function
     ' Función   : Devuelve los usuarios cuyo nombre coincida con un filtro parcial
     ' Entrada   : filter : nombre de usuario a buscar
     ' Salida    : Lita con todos los usuarios que coincidan con el filtro
     ' Notas     :
-    Public Shared Function listaUsuarios(ByVal filter As String) As DataRowCollection
-        Dim lista As DataRowCollection
-        Dim pUsuario As New pUsuario
-        If filter <> "" Then
-            lista = pUsuario.buscar(filter)
-        Else
-            lista = pUsuario.buscar()
-        End If
-        Return lista
-    End Function
+    'Public Shared Function listaUsuarios(ByVal filter As String) As DataRowCollection
+    '    Dim lista As DataRowCollection
+    '    Dim pUsuario As New pUsuario
+    '    If filter <> "" Then
+    '        lista = pUsuario.buscar(filter)
+    '    Else
+    '        lista = pUsuario.buscar()
+    '    End If
+    '    Return lista
+    'End Function
     ' Función   : Guarda el usuario actual en la BD
     ' Entrada   : 
     ' Salida    : 
@@ -133,15 +182,16 @@ Public Class Usuario
         Return unaFila
 
     End Function
-    Public Function ToPertenenciaGrupoDataSet() As dsUsuario.UsuariosRow
-        Dim ds As New dsUsuario
-        Dim unaFila As dsUsuario.UsuariosRow
-        unaFila = ds.Usuarios.NewUsuariosRow
-        'unaFila.Id = Integer.Parse(Me.id())
-        unaFila.Nombre = Me.nombre
-        unaFila.Contrasenia = Me.contrasenia
-        Return unaFila
-
+    Public Function ToPertenenciaGrupoDataSet() As dsPertenenciaGrupo
+        Dim ds As New dsPertenenciaGrupo
+        For Each grupo As Grupo In mGrupos
+            Dim unaFila As dsPertenenciaGrupo.PertenenciaGruposRow
+            unaFila = ds.PertenenciaGrupos.NewPertenenciaGruposRow
+            unaFila.idGrupo = Integer.Parse(grupo.id())
+            unaFila.idUsuario = Integer.Parse(Me.id)
+            ds.PertenenciaGrupos.Rows.Add(unaFila)
+        Next
+        Return ds
     End Function
 #End Region
 
