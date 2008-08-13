@@ -8,6 +8,15 @@ Public Class Grupo
     Private mUsuarios As String
     Private mEquipos As String
     Private mLogs As Integer
+
+    Public Enum IdxCampos
+        ID
+        NOMBRE
+        USUARIOS
+        EQUIPOS
+        LOGS
+    End Enum
+
 #End Region
 
 #Region "Propiedades"

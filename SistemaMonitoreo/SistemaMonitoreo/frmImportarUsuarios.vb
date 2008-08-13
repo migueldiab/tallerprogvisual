@@ -68,9 +68,9 @@ Public Class frmImportarUsuarios
                 While Not archivoImportar.EndOfData
                     Try
                         fila = archivoImportar.ReadFields()
-                        If (fila.Length = 3) Then
+                        If (fila.Length = SistemaMonitoreo.REGISTOS_IMPORTAR_CSV) Then
                             Dim uUsuario As New Usuario(txtID.Text.ToString)
-                            If fila.GetValue(0).ToString.Length > 4 And fila.GetValue(1).ToString.Length > 4 And fila.GetValue(2).ToString.Length > 4 Then
+                            If fila.GetValue(0).ToString.Length >= SistemaMonitoreo.LARGO_MIN_USUARIO And fila.GetValue(1).ToString.Length > 4 And fila.GetValue(2).ToString.Length > SistemaMonitoreo.LARGO_MIN_PASSWORD Then
                                 txtNombre.Text = fila.GetValue(0).ToString
                                 txtContrasenia.Text = fila.GetValue(1).ToString
                                 txtRepetir.Text = fila.GetValue(1).ToString

@@ -147,7 +147,7 @@ Public MustInherit Class Persistente
     End Function
 
     Public MustOverride Function buscar(ByVal filtro As String) As Data.DataRowCollection
-    Public MustOverride Function buscar(ByVal clave As Object) As Object
+    Public MustOverride Function buscar(ByVal clavePrimaria As Object) As Object
     Public MustOverride Function buscar() As Data.DataRowCollection
 
     Public MustOverride Function Guardar(ByVal objeto As Object) As errorBD

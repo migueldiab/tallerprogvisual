@@ -21,10 +21,10 @@ Public Class Sistema
         rawDataUsuarios = pUsuario.buscar()
         For Each unUsuario As DataRow In rawDataUsuarios
             Dim tempUsuario As New Usuario
-            tempUsuario.id = unUsuario.Item(0).ToString()
-            tempUsuario.nombre = unUsuario.Item(1).ToString()
-            tempUsuario.contrasenia = unUsuario.Item(2).ToString()
-            tempUsuario.grupos = tempUsuario.obtenerGrupos(unUsuario.Item(0).ToString())
+            tempUsuario.id = unUsuario.Item(Usuario.IdxCampos.ID).ToString()
+            tempUsuario.nombre = unUsuario.Item(Usuario.IdxCampos.NOMBRE).ToString()
+            tempUsuario.contrasenia = unUsuario.Item(Usuario.IdxCampos.CONTRASENIA).ToString()
+            tempUsuario.grupos = tempUsuario.obtenerGrupos(unUsuario.Item(Usuario.IdxCampos.ID).ToString())
             arrayUsuarios.Add(tempUsuario)
         Next
         Return arrayUsuarios
@@ -41,11 +41,11 @@ Public Class Sistema
         If rawDataEquipos IsNot Nothing Then
             For Each unEquipo As DataRow In rawDataEquipos
                 Dim tempEquipo As New Equipo
-                tempEquipo.id = unEquipo.Item(0).ToString()
-                tempEquipo.nombre = unEquipo.Item(1).ToString()
-                tempEquipo.IP = unEquipo.Item(2).ToString()
-                tempEquipo.dominio = unEquipo.Item(3).ToString()
-                tempEquipo.destino = unEquipo.Item(4).ToString()
+                tempEquipo.id = unEquipo.Item(Equipo.IdxCampos.ID).ToString()
+                tempEquipo.nombre = unEquipo.Item(Equipo.IdxCampos.NOMBRE).ToString()
+                tempEquipo.IP = unEquipo.Item(Equipo.IdxCampos.IP).ToString()
+                tempEquipo.dominio = unEquipo.Item(Equipo.IdxCampos.DOMINIO).ToString()
+                tempEquipo.destino = unEquipo.Item(Equipo.IdxCampos.DESTINO).ToString()
                 arrayEquipos.Add(tempEquipo)
             Next
         End If
@@ -71,11 +71,11 @@ Public Class Sistema
         rawDataGrupos = pGrupo.buscar()
         For Each unGrupo As DataRow In rawDataGrupos
             Dim tempGrupo As New Grupo
-            tempGrupo.id = unGrupo.Item(0).ToString()
-            tempGrupo.nombre = unGrupo.Item(1).ToString()
-            tempGrupo.usuarios = unGrupo.Item(2).ToString()
-            tempGrupo.equipos = unGrupo.Item(3).ToString()
-            tempGrupo.logs = Integer.Parse(unGrupo.Item(4).ToString())
+            tempGrupo.id = unGrupo.Item(Grupo.IdxCampos.ID).ToString()
+            tempGrupo.nombre = unGrupo.Item(Grupo.IdxCampos.NOMBRE).ToString()
+            tempGrupo.usuarios = unGrupo.Item(Grupo.IdxCampos.USUARIOS).ToString()
+            tempGrupo.equipos = unGrupo.Item(Grupo.IdxCampos.EQUIPOS).ToString()
+            tempGrupo.logs = Integer.Parse(unGrupo.Item(Grupo.IdxCampos.LOGS).ToString())
             arrayGrupos.Add(tempGrupo)
         Next
         Return arrayGrupos

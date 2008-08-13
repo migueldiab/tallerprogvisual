@@ -7,6 +7,12 @@ Public Class Usuario
     Private mNombre As String
     Private mContrasenia As String
     Private mGrupos As ArrayList
+
+    Public Enum IdxCampos
+        ID
+        NOMBRE
+        CONTRASENIA
+    End Enum
 #End Region
 
 #Region "Propiedades"
@@ -55,15 +61,19 @@ Public Class Usuario
             Dim pUsuario As New pUsuario
             Dim Usuarios As DataRowCollection
             Usuarios = pUsuario.buscar(id)
-            If Usuarios Is Nothing Or Usuarios.Count > 1 Then
+            If Usuarios Is Nothing Then
+                Me.nombre = ""
+                Me.contrasenia = ""
+                Me.grupos = Nothing
+            ElseIf Usuarios.Count > 1 Then
                 Me.nombre = ""
                 Me.contrasenia = ""
                 Me.grupos = Nothing
             ElseIf Usuarios.Count = 1 Then
-                Dim usuario As DataRow = Usuarios.Item(0)
-                Me.id = usuario.Item(0).ToString
-                Me.nombre = usuario.Item(1).ToString
-                Me.contrasenia = usuario.Item(2).ToString
+                Dim usuario As DataRow = Usuarios.Item(IdxCampos.ID)
+                Me.id = usuario.Item(IdxCampos.ID).ToString
+                Me.nombre = usuario.Item(IdxCampos.NOMBRE).ToString
+                Me.contrasenia = usuario.Item(IdxCampos.CONTRASENIA).ToString
                 Me.grupos = Nothing
             End If
         End If
@@ -96,11 +106,11 @@ Public Class Usuario
         Else
             For Each unGrupo As DataRow In rawDataPermisos
                 Dim tempGrupo As New Grupo
-                tempGrupo.id = unGrupo.Item(0).ToString()
-                tempGrupo.nombre = unGrupo.Item(1).ToString()
-                tempGrupo.usuarios = unGrupo.Item(2).ToString()
-                tempGrupo.equipos = unGrupo.Item(3).ToString()
-                tempGrupo.logs = Integer.Parse(unGrupo.Item(4).ToString)
+                tempGrupo.id = unGrupo.Item(Grupo.IdxCampos.ID).ToString()
+                tempGrupo.nombre = unGrupo.Item(Grupo.IdxCampos.NOMBRE).ToString()
+                tempGrupo.usuarios = unGrupo.Item(Grupo.IdxCampos.USUARIOS).ToString()
+                tempGrupo.equipos = unGrupo.Item(Grupo.IdxCampos.EQUIPOS).ToString()
+                tempGrupo.logs = Integer.Parse(unGrupo.Item(Grupo.IdxCampos.LOGS).ToString)
                 arrayGrupos.Add(tempGrupo)
             Next
             Return arrayGrupos
