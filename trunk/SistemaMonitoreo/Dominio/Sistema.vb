@@ -24,6 +24,7 @@ Public Class Sistema
             tempUsuario.id = unUsuario.Item(0).ToString()
             tempUsuario.nombre = unUsuario.Item(1).ToString()
             tempUsuario.contrasenia = unUsuario.Item(2).ToString()
+            tempUsuario.grupos = tempUsuario.obtenerGrupos(unUsuario.Item(0).ToString())
             arrayUsuarios.Add(tempUsuario)
         Next
         Return arrayUsuarios

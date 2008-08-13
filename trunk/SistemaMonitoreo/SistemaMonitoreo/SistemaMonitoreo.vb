@@ -8,10 +8,7 @@ Module SistemaMonitoreo
     ' Notas     :
     Sub main()
         Dim sistema As New Sistema()
-        Dim ventanaPrincipal As New frmSistema()
-        ' Llamada a Ventana Principal
-        ventanaPrincipal.ShowDialog()
-
-
+        Dim login As New frmLogin()
+        login.ShowDialog()
     End Sub
 End Module
