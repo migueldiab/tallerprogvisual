@@ -67,10 +67,10 @@ Public Class frmAbmUsuario
     End Sub
 
     Private Function controlarDatos() As Boolean
-        If txtNombre.Text.Length < 4 Then
+        If txtNombre.Text.Length < SistemaMonitoreo.LARGO_MIN_USUARIO Then
             Return False
         End If
-        If txtContrasenia.Text.Length < 4 Then
+        If txtContrasenia.Text.Length < SistemaMonitoreo.LARGO_MIN_USUARIO Then
             Return False
         End If
         If txtContrasenia.Text <> txtRepetir.Text Then

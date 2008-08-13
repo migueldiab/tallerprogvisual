@@ -8,6 +8,15 @@ Public Class Equipo
     Private mIP As String
     Private mDominio As String
     Private mDestino As String
+
+    Public Enum IdxCampos
+        ID
+        NOMBRE
+        IP
+        DOMINIO
+        DESTINO
+    End Enum
+
 #End Region
 
 #Region "Propiedades"
