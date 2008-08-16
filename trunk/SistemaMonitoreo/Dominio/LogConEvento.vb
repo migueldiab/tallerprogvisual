@@ -2,6 +2,8 @@ Imports Persistencia
 Imports DAC
 Public Class LogConEvento
 
+    'Traigo Logs y Tipos de Evento, y creo un Dataset Tipado 
+    'con Logs y columna de Tipo Evento
     Public Shared Function AllLogsconEvento() As dsLogConEvento
         Try
             Dim i, j As Integer

@@ -3,6 +3,7 @@ Public Class Sistema
     Private Shared Instancia As Sistema
 
 #Region "Metodos"
+    'Singleton
     Public Shared Function getInstancia() As Sistema
         If Instancia Is Nothing Then
             Instancia = New Sistema
@@ -52,13 +53,21 @@ Public Class Sistema
         Return arrayEquipos
     End Function
 
-
+    ' Función   : Devuelve todos los Logs
+    ' Entrada   : 
+    ' Salida    : Lista con todos los Logs
+    ' Notas     :
     Public Shared Function getLogs() As DataSet
         Dim allLogs As New DataSet()
         allLogs = Persistente.LeerLogs()
         Return allLogs
 
     End Function
+
+    ' Función   : Devuelve todos los Tipos de Evento
+    ' Entrada   : 
+    ' Salida    : Lista con todos los Tipos de Evento
+    ' Notas     :
     Public Shared Function getTipoEvento() As DataSet
         Dim allTipos As New DataSet
         allTipos = Persistente.LeerTipos

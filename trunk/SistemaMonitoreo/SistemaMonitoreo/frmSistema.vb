@@ -186,6 +186,7 @@ Public Class frmSistema
         consultaLogs.BringToFront()
         consultaLogs.Left = 0
         consultaLogs.Top = 0
+
     End Sub
 
     Private Sub frmSistema_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load

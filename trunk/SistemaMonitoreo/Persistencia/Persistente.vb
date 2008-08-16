@@ -108,33 +108,26 @@ Public MustInherit Class Persistente
     End Function
 
     Public Shared Function LeerLogs() As DataSet
-
         Try
             Dim dsTraido As New dsLog
-
             Dim unaConexion As OleDbConnection = pLog.Conectar
-            'Se llena un dataset auxiliar para pasar los valores de ambas tablas
             Dim cadSQL As String
             cadSQL = "SELECT * FROM RegistroLogs"
             Dim unDa As OleDbDataAdapter = New OleDbDataAdapter(cadSQL, unaConexion)
             dsTraido.Clear()
             unDa.Fill(dsTraido, "RegistroLogs")
-            ' Se limpia el dataset original para llenarlo con los valores
             unDa.Dispose()
             unaConexion.Close()
             unaConexion.Dispose()
             Return dsTraido
-
         Catch ex As Exception
             Return Nothing
         End Try
     End Function
     Public Shared Function LeerTipos() As DataSet
-
         Try
             Dim dsTraido As New dsTipoEntradaEvento
             Dim unaConexion As OleDbConnection = Persistente.Conectar
-            'Se llena un dataset auxiliar para pasar los valores de ambas tablas
             Dim cadSQL As String
             cadSQL = "SELECT * FROM TipoEntradaEvento"
             Dim unDa As OleDbDataAdapter = New OleDbDataAdapter(cadSQL, unaConexion)
@@ -145,7 +138,6 @@ Public MustInherit Class Persistente
             unaConexion.Close()
             unaConexion.Dispose()
             Return dsTraido
-
         Catch ex As Exception
             Return Nothing
         End Try

@@ -20,35 +20,25 @@ Partial Class frmConsultaLog
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.btnVerReporte = New System.Windows.Forms.Button
-        Me.chkFecha = New System.Windows.Forms.CheckBox
         Me.Label1 = New System.Windows.Forms.Label
-        Me.clbTipoLog = New System.Windows.Forms.CheckedListBox
         Me.CrystalReportViewer = New CrystalDecisions.Windows.Forms.CrystalReportViewer
         Me.rdbAplicacion = New System.Windows.Forms.RadioButton
         Me.rdbSeguridad = New System.Windows.Forms.RadioButton
         Me.rdbSistema = New System.Windows.Forms.RadioButton
+        Me.Label2 = New System.Windows.Forms.Label
+        Me.chkTipo = New System.Windows.Forms.CheckBox
+        Me.chkFecha = New System.Windows.Forms.CheckBox
         Me.SuspendLayout()
         '
         'btnVerReporte
         '
-        Me.btnVerReporte.Location = New System.Drawing.Point(401, 13)
+        Me.btnVerReporte.Location = New System.Drawing.Point(641, 37)
         Me.btnVerReporte.Margin = New System.Windows.Forms.Padding(4)
         Me.btnVerReporte.Name = "btnVerReporte"
-        Me.btnVerReporte.Size = New System.Drawing.Size(181, 32)
+        Me.btnVerReporte.Size = New System.Drawing.Size(127, 32)
         Me.btnVerReporte.TabIndex = 0
         Me.btnVerReporte.Text = "Ver reporte"
         Me.btnVerReporte.UseVisualStyleBackColor = True
-        '
-        'chkFecha
-        '
-        Me.chkFecha.AutoSize = True
-        Me.chkFecha.Location = New System.Drawing.Point(401, 73)
-        Me.chkFecha.Margin = New System.Windows.Forms.Padding(4)
-        Me.chkFecha.Name = "chkFecha"
-        Me.chkFecha.Size = New System.Drawing.Size(97, 22)
-        Me.chkFecha.TabIndex = 5
-        Me.chkFecha.Text = "Por fecha"
-        Me.chkFecha.UseVisualStyleBackColor = True
         '
         'Label1
         '
@@ -60,15 +50,6 @@ Partial Class frmConsultaLog
         Me.Label1.TabIndex = 6
         Me.Label1.Text = "Seleccione Tipo de Log a mostrar"
         '
-        'clbTipoLog
-        '
-        Me.clbTipoLog.FormattingEnabled = True
-        Me.clbTipoLog.Location = New System.Drawing.Point(590, 13)
-        Me.clbTipoLog.Margin = New System.Windows.Forms.Padding(4)
-        Me.clbTipoLog.Name = "clbTipoLog"
-        Me.clbTipoLog.Size = New System.Drawing.Size(172, 88)
-        Me.clbTipoLog.TabIndex = 7
-        '
         'CrystalReportViewer
         '
         Me.CrystalReportViewer.ActiveViewIndex = -1
@@ -76,11 +57,11 @@ Partial Class frmConsultaLog
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CrystalReportViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.CrystalReportViewer.Location = New System.Drawing.Point(16, 109)
+        Me.CrystalReportViewer.Location = New System.Drawing.Point(6, 109)
         Me.CrystalReportViewer.Margin = New System.Windows.Forms.Padding(4)
         Me.CrystalReportViewer.Name = "CrystalReportViewer"
         Me.CrystalReportViewer.SelectionFormula = ""
-        Me.CrystalReportViewer.Size = New System.Drawing.Size(806, 352)
+        Me.CrystalReportViewer.Size = New System.Drawing.Size(824, 363)
         Me.CrystalReportViewer.TabIndex = 8
         Me.CrystalReportViewer.ViewTimeSelectionFormula = ""
         '
@@ -117,18 +98,48 @@ Partial Class frmConsultaLog
         Me.rdbSistema.Text = "Sistema"
         Me.rdbSistema.UseVisualStyleBackColor = True
         '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(464, 9)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(124, 18)
+        Me.Label2.TabIndex = 14
+        Me.Label2.Text = "Seleccione filtro"
+        '
+        'chkTipo
+        '
+        Me.chkTipo.AutoSize = True
+        Me.chkTipo.Location = New System.Drawing.Point(449, 37)
+        Me.chkTipo.Name = "chkTipo"
+        Me.chkTipo.Size = New System.Drawing.Size(58, 22)
+        Me.chkTipo.TabIndex = 15
+        Me.chkTipo.Text = "Tipo"
+        Me.chkTipo.UseVisualStyleBackColor = True
+        '
+        'chkFecha
+        '
+        Me.chkFecha.AutoSize = True
+        Me.chkFecha.Location = New System.Drawing.Point(449, 71)
+        Me.chkFecha.Name = "chkFecha"
+        Me.chkFecha.Size = New System.Drawing.Size(71, 22)
+        Me.chkFecha.TabIndex = 16
+        Me.chkFecha.Text = "Fecha"
+        Me.chkFecha.UseVisualStyleBackColor = True
+        '
         'frmConsultaLog
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(832, 474)
+        Me.Controls.Add(Me.chkFecha)
+        Me.Controls.Add(Me.chkTipo)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.rdbSistema)
         Me.Controls.Add(Me.rdbSeguridad)
         Me.Controls.Add(Me.rdbAplicacion)
         Me.Controls.Add(Me.CrystalReportViewer)
-        Me.Controls.Add(Me.clbTipoLog)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.chkFecha)
         Me.Controls.Add(Me.btnVerReporte)
         Me.Font = New System.Drawing.Font("Verdana", 11.25!)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
@@ -140,11 +151,12 @@ Partial Class frmConsultaLog
 
     End Sub
     Friend WithEvents btnVerReporte As System.Windows.Forms.Button
-    Friend WithEvents chkFecha As System.Windows.Forms.CheckBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents clbTipoLog As System.Windows.Forms.CheckedListBox
     Friend WithEvents CrystalReportViewer As CrystalDecisions.Windows.Forms.CrystalReportViewer
     Friend WithEvents rdbAplicacion As System.Windows.Forms.RadioButton
     Friend WithEvents rdbSeguridad As System.Windows.Forms.RadioButton
     Friend WithEvents rdbSistema As System.Windows.Forms.RadioButton
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents chkTipo As System.Windows.Forms.CheckBox
+    Friend WithEvents chkFecha As System.Windows.Forms.CheckBox
 End Class

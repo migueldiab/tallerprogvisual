@@ -1,6 +1,8 @@
 Imports Dominio
 Imports DAC.LogReport
 Public Class frmConsultaLog
+    Private DSLogsconEvento As DataSet
+
 
     Public Sub New(ByVal ventanaPadre As Form)
         ' Llamada necesaria para el Diseñador de Windows Forms.
@@ -8,43 +10,42 @@ Public Class frmConsultaLog
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
         Me.MdiParent = ventanaPadre
     End Sub
-    Private Sub frmConsultaLog_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
-    End Sub
-
-    Private Sub clbTipoLog_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles clbTipoLog.SelectedIndexChanged
-
-    End Sub
-
 
     Private Sub btnVerReporte_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnVerReporte.Click
-        Dim getlogs As DataSet = LogConEvento.AllLogsconEvento
-
-
-        If Me.rdbSeguridad.Checked = True Then
-            Dim unDV As New DataView(getlogs.Tables("RegistroLogs"), "EventoCapturado = 'Security'", "HoraEscritura", DataViewRowState.CurrentRows)
-            Dim reporte As New DAC.LogReport
-            reporte.SetDataSource(unDV)
-            Me.CrystalReportViewer.ReportSource = reporte
-        ElseIf Me.rdbSistema.Checked = True Then
-            Dim unDV As New DataView(getlogs.Tables("RegistroLogs"), "EventoCapturado = 'System'", "HoraEscritura", DataViewRowState.CurrentRows)
-            Dim reporte As New DAC.LogReport
-            reporte.SetDataSource(unDV)
-            Me.CrystalReportViewer.ReportSource = reporte
-        ElseIf Me.rdbAplicacion.Checked = True Then
-            Dim unDV As New DataView(getlogs.Tables("RegistroLogs"), "EventoCapturado = 'Application'", "HoraEscritura", DataViewRowState.CurrentRows)
-            Dim reporte As New DAC.LogReport
-            reporte.SetDataSource(unDV)
-
-            Me.CrystalReportViewer.ReportSource = reporte
-
-        End If
-
-       
-    End Sub
-
-    Private Sub CrystalReportViewer_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CrystalReportViewer.Load
-
+        Try
+            Dim Filtro As String = Nothing
+            Dim TipoLog As String = Nothing
+            'Traigo Dataset de Logs con los Eventos
+            Dim getlogs As DataSet = DSLogsconEvento
+            If Me.rdbSeguridad.Checked = True Then
+                TipoLog = "EventoCapturado = 'Security'"
+            ElseIf Me.rdbSistema.Checked = True Then
+                TipoLog = "EventoCapturado = 'System'"
+            ElseIf Me.rdbAplicacion.Checked = True Then
+                TipoLog = "EventoCapturado = 'Application'"
+            Else
+                MessageBox.Show("Debe Seleccionar un tipo de Log")
+            End If
+            'Reporte por Tipo de Evento
+            If Me.chkTipo.Checked = True And TipoLog IsNot Nothing Then
+                Dim unDV As New DataView(getlogs.Tables("RegistroLogs"), TipoLog, "HoraEscritura", DataViewRowState.CurrentRows)
+                Dim reporte As New DAC.LogReport
+                reporte.SetDataSource(unDV)
+                Me.CrystalReportViewer.ReportSource = reporte
+                'Reporte por Fecha
+            ElseIf Me.chkFecha.Checked = True And TipoLog IsNot Nothing Then
+                Dim unDV As New DataView(getlogs.Tables("RegistroLogs"), TipoLog, "HoraEscritura", DataViewRowState.CurrentRows)
+                Dim reporte As New DAC.LogReportFecha
+                reporte.SetDataSource(unDV)
+                Me.CrystalReportViewer.ReportSource = reporte
+            ElseIf TipoLog Is Nothing Then
+                MessageBox.Show("Debe Seleccionar un tipo de Log")
+            Else
+                MessageBox.Show("Debe Seleccionar un tipo de Filtro")
+            End If
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
     End Sub
     Private Sub rdbSeguridad_CheckedChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles rdbSeguridad.CheckedChanged
         If Me.rdbSeguridad.Checked = True Then
@@ -63,5 +64,19 @@ Public Class frmConsultaLog
             Me.rdbAplicacion.Checked = False
             Me.rdbSeguridad.Checked = False
         End If
+    End Sub
+    Private Sub chkTipo_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkTipo.CheckedChanged
+        If Me.chkTipo.Checked = True Then
+            Me.chkFecha.Checked = False
+        End If
+    End Sub
+    Private Sub chkFecha_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkFecha.CheckedChanged
+        If Me.chkFecha.Checked = True Then
+            Me.chkTipo.Checked = False
+        End If
+    End Sub
+
+    Private Sub frmConsultaLog_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        DSLogsconEvento = LogConEvento.AllLogsconEvento
     End Sub
 End Class
