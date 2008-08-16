@@ -71,6 +71,7 @@
     <Compile Include="Equipo.vb" />
     <Compile Include="Grupo.vb" />
     <Compile Include="Log.vb" />
+    <Compile Include="LogConEvento.vb" />
     <Compile Include="Sistema.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">

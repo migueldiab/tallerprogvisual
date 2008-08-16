@@ -74,6 +74,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsEquipo.xsd</DependentUpon>
     </Compile>
+    <Compile Include="dsLogConEvento.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsLogConEvento.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsLogConEvento.vb">
+      <DependentUpon>dsLogConEvento.xsd</DependentUpon>
+    </Compile>
     <Compile Include="dsTipoEvento.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -159,6 +167,17 @@
     </None>
     <None Include="dsEquipo.xss">
       <DependentUpon>dsEquipo.xsd</DependentUpon>
+    </None>
+    <None Include="dsLogConEvento.xsc">
+      <DependentUpon>dsLogConEvento.xsd</DependentUpon>
+    </None>
+    <None Include="dsLogConEvento.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsLogConEvento.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="dsLogConEvento.xss">
+      <DependentUpon>dsLogConEvento.xsd</DependentUpon>
     </None>
     <None Include="dsTipoEvento.xsc">
       <DependentUpon>dsTipoEvento.xsd</DependentUpon>

@@ -129,7 +129,27 @@ Public MustInherit Class Persistente
             Return Nothing
         End Try
     End Function
+    Public Shared Function LeerTipos() As DataSet
 
+        Try
+            Dim dsTraido As New dsTipoEntradaEvento
+            Dim unaConexion As OleDbConnection = Persistente.Conectar
+            'Se llena un dataset auxiliar para pasar los valores de ambas tablas
+            Dim cadSQL As String
+            cadSQL = "SELECT * FROM TipoEntradaEvento"
+            Dim unDa As OleDbDataAdapter = New OleDbDataAdapter(cadSQL, unaConexion)
+            dsTraido.Clear()
+            unDa.Fill(dsTraido, "TipoEntradaEvento")
+            ' Se limpia el dataset original para llenarlo con los valores
+            unDa.Dispose()
+            unaConexion.Close()
+            unaConexion.Dispose()
+            Return dsTraido
+
+        Catch ex As Exception
+            Return Nothing
+        End Try
+    End Function
 
     Protected Function actualizar(ByVal operacion As String, ByVal ds As DataSet) As errorBD
         Dim conexion As OleDbConnection = Persistente.Conectar()
