@@ -57,8 +57,14 @@ Public Class Sistema
         Dim allLogs As New DataSet()
         allLogs = Persistente.LeerLogs()
         Return allLogs
+
     End Function
-    
+    Public Shared Function getTipoEvento() As DataSet
+        Dim allTipos As New DataSet
+        allTipos = Persistente.LeerTipos
+        Return allTipos
+    End Function
+
 
     ' Función   : Devuelve todos los Grupos
     ' Entrada   : 

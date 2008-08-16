@@ -13,6 +13,7 @@ Public Class Log
     Private mHoraGenerado As String
     Private mMensaje As String
     Private mEventoCapturado As String
+    Private mTipoEvento As String
 #End Region
 
 #Region "Properties"
@@ -88,11 +89,19 @@ Public Class Log
             mEventoCapturado = value
         End Set
     End Property
+  
 #End Region
 
     Public Sub New()
 
     End Sub
+    Public Shared Function DataViewLogs() As DataView
+        Dim dvLog As DataView
+        dvLog = Persistencia.pLog.LeerLogs.Tables(0).DefaultView
+        Return dvLog
+    End Function
+
+
 
 #Region "Metodos Persistencia"
 
@@ -131,6 +140,7 @@ Public Class Log
                 Me.Category = unaFila.Category
                 Me.OrigenEvento = unaFila.OrigenEvento
                 Me.EventoCapturado = unaFila.EventoCapturado
+              
             End If
         Catch ex As Exception
             Throw ex
