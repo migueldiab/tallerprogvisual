@@ -82,14 +82,6 @@
     <Compile Include="dsLogConEvento.vb">
       <DependentUpon>dsLogConEvento.xsd</DependentUpon>
     </Compile>
-    <Compile Include="dsTipoEvento.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dsTipoEvento.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="dsTipoEvento.vb">
-      <DependentUpon>dsTipoEvento.xsd</DependentUpon>
-    </Compile>
     <Compile Include="dsGrupo.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -127,6 +119,12 @@
       <DependentUpon>LogReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="LogReportFecha.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LogReportFecha.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -147,6 +145,10 @@
     <EmbeddedResource Include="LogReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>LogReport.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogReportFecha.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>LogReportFecha.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -178,17 +180,6 @@
     </None>
     <None Include="dsLogConEvento.xss">
       <DependentUpon>dsLogConEvento.xsd</DependentUpon>
-    </None>
-    <None Include="dsTipoEvento.xsc">
-      <DependentUpon>dsTipoEvento.xsd</DependentUpon>
-    </None>
-    <None Include="dsTipoEvento.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dsTipoEvento.Designer.vb</LastGenOutput>
-    </None>
-    <None Include="dsTipoEvento.xss">
-      <DependentUpon>dsTipoEvento.xsd</DependentUpon>
     </None>
     <None Include="dsGrupo.xsc">
       <DependentUpon>dsGrupo.xsd</DependentUpon>

@@ -18,7 +18,7 @@ Imports System
 Imports System.ComponentModel
 
 
-Public Class LogReport
+Public Class LogReportFecha
     Inherits ReportClass
     
     Public Sub New()
@@ -27,7 +27,7 @@ Public Class LogReport
     
     Public Overrides Property ResourceName() As String
         Get
-            Return "LogReport.rpt"
+            Return "LogReportFecha.rpt"
         End Get
         Set
             'Do nothing
@@ -92,7 +92,7 @@ Public Class LogReport
 End Class
 
 <System.Drawing.ToolboxBitmapAttribute(GetType(CrystalDecisions.[Shared].ExportOptions), "report.bmp")>  _
-Public Class CachedLogReport
+Public Class CachedLogReportFecha
     Inherits Component
     Implements ICachedReport
     
@@ -134,7 +134,7 @@ Public Class CachedLogReport
     End Property
     
     Public Overridable Function CreateReport() As CrystalDecisions.CrystalReports.Engine.ReportDocument Implements CrystalDecisions.ReportSource.ICachedReport.CreateReport
-        Dim rpt As LogReport = New LogReport
+        Dim rpt As LogReportFecha = New LogReportFecha
         rpt.Site = Me.Site
         Return rpt
     End Function
