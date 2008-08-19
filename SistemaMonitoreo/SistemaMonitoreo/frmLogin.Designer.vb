@@ -44,7 +44,7 @@ Partial Class frmLogin
         '
         Me.LogoPictureBox.Image = CType(resources.GetObject("LogoPictureBox.Image"), System.Drawing.Image)
         Me.LogoPictureBox.Location = New System.Drawing.Point(0, 0)
-        Me.LogoPictureBox.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.LogoPictureBox.Margin = New System.Windows.Forms.Padding(4)
         Me.LogoPictureBox.Name = "LogoPictureBox"
         Me.LogoPictureBox.Size = New System.Drawing.Size(166, 194)
         Me.LogoPictureBox.TabIndex = 0
@@ -73,24 +73,26 @@ Partial Class frmLogin
         'txtUsuario
         '
         Me.txtUsuario.Location = New System.Drawing.Point(176, 52)
-        Me.txtUsuario.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtUsuario.Margin = New System.Windows.Forms.Padding(4)
         Me.txtUsuario.Name = "txtUsuario"
         Me.txtUsuario.Size = New System.Drawing.Size(328, 26)
         Me.txtUsuario.TabIndex = 1
+        Me.txtUsuario.Text = "Administrador"
         '
         'txtContrasenia
         '
         Me.txtContrasenia.Location = New System.Drawing.Point(177, 118)
-        Me.txtContrasenia.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txtContrasenia.Margin = New System.Windows.Forms.Padding(4)
         Me.txtContrasenia.Name = "txtContrasenia"
         Me.txtContrasenia.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtContrasenia.Size = New System.Drawing.Size(328, 26)
         Me.txtContrasenia.TabIndex = 3
+        Me.txtContrasenia.Text = "Administrador"
         '
         'btnOK
         '
         Me.btnOK.Location = New System.Drawing.Point(177, 152)
-        Me.btnOK.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnOK.Margin = New System.Windows.Forms.Padding(4)
         Me.btnOK.Name = "btnOK"
         Me.btnOK.Size = New System.Drawing.Size(141, 28)
         Me.btnOK.TabIndex = 4
@@ -100,7 +102,7 @@ Partial Class frmLogin
         '
         Me.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.btnCancelar.Location = New System.Drawing.Point(364, 152)
-        Me.btnCancelar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.btnCancelar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(141, 27)
         Me.btnCancelar.TabIndex = 5
@@ -135,7 +137,7 @@ Partial Class frmLogin
         Me.Controls.Add(Me.LogoPictureBox)
         Me.Font = New System.Drawing.Font("Verdana", 11.25!)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmLogin"

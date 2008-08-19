@@ -78,5 +78,21 @@ Public Class frmConsultaLog
 
     Private Sub frmConsultaLog_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         DSLogsconEvento = LogConEvento.AllLogsconEvento
+        If Sistema.autentica(Sistema.usuarioLogueado, Sistema.acceso.LOGS_ADMIN) Then
+            rdbAplicacion.Visible = True
+            rdbSistema.Visible = True
+            rdbSeguridad.Visible = True
+        ElseIf Sistema.autentica(Sistema.usuarioLogueado, Sistema.acceso.LOGS_APLICACIONES) Then
+            rdbAplicacion.Visible = True
+        ElseIf Sistema.autentica(Sistema.usuarioLogueado, Sistema.acceso.LOGS_APLICACIONES_SISTEMA) Then
+            rdbAplicacion.Visible = True
+            rdbSeguridad.Visible = True
+        Else
+            Me.Close()
+        End If
+    End Sub
+
+    Private Sub btnCerrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
+        Me.Close()
     End Sub
 End Class

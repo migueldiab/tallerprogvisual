@@ -19,6 +19,7 @@ Partial Class frmAbmEquipo
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container
         Me.lstEquipos = New System.Windows.Forms.ListBox
         Me.txtNombre = New System.Windows.Forms.TextBox
         Me.lblDestino = New System.Windows.Forms.Label
@@ -35,6 +36,11 @@ Partial Class frmAbmEquipo
         Me.txtIP = New System.Windows.Forms.TextBox
         Me.txtDominio = New System.Windows.Forms.TextBox
         Me.txtDestino = New System.Windows.Forms.TextBox
+        Me.GruposBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DBDataSet = New GUI.DBDataSet
+        Me.GruposTableAdapter = New GUI.DBDataSetTableAdapters.GruposTableAdapter
+        CType(Me.GruposBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DBDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lstEquipos
@@ -44,7 +50,7 @@ Partial Class frmAbmEquipo
         Me.lstEquipos.Location = New System.Drawing.Point(12, 41)
         Me.lstEquipos.Name = "lstEquipos"
         Me.lstEquipos.Size = New System.Drawing.Size(205, 274)
-        Me.lstEquipos.TabIndex = 41
+        Me.lstEquipos.TabIndex = 10
         '
         'txtNombre
         '
@@ -52,7 +58,7 @@ Partial Class frmAbmEquipo
         Me.txtNombre.Margin = New System.Windows.Forms.Padding(4)
         Me.txtNombre.Name = "txtNombre"
         Me.txtNombre.Size = New System.Drawing.Size(204, 26)
-        Me.txtNombre.TabIndex = 37
+        Me.txtNombre.TabIndex = 2
         '
         'lblDestino
         '
@@ -70,7 +76,7 @@ Partial Class frmAbmEquipo
         Me.txtFiltroEquipos.Margin = New System.Windows.Forms.Padding(4)
         Me.txtFiltroEquipos.Name = "txtFiltroEquipos"
         Me.txtFiltroEquipos.Size = New System.Drawing.Size(150, 26)
-        Me.txtFiltroEquipos.TabIndex = 35
+        Me.txtFiltroEquipos.TabIndex = 9
         '
         'lblDominio
         '
@@ -89,7 +95,7 @@ Partial Class frmAbmEquipo
         Me.txtID.Margin = New System.Windows.Forms.Padding(4)
         Me.txtID.Name = "txtID"
         Me.txtID.Size = New System.Drawing.Size(103, 26)
-        Me.txtID.TabIndex = 36
+        Me.txtID.TabIndex = 1
         '
         'lblIP
         '
@@ -107,7 +113,7 @@ Partial Class frmAbmEquipo
         Me.btnCerrar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnCerrar.Name = "btnCerrar"
         Me.btnCerrar.Size = New System.Drawing.Size(112, 32)
-        Me.btnCerrar.TabIndex = 40
+        Me.btnCerrar.TabIndex = 8
         Me.btnCerrar.Text = "Cerrar"
         Me.btnCerrar.UseVisualStyleBackColor = True
         '
@@ -117,7 +123,7 @@ Partial Class frmAbmEquipo
         Me.txtEliminar.Margin = New System.Windows.Forms.Padding(4)
         Me.txtEliminar.Name = "txtEliminar"
         Me.txtEliminar.Size = New System.Drawing.Size(112, 32)
-        Me.txtEliminar.TabIndex = 39
+        Me.txtEliminar.TabIndex = 7
         Me.txtEliminar.Text = "Eliminar"
         Me.txtEliminar.UseVisualStyleBackColor = True
         '
@@ -127,7 +133,7 @@ Partial Class frmAbmEquipo
         Me.btnGuardar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnGuardar.Name = "btnGuardar"
         Me.btnGuardar.Size = New System.Drawing.Size(112, 32)
-        Me.btnGuardar.TabIndex = 38
+        Me.btnGuardar.TabIndex = 6
         Me.btnGuardar.Text = "Guardar"
         Me.btnGuardar.UseVisualStyleBackColor = True
         '
@@ -167,7 +173,7 @@ Partial Class frmAbmEquipo
         Me.txtIP.Margin = New System.Windows.Forms.Padding(4)
         Me.txtIP.Name = "txtIP"
         Me.txtIP.Size = New System.Drawing.Size(204, 26)
-        Me.txtIP.TabIndex = 37
+        Me.txtIP.TabIndex = 3
         '
         'txtDominio
         '
@@ -175,7 +181,7 @@ Partial Class frmAbmEquipo
         Me.txtDominio.Margin = New System.Windows.Forms.Padding(4)
         Me.txtDominio.Name = "txtDominio"
         Me.txtDominio.Size = New System.Drawing.Size(204, 26)
-        Me.txtDominio.TabIndex = 37
+        Me.txtDominio.TabIndex = 4
         '
         'txtDestino
         '
@@ -183,7 +189,21 @@ Partial Class frmAbmEquipo
         Me.txtDestino.Margin = New System.Windows.Forms.Padding(4)
         Me.txtDestino.Name = "txtDestino"
         Me.txtDestino.Size = New System.Drawing.Size(204, 26)
-        Me.txtDestino.TabIndex = 37
+        Me.txtDestino.TabIndex = 5
+        '
+        'GruposBindingSource
+        '
+        Me.GruposBindingSource.DataMember = "Grupos"
+        Me.GruposBindingSource.DataSource = Me.DBDataSet
+        '
+        'DBDataSet
+        '
+        Me.DBDataSet.DataSetName = "DBDataSet"
+        Me.DBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'GruposTableAdapter
+        '
+        Me.GruposTableAdapter.ClearBeforeFill = True
         '
         'frmAbmEquipo
         '
@@ -211,6 +231,8 @@ Partial Class frmAbmEquipo
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmAbmEquipo"
         Me.Text = "Administración de Equipos"
+        CType(Me.GruposBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DBDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -231,4 +253,7 @@ Partial Class frmAbmEquipo
     Friend WithEvents txtIP As System.Windows.Forms.TextBox
     Friend WithEvents txtDominio As System.Windows.Forms.TextBox
     Friend WithEvents txtDestino As System.Windows.Forms.TextBox
+    Friend WithEvents DBDataSet As GUI.DBDataSet
+    Friend WithEvents GruposBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents GruposTableAdapter As GUI.DBDataSetTableAdapters.GruposTableAdapter
 End Class

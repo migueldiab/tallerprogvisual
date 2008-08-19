@@ -1,6 +1,46 @@
 Imports Persistencia
+
 Public Class Sistema
+
+#Region "Constantes"
     Private Shared Instancia As Sistema
+
+    Public Const LECTURA As Char = "R"c
+    Public Const ESCRITURA As Char = "W"c
+    Public Enum LOGS
+        NULL
+        APLICACIONES
+        APLICACIONES_SISTEMA
+        ADMIN
+    End Enum
+    'Public Const LOGS_NULL As Integer = 0
+    'Public Const LOGS_APLICACIONES As Integer = 1
+    'Public Const LOGS_APLICACIONES_SISTEMA As Integer = 2
+    'Public Const LOGS_ADMIN As Integer = 3
+
+    Public Const ADMINISTRADOR As String = "Administradores"
+
+    Public Const LARGO_MIN_USUARIO As Integer = 4
+    Public Const LARGO_MIN_PASSWORD As Integer = 4
+    Public Const REGISTOS_IMPORTAR_CSV As Integer = 3
+
+    Public Enum acceso
+        EQUIPOS_CONSULTA
+        EQUIPOS_ALTA
+        USUARIOS_CONSULTA
+        USUARIOS_ALTA
+        USUARIOS_IMPORTAR
+        LOGS_APLICACIONES
+        LOGS_APLICACIONES_SISTEMA
+        LOGS_ADMIN
+        LOGS_IMPORTAR
+    End Enum
+#End Region
+
+#Region "Variables Globales"
+    Public Shared usuarioLogueado As Usuario
+
+#End Region
 
 #Region "Metodos"
     'Singleton
@@ -94,6 +134,63 @@ Public Class Sistema
             arrayGrupos.Add(tempGrupo)
         Next
         Return arrayGrupos
+    End Function
+
+    Public Shared Function autentica(ByVal usuario As Usuario, ByVal acceso As Sistema.acceso) As Boolean
+        For Each unGrupo As Grupo In usuario.grupos
+            If unGrupo.nombre = Sistema.ADMINISTRADOR Then
+                Return True
+            End If
+        Next
+
+        Select Case acceso
+            Case Sistema.acceso.EQUIPOS_CONSULTA
+                For Each unGrupo As Grupo In usuario.grupos
+                    If unGrupo.equipos.IndexOf(Sistema.LECTURA) <> -1 Then
+                        Return True
+                    End If
+                Next
+            Case Sistema.acceso.EQUIPOS_ALTA
+                For Each unGrupo As Grupo In usuario.grupos
+                    If unGrupo.equipos.IndexOf(Sistema.ESCRITURA) <> -1 Then
+                        Return True
+                    End If
+                Next
+            Case Sistema.acceso.USUARIOS_CONSULTA
+                For Each unGrupo As Grupo In usuario.grupos
+                    If unGrupo.usuarios.IndexOf(Sistema.LECTURA) <> -1 Then
+                        Return True
+                    End If
+                Next
+            Case Sistema.acceso.USUARIOS_ALTA
+                For Each unGrupo As Grupo In usuario.grupos
+                    If unGrupo.usuarios.IndexOf(Sistema.ESCRITURA) <> -1 Then
+                        Return True
+                    End If
+                Next
+            Case Sistema.acceso.LOGS_ADMIN
+                For Each unGrupo As Grupo In usuario.grupos
+                    If unGrupo.logs = Sistema.LOGS.ADMIN Then
+                        Return True
+                    End If
+                Next
+            Case Sistema.acceso.LOGS_APLICACIONES
+                For Each unGrupo As Grupo In usuario.grupos
+                    If unGrupo.logs = Sistema.LOGS.APLICACIONES Then
+                        Return True
+                    End If
+                Next
+            Case Sistema.acceso.LOGS_APLICACIONES_SISTEMA
+                For Each unGrupo As Grupo In usuario.grupos
+                    If unGrupo.logs = Sistema.LOGS.APLICACIONES_SISTEMA Then
+                        Return True
+                    End If
+                Next
+            Case Else
+                Return False
+        End Select
+        Return False
+
     End Function
 #End Region
 
