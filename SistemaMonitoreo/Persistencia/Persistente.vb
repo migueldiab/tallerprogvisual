@@ -71,8 +71,8 @@ Public MustInherit Class Persistente
     ''' especificamente en la tabla que se indica
     '''</summary>
     Protected Function EjecutarSQL(ByVal cadenaSQL As String, ByVal unDataSet As DataSet, ByVal nombreTabla As String) As DataSet
-        Dim unaC As OleDbConnection
-        Dim unDA As OleDbDataAdapter
+        Dim unaC As OleDbConnection = Nothing
+        Dim unDA As OleDbDataAdapter = Nothing
         Try
             unaC = Persistente.Conectar()
             unDA = New OleDbDataAdapter(cadenaSQL, unaC)
@@ -158,8 +158,8 @@ Public MustInherit Class Persistente
         End Try
     End Function
 
-    Public MustOverride Function buscar(ByVal filtro As String) As Data.DataRowCollection
-    Public MustOverride Function buscar(ByVal clavePrimaria As Object) As Object
+    Public MustOverride Function buscarPorNombre(ByVal nombre As String) As Data.DataRowCollection
+    Public MustOverride Function buscarPorId(ByVal id As String) As Object
     Public MustOverride Function buscar() As Data.DataRowCollection
 
     Public MustOverride Function Guardar(ByVal objeto As Object) As errorBD

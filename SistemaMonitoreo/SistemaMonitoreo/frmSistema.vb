@@ -1,4 +1,5 @@
 Imports System.Windows.Forms
+Imports Dominio
 
 Public Class frmSistema
     Dim importarLogs As System.Windows.Forms.Form
@@ -10,10 +11,13 @@ Public Class frmSistema
     Dim permisosUsuario As System.Windows.Forms.Form
     Dim logUsuarios As System.Windows.Forms.Form
     Dim consultaLogs As System.Windows.Forms.Form
+    Dim usuarioLogueado As Usuario
 
-    Public Sub New()
+    Public Sub New(ByVal Usuario As Usuario)
         ' Llamada necesaria para el Diseñador de Windows Forms.
+
         InitializeComponent()
+        usuarioLogueado = Usuario
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
     End Sub
 
@@ -44,6 +48,7 @@ Public Class frmSistema
 
     Private Sub PasteToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles PasteToolStripMenuItem.Click
         'Use My.Computer.Clipboard.GetText() or My.Computer.Clipboard.GetData to retrieve information from the clipboard.
+        Me.Text = My.Computer.Clipboard.GetText().ToString()
     End Sub
 
     Private Sub ToolBarToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs) Handles ToolBarToolStripMenuItem.Click

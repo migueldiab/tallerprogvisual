@@ -9,11 +9,11 @@ Public Class pTipoEntradaEvento : Inherits Persistente
         Return Nothing
     End Function
 
-    Public Overloads Overrides Function buscar(ByVal clave As Object) As Object
+    Public Overloads Overrides Function buscarPorId(ByVal id As String) As Object
         Return Nothing
     End Function
 
-    Public Overloads Overrides Function buscar(ByVal filtro As String) As DataRowCollection
+    Public Overloads Overrides Function buscarPorNombre(ByVal nombre As String) As DataRowCollection
         Return Nothing
     End Function
 

@@ -32,15 +32,15 @@ Public Class pEquipo : Inherits Persistente
         Return Nothing
     End Function
 
-    Public Overloads Overrides Function buscar(ByVal clave As Object) As Object
+    Public Overloads Overrides Function buscarPorId(ByVal id As String) As Object
         Return Nothing
     End Function
 
-    Public Overloads Overrides Function buscar(ByVal filtro As String) As DataRowCollection
+    Public Overloads Overrides Function buscarPorNombre(ByVal nombre As String) As DataRowCollection
         Dim query As String
         Try
             query = "SELECT * FROM equipos " _
-                    & " WHERE nombreMaquina = '" & filtro & "';"
+                    & " WHERE nombreMaquina = '" & nombre & "';"
             Debug.Print(query)
             Return EjecutarSQL(query).Tables(0).Rows
         Catch ex As Exception
@@ -56,7 +56,7 @@ Public Class pEquipo : Inherits Persistente
             Dim busqueda As DataRowCollection
 
             unEquipo = CType(objeto, dsEquipo.EquiposRow)
-            busqueda = Me.buscar(unEquipo.NombreMaquina)
+            busqueda = Me.buscarPorNombre(unEquipo.NombreMaquina)
             If busqueda.Count = 0 Then
                 query = "INSERT INTO Equipos (nombreMaquina, IP, nombreDominio, destino) VALUES (" _
                     & "'" & unEquipo.NombreMaquina() & "'," _

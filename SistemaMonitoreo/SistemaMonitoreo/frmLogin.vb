@@ -17,7 +17,7 @@ Public Class frmLogin
             lblError.Visible = True
         Else
             If Usuario.login(txtContrasenia.Text) Then
-                Dim ventanaPrincipal As New frmSistema()
+                Dim ventanaPrincipal As New frmSistema(Usuario)
                 ' Llamada a Ventana Principal
                 ventanaPrincipal.ShowDialog()
                 Me.Close()

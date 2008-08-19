@@ -96,7 +96,7 @@ Public Class Grupo
     Public Shared Function buscarGrupo(ByVal id As String) As Grupo
         Dim pGrupo As New pGrupo
         Dim uGrupo As New Grupo
-        uGrupo = CType(pGrupo.buscar(CType(id, Object)), Grupo)
+        uGrupo = CType(pGrupo.buscarPorId(id), Grupo)
 
         Return uGrupo
     End Function
@@ -104,11 +104,11 @@ Public Class Grupo
     ' Entrada   : filter : nombre de grupo a buscar
     ' Salida    : Lita con todos los grupos que coincidan con el filtro
     ' Notas     :
-    Public Shared Function listaGrupos(ByVal filter As String) As DataRowCollection
+    Public Shared Function listaGrupos(ByVal nombre As String) As DataRowCollection
         Dim lista As DataRowCollection
         Dim pGrupo As New pGrupo
-        If filter <> "" Then
-            lista = pGrupo.buscar(filter)
+        If nombre <> "" Then
+            lista = pGrupo.buscarPorNombre(nombre)
         Else
             lista = pGrupo.buscar()
         End If
@@ -160,8 +160,26 @@ Public Class Grupo
         unaFila.PermisosSobreEquipos = Me.equipos
         unaFila.PermisosSobreUsuarios = Me.usuarios
         unaFila.PermisosSobreLogs = Me.logs().ToString
+
+
         Return unaFila
+
     End Function
+    Public Overrides Function Equals(ByVal obj As Object) As Boolean
+        Try
+            Dim unGrupo As Grupo
+            unGrupo = CType(obj, Grupo)
+            If unGrupo.nombre = Me.nombre Then
+                Return True
+            Else
+                Return False
+            End If
+        Catch ex As Exception
+            Return False
+        End Try
+
+    End Function
+
 #End Region
 
 End Class

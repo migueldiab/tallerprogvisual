@@ -32,8 +32,8 @@ Partial Class frmPermisosUsuarios
         Me.lstAsignados = New System.Windows.Forms.ListBox
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label3 = New System.Windows.Forms.Label
-        Me.Button1 = New System.Windows.Forms.Button
-        Me.Button2 = New System.Windows.Forms.Button
+        Me.btnQuitarGrupo = New System.Windows.Forms.Button
+        Me.btnAgregarGrupo = New System.Windows.Forms.Button
         Me.SuspendLayout()
         '
         'lstUsuarios
@@ -159,25 +159,25 @@ Partial Class frmPermisosUsuarios
         Me.Label3.TabIndex = 32
         Me.Label3.Text = "Disponibles"
         '
-        'Button1
+        'btnQuitarGrupo
         '
-        Me.Button1.Location = New System.Drawing.Point(394, 191)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(4)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(64, 27)
-        Me.Button1.TabIndex = 25
-        Me.Button1.Text = "<<"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnQuitarGrupo.Location = New System.Drawing.Point(394, 191)
+        Me.btnQuitarGrupo.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnQuitarGrupo.Name = "btnQuitarGrupo"
+        Me.btnQuitarGrupo.Size = New System.Drawing.Size(64, 27)
+        Me.btnQuitarGrupo.TabIndex = 25
+        Me.btnQuitarGrupo.Text = "<<"
+        Me.btnQuitarGrupo.UseVisualStyleBackColor = True
         '
-        'Button2
+        'btnAgregarGrupo
         '
-        Me.Button2.Location = New System.Drawing.Point(394, 156)
-        Me.Button2.Margin = New System.Windows.Forms.Padding(4)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(64, 27)
-        Me.Button2.TabIndex = 25
-        Me.Button2.Text = ">>"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btnAgregarGrupo.Location = New System.Drawing.Point(394, 156)
+        Me.btnAgregarGrupo.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnAgregarGrupo.Name = "btnAgregarGrupo"
+        Me.btnAgregarGrupo.Size = New System.Drawing.Size(64, 27)
+        Me.btnAgregarGrupo.TabIndex = 25
+        Me.btnAgregarGrupo.Text = ">>"
+        Me.btnAgregarGrupo.UseVisualStyleBackColor = True
         '
         'frmPermisosUsuarios
         '
@@ -191,8 +191,8 @@ Partial Class frmPermisosUsuarios
         Me.Controls.Add(Me.txtFiltroUsuarios)
         Me.Controls.Add(Me.txtID)
         Me.Controls.Add(Me.btnCerrar)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.btnAgregarGrupo)
+        Me.Controls.Add(Me.btnQuitarGrupo)
         Me.Controls.Add(Me.btnGuardar)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
@@ -221,6 +221,6 @@ Partial Class frmPermisosUsuarios
     Friend WithEvents lstAsignados As System.Windows.Forms.ListBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents btnQuitarGrupo As System.Windows.Forms.Button
+    Friend WithEvents btnAgregarGrupo As System.Windows.Forms.Button
 End Class

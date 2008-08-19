@@ -4,6 +4,7 @@ Module SistemaMonitoreo
     Public Const LARGO_MIN_USUARIO As Integer = 4
     Public Const LARGO_MIN_PASSWORD As Integer = 4
     Public Const REGISTOS_IMPORTAR_CSV As Integer = 3
+    Public Const ADMINISTRADOR As String = "Administradores"
 
 
     ' Función   : Punto de inicio del programa
