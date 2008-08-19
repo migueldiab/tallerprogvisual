@@ -114,11 +114,14 @@ Public Class frmAbmGrupo
     Private Sub txtEliminar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtEliminar.Click
         If MsgBox("Seguro que desea eliminar el grupo?", MsgBoxStyle.Question Or MsgBoxStyle.YesNo, "Borrar Grupo") = MsgBoxResult.Yes Then
             Dim uGrupo As New Grupo(txtID.Text.ToString)
-            uGrupo.borrar()
-            Me.cargarListaGrupos(Sistema.listaGrupos())
-            Me.limpiarDatos()
+            If (uGrupo.borrar()) Then
+                Me.cargarListaGrupos(Sistema.listaGrupos())
+                Me.limpiarDatos()
+            Else
+                MsgBox("No se puede borrar el registro, permisos asociados", MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, "Error")
+            End If
             'MsgBox("No existe el Grupo", MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, "Error")
-            'MsgBox("No se puede borrar el registro", MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, "Error")
+
         End If
 
     End Sub

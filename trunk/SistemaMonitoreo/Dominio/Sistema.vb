@@ -21,6 +21,7 @@ Public Class Sistema
         USUARIO_INVALIDO
         PASSWORD_INVALIDO
         GRUPO_INVALIDO
+        USUARIO_ADMINISTRADOR
     End Enum
     'Public Const LOGS_NULL As Integer = 0
     'Public Const LOGS_APLICACIONES As Integer = 1
@@ -149,6 +150,11 @@ Public Class Sistema
                         nombreGrupo = fila.GetValue(2).ToString()
                         nombreGrupo = nombreGrupo.Substring(0, nombreGrupo.IndexOf(";"))
                         uGrupo = buscarGrupo(nombreGrupo)
+                        If uGrupo.nombre = Sistema.ADMINISTRADOR Then
+                            uUsuario.borrarPermisos()
+                            mensaje = logMensajeError(IMPORTAR_USUARIOS.USUARIO_ADMINISTRADOR, linea, fila)
+                            utilsArchivos.escribirArchivo(mensaje, log)
+                        End If
                         If Not uGrupo Is Nothing Then
                             uUsuario.agregarPermiso(uGrupo.id)
                         Else

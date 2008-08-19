@@ -109,9 +109,15 @@ Public Class Grupo
     ' Notas     :
     Public Function borrar() As Boolean
         Dim pGrupo As New pGrupo
-        If pGrupo.Borrar(Me.id) = Persistente.errorBD.ok Then
-            Return True
+        Dim pPermisos As New pPertenenciaUsuario
+        If pPermisos.buscarPorGrupo(Me.id) Is Nothing Then
+            If pGrupo.Borrar(Me.id) = Persistente.errorBD.ok Then
+                Return True
+            Else
+                Return False
+            End If
         Else
+            ' Permisos asociados al grupo
             Return False
         End If
     End Function
