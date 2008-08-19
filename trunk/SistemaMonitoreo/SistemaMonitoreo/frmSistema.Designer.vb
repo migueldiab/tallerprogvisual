@@ -78,6 +78,7 @@ Partial Class frmSistema
         Me.StatusStrip = New System.Windows.Forms.StatusStrip
         Me.ToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
+        Me.BloquearToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.MenuStrip.SuspendLayout()
         Me.ToolStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
@@ -96,7 +97,7 @@ Partial Class frmSistema
         '
         'FileMenu
         '
-        Me.FileMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripSeparator5, Me.ExitToolStripMenuItem})
+        Me.FileMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BloquearToolStripMenuItem, Me.ToolStripSeparator5, Me.ExitToolStripMenuItem})
         Me.FileMenu.ImageTransparentColor = System.Drawing.SystemColors.ActiveBorder
         Me.FileMenu.Name = "FileMenu"
         Me.FileMenu.Size = New System.Drawing.Size(62, 20)
@@ -105,12 +106,12 @@ Partial Class frmSistema
         'ToolStripSeparator5
         '
         Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-        Me.ToolStripSeparator5.Size = New System.Drawing.Size(106, 6)
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(149, 6)
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(109, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.ExitToolStripMenuItem.Text = "E&xit"
         '
         'EditMenu
@@ -240,7 +241,7 @@ Partial Class frmSistema
         'mLogsUsuarios
         '
         Me.mLogsUsuarios.Name = "mLogsUsuarios"
-        Me.mLogsUsuarios.Size = New System.Drawing.Size(173, 22)
+        Me.mLogsUsuarios.Size = New System.Drawing.Size(251, 22)
         Me.mLogsUsuarios.Text = "Logs"
         '
         'mPermisosUsuarios
@@ -269,7 +270,7 @@ Partial Class frmSistema
         'mListadoEquipos
         '
         Me.mListadoEquipos.Name = "mListadoEquipos"
-        Me.mListadoEquipos.Size = New System.Drawing.Size(173, 22)
+        Me.mListadoEquipos.Size = New System.Drawing.Size(250, 22)
         Me.mListadoEquipos.Text = "Listado"
         '
         'LogsToolStripMenuItem
@@ -489,6 +490,14 @@ Partial Class frmSistema
         Me.ToolStripStatusLabel.Size = New System.Drawing.Size(44, 17)
         Me.ToolStripStatusLabel.Text = "Status"
         '
+        'BloquearToolStripMenuItem
+        '
+        Me.BloquearToolStripMenuItem.Name = "BloquearToolStripMenuItem"
+        Me.BloquearToolStripMenuItem.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Shift) _
+                    Or System.Windows.Forms.Keys.B), System.Windows.Forms.Keys)
+        Me.BloquearToolStripMenuItem.Size = New System.Drawing.Size(216, 22)
+        Me.BloquearToolStripMenuItem.Text = "Bloquear"
+        '
         'frmSistema
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
@@ -569,5 +578,6 @@ Partial Class frmSistema
     Friend WithEvents mAbmGrupos As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem1 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents mConsultaLogs As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents BloquearToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

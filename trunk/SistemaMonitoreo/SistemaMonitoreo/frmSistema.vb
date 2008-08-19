@@ -218,4 +218,12 @@ Public Class frmSistema
     Private Sub ToolsMenu_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolsMenu.Click
 
     End Sub
+
+    Private Sub BloquearToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BloquearToolStripMenuItem.Click
+        Me.Dispose()
+        Me.Close()
+        Dim login As New frmLogin()
+        login.ShowDialog()
+
+    End Sub
 End Class
