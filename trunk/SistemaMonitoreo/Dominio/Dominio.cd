@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Tahoma" Size="9.75" />
+  <Class Name="Dominio.Equipo">
+    <Position X="12.25" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Equipo.vb</FileName>
+      <HashCode>AAACEAAAAAAAIACMAAAAAAAAoAAAAAAAAAAAAAAAUgY=</HashCode>
+    </TypeIdentifier>
+    <NestedTypes>
+      <Enum Name="Dominio.Equipo.IdxCampos" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Equipo.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+  </Class>
+  <Class Name="Dominio.Grupo">
+    <Position X="3" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Grupo.vb</FileName>
+      <HashCode>AAAAEACAEAAAMACEgAAAAAAAAAAAAAAAAAQCAAhAUgQ=</HashCode>
+    </TypeIdentifier>
+    <NestedTypes>
+      <Enum Name="Dominio.Grupo.IdxCampos" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Grupo.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+  </Class>
+  <Class Name="Dominio.Log">
+    <Position X="7.75" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <FileName>Log.vb</FileName>
+      <HashCode>AQBAAAAAAASEkAAAAIQQAAAAAGAAAABBAogAJAwASAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.LogConEvento">
+    <Position X="10" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>LogConEvento.vb</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.Sistema">
+    <Position X="5.25" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>Sistema.vb</FileName>
+      <HashCode>AIQAAAIAAAAACJIBAAECAAABBAIAEAAlAAAACAAAIBA=</HashCode>
+    </TypeIdentifier>
+    <NestedTypes>
+      <Enum Name="Dominio.Sistema.LOGS" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Sistema.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="Dominio.Sistema.IMPORTAR_USUARIOS" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Sistema.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="Dominio.Sistema.acceso" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Sistema.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+  </Class>
+  <Class Name="Dominio.TipoEvento">
+    <Position X="10" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>TipoEvento.vb</FileName>
+      <HashCode>AAACEACAAAAAIAAACAAAgAAAAAAAAQAAAIAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dominio.Usuario">
+    <Position X="0.5" Y="2.5" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>Usuario.vb</FileName>
+      <HashCode>AAACGAAQAAAAoECEAAAAAQAAAAAAAAAAAABAAAgAUgQ=</HashCode>
+    </TypeIdentifier>
+    <NestedTypes>
+      <Enum Name="Dominio.Usuario.IdxCampos" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Usuario.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+  </Class>
+  <Class Name="Dominio.utilsArchivos">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>utilsArchivos.vb</FileName>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAIAAAAABAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+</ClassDiagram>
