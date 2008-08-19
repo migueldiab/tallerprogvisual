@@ -10,7 +10,6 @@ Public Class frmPermisosUsuarios
 
     Private Sub frmPermisosUsuarios_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         cargarListaUsuarios(Sistema.listaUsuarios())
-        cargarListaGrupos(Sistema.listaGrupos())
     End Sub
 
     Public Sub cargarListaUsuarios(ByVal listaUsuarios As ArrayList)
@@ -65,17 +64,20 @@ Public Class frmPermisosUsuarios
         txtNombre.Text = ""
         txtID.Text = ""
         txtNombre.Enabled = True
+        lstAsignados.Items.Clear()
+        lstGrupos.Items.Clear()
+
     End Sub
 
     Private Sub btnGuardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGuardar.Click
         If controlarDatos() Then
-            Dim uUsuario As New Usuario(txtID.Text.ToString)
+            Dim uUsuario As New Usuario(txtNombre.Text.ToString)
             Dim Permisos As New ArrayList
             uUsuario.id = txtID.Text
             uUsuario.nombre = txtNombre.Text
             For Each unGrupo As Grupo In lstAsignados.Items
-                If unGrupo.nombre = SistemaMonitoreo.ADMINISTRADOR And lstAsignados.Items.Count > 1 Then
-                    MsgBox("El usuario posee permisos de " & SistemaMonitoreo.ADMINISTRADOR & " entre otros, solo el administrador será guardado", MsgBoxStyle.Exclamation, "Error")
+                If unGrupo.nombre = Sistema.ADMINISTRADOR And lstAsignados.Items.Count > 1 Then
+                    MsgBox("El usuario posee permisos de " & Sistema.ADMINISTRADOR & " entre otros, solo el administrador será guardado", MsgBoxStyle.Exclamation, "Error")
                     Permisos.Clear()
                     Permisos.Add(unGrupo)
                     Exit For
@@ -112,8 +114,8 @@ Public Class frmPermisosUsuarios
             MsgBox("Seleccione un grupo para ser asignado")
         Else
             Dim unGrupo As Grupo = CType(lstGrupos.SelectedItem, Grupo)
-            If unGrupo.nombre = SistemaMonitoreo.ADMINISTRADOR Then
-                If MsgBox("Al agregar el grupo " & SistemaMonitoreo.ADMINISTRADOR & ", todos los demás serán eliminados, continuar?" _
+            If unGrupo.nombre = Sistema.ADMINISTRADOR Then
+                If MsgBox("Al agregar el grupo " & Sistema.ADMINISTRADOR & ", todos los demás serán eliminados, continuar?" _
                     , MsgBoxStyle.OkCancel) = MsgBoxResult.Ok Then
                     lstAsignados.Items.Clear()
                     lstAsignados.Items.Add(lstGrupos.SelectedItem)
@@ -136,5 +138,9 @@ Public Class frmPermisosUsuarios
             lstAsignados.Items.Remove(lstAsignados.SelectedItem)
         End If
 
+    End Sub
+
+    Private Sub btnCerrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
+        Me.Close()
     End Sub
 End Class

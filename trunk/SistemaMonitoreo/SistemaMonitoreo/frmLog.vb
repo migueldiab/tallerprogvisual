@@ -90,4 +90,8 @@ Public Class frmLog
     Private Sub frmLog_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         BackgroundWorker1.WorkerReportsProgress = True
     End Sub
+
+    Private Sub btnCerrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
+        Me.Close()
+    End Sub
 End Class

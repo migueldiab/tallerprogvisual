@@ -9,7 +9,7 @@ Public Class pPertenenciaUsuario : Inherits Persistente
         Dim drc As DataRowCollection
         Try
             query = "SELECT * FROM grupos " _
-                    & " WHERE id = (SELECT idGrupo from PertenenciaGrupos where idUsuario = " & idUsuario & ");"
+                    & " WHERE id IN (SELECT idGrupo from PertenenciaGrupos where idUsuario = " & idUsuario & ");"
             Debug.Print(query)
 
             drc = EjecutarSQL(query).Tables(0).Rows

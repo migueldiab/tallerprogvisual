@@ -10,6 +10,7 @@ Public Class frmAbmGrupo
 
     Private Sub frmAbmGrupo_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         cargarListaGrupos(Sistema.listaGrupos())
+        cargarListaLogs()
     End Sub
 
     Public Sub cargarListaGrupos(ByVal listaGrupos As ArrayList)
@@ -21,7 +22,14 @@ Public Class frmAbmGrupo
             lstGrupos.Items.Add(unGrupo)
         Next
     End Sub
+    Public Sub cargarListaLogs()
+        
+        For Each tipoLog As Sistema.LOGS In [Enum].GetValues(GetType(Sistema.LOGS))
+            Dim strMsgType As String = tipoLog.ToString()
+            selLogs.Items.Add(strMsgType)
+        Next
 
+    End Sub
     Private Sub lstGrupos_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lstGrupos.SelectedIndexChanged
         If (lstGrupos.SelectedItems.Count <> 0) Then
             mostrarDatos(CType(lstGrupos.SelectedItems.Item(0), Grupo))
@@ -34,10 +42,11 @@ Public Class frmAbmGrupo
     Private Sub mostrarDatos(ByVal grupo As Grupo)
         txtNombre.Text = grupo.nombre.ToString
         txtID.Text = grupo.id.ToString
-        chkUsuariosRead.Checked = (grupo.usuarios.IndexOf("R") <> -1)
-        chkUsuariosWrite.Checked = (grupo.usuarios.IndexOf("W") <> -1)
-        chkEquiposRead.Checked = (grupo.equipos.IndexOf("R") <> -1)
-        chkEquiposWrite.Checked = (grupo.equipos.IndexOf("W") <> -1)
+        chkUsuariosRead.Checked = (grupo.usuarios.IndexOf(sistema.LECTURA) <> -1)
+        chkUsuariosWrite.Checked = (grupo.usuarios.IndexOf(Sistema.ESCRITURA) <> -1)
+        chkEquiposRead.Checked = (grupo.equipos.IndexOf(Sistema.LECTURA) <> -1)
+        chkEquiposWrite.Checked = (grupo.equipos.IndexOf(Sistema.ESCRITURA) <> -1)
+        selLogs.SelectedIndex = grupo.logs
         If grupo.id <> "" Then
             txtNombre.Enabled = False
         Else
@@ -52,6 +61,7 @@ Public Class frmAbmGrupo
         chkUsuariosWrite.Checked = False
         chkEquiposRead.Checked = False
         chkEquiposWrite.Checked = False
+        selLogs.SelectedIndex = -1
         txtNombre.Enabled = True
     End Sub
 
@@ -62,20 +72,21 @@ Public Class frmAbmGrupo
             uGrupo.nombre = txtNombre.Text
             permisos = ""
             If chkUsuariosRead.Checked Then
-                permisos = permisos & "R"
+                permisos = permisos & Sistema.LECTURA
             End If
             If chkUsuariosWrite.Checked Then
-                permisos = permisos & "W"
+                permisos = permisos & Sistema.ESCRITURA
             End If
             uGrupo.usuarios = permisos
             permisos = ""
             If chkEquiposRead.Checked Then
-                permisos = permisos & "R"
+                permisos = permisos & Sistema.LECTURA
             End If
             If chkEquiposWrite.Checked Then
-                permisos = permisos & "W"
+                permisos = permisos & Sistema.ESCRITURA
             End If
             uGrupo.equipos = permisos
+            uGrupo.logs = selLogs.SelectedIndex
             uGrupo.guardar()
             txtFiltroGrupos.Text = ""
             limpiarDatos()
@@ -109,6 +120,11 @@ Public Class frmAbmGrupo
             'MsgBox("No existe el Grupo", MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, "Error")
             'MsgBox("No se puede borrar el registro", MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, "Error")
         End If
+
+    End Sub
+
+    Private Sub btnCerrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
+        Me.Close()
 
     End Sub
 End Class

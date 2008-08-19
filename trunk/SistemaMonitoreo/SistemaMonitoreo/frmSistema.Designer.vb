@@ -212,7 +212,7 @@ Partial Class frmSistema
         Me.ToolsMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UsuariosToolStripMenuItem, Me.EquiposToolStripMenuItem, Me.LogsToolStripMenuItem, Me.GruposToolStripMenuItem, Me.ToolStripMenuItem1, Me.OptionsToolStripMenuItem})
         Me.ToolsMenu.Name = "ToolsMenu"
         Me.ToolsMenu.Size = New System.Drawing.Size(97, 20)
-        Me.ToolsMenu.Text = "Herramientas"
+        Me.ToolsMenu.Text = "&Herramientas"
         '
         'UsuariosToolStripMenuItem
         '
@@ -224,13 +224,17 @@ Partial Class frmSistema
         'mAbmUsuarios
         '
         Me.mAbmUsuarios.Name = "mAbmUsuarios"
-        Me.mAbmUsuarios.Size = New System.Drawing.Size(173, 22)
+        Me.mAbmUsuarios.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Shift) _
+                    Or System.Windows.Forms.Keys.U), System.Windows.Forms.Keys)
+        Me.mAbmUsuarios.Size = New System.Drawing.Size(251, 22)
         Me.mAbmUsuarios.Text = "Administración"
         '
         'mImportarUsuarios
         '
         Me.mImportarUsuarios.Name = "mImportarUsuarios"
-        Me.mImportarUsuarios.Size = New System.Drawing.Size(173, 22)
+        Me.mImportarUsuarios.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Shift) _
+                    Or System.Windows.Forms.Keys.I), System.Windows.Forms.Keys)
+        Me.mImportarUsuarios.Size = New System.Drawing.Size(251, 22)
         Me.mImportarUsuarios.Text = "Importar"
         '
         'mLogsUsuarios
@@ -242,7 +246,9 @@ Partial Class frmSistema
         'mPermisosUsuarios
         '
         Me.mPermisosUsuarios.Name = "mPermisosUsuarios"
-        Me.mPermisosUsuarios.Size = New System.Drawing.Size(173, 22)
+        Me.mPermisosUsuarios.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Shift) _
+                    Or System.Windows.Forms.Keys.P), System.Windows.Forms.Keys)
+        Me.mPermisosUsuarios.Size = New System.Drawing.Size(251, 22)
         Me.mPermisosUsuarios.Text = "Permisos"
         '
         'EquiposToolStripMenuItem
@@ -255,7 +261,9 @@ Partial Class frmSistema
         'mAbmEquipos
         '
         Me.mAbmEquipos.Name = "mAbmEquipos"
-        Me.mAbmEquipos.Size = New System.Drawing.Size(173, 22)
+        Me.mAbmEquipos.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Shift) _
+                    Or System.Windows.Forms.Keys.E), System.Windows.Forms.Keys)
+        Me.mAbmEquipos.Size = New System.Drawing.Size(250, 22)
         Me.mAbmEquipos.Text = "Administración"
         '
         'mListadoEquipos
@@ -274,13 +282,17 @@ Partial Class frmSistema
         'mImportarLogs
         '
         Me.mImportarLogs.Name = "mImportarLogs"
-        Me.mImportarLogs.Size = New System.Drawing.Size(186, 22)
+        Me.mImportarLogs.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Shift) _
+                    Or System.Windows.Forms.Keys.L), System.Windows.Forms.Keys)
+        Me.mImportarLogs.Size = New System.Drawing.Size(264, 22)
         Me.mImportarLogs.Text = "Importar Logs"
         '
         'mConsultaLogs
         '
         Me.mConsultaLogs.Name = "mConsultaLogs"
-        Me.mConsultaLogs.Size = New System.Drawing.Size(186, 22)
+        Me.mConsultaLogs.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Shift) _
+                    Or System.Windows.Forms.Keys.C), System.Windows.Forms.Keys)
+        Me.mConsultaLogs.Size = New System.Drawing.Size(264, 22)
         Me.mConsultaLogs.Text = "Consulta de Logs"
         '
         'GruposToolStripMenuItem
@@ -293,7 +305,9 @@ Partial Class frmSistema
         'mAbmGrupos
         '
         Me.mAbmGrupos.Name = "mAbmGrupos"
-        Me.mAbmGrupos.Size = New System.Drawing.Size(173, 22)
+        Me.mAbmGrupos.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Shift) _
+                    Or System.Windows.Forms.Keys.G), System.Windows.Forms.Keys)
+        Me.mAbmGrupos.Size = New System.Drawing.Size(251, 22)
         Me.mAbmGrupos.Text = "Administración"
         '
         'ToolStripMenuItem1

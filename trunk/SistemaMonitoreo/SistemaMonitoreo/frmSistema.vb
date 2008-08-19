@@ -11,13 +11,13 @@ Public Class frmSistema
     Dim permisosUsuario As System.Windows.Forms.Form
     Dim logUsuarios As System.Windows.Forms.Form
     Dim consultaLogs As System.Windows.Forms.Form
-    Dim usuarioLogueado As Usuario
+
 
     Public Sub New(ByVal Usuario As Usuario)
         ' Llamada necesaria para el Diseñador de Windows Forms.
 
         InitializeComponent()
-        usuarioLogueado = Usuario
+        Sistema.usuarioLogueado = Usuario
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
     End Sub
 
@@ -97,27 +97,35 @@ Public Class frmSistema
     End Sub
 
     Private Sub abmUsuariosMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mAbmUsuarios.Click
-        If abmUsuarios Is Nothing Then
-            abmUsuarios = New frmAbmUsuario(Me)
-        ElseIf abmUsuarios.IsDisposed Then
-            abmUsuarios = New frmAbmUsuario(Me)
+        If Sistema.autentica(Sistema.usuarioLogueado, Sistema.acceso.USUARIOS_CONSULTA) Then
+            If abmUsuarios Is Nothing Then
+                abmUsuarios = New frmAbmUsuario(Me)
+            ElseIf abmUsuarios.IsDisposed Then
+                abmUsuarios = New frmAbmUsuario(Me)
+            End If
+            abmUsuarios.Show()
+            abmUsuarios.BringToFront()
+            abmUsuarios.Left = 0
+            abmUsuarios.Top = 0
+        Else
+            MsgBox("Permisos insuficientes para realizar operación", MsgBoxStyle.Information, "Atención")
         End If
-        abmUsuarios.Show()
-        abmUsuarios.BringToFront()
-        abmUsuarios.Left = 0
-        abmUsuarios.Top = 0
     End Sub
 
     Private Sub importarUsuariosMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mImportarUsuarios.Click
-        If importarUsuarios Is Nothing Then
-            importarUsuarios = New frmImportarUsuarios(Me)
-        ElseIf importarUsuarios.IsDisposed Then
-            importarUsuarios = New frmImportarUsuarios(Me)
+        If Sistema.autentica(Sistema.usuarioLogueado, Sistema.acceso.USUARIOS_IMPORTAR) Then
+            If importarUsuarios Is Nothing Then
+                importarUsuarios = New frmImportarUsuarios(Me)
+            ElseIf importarUsuarios.IsDisposed Then
+                importarUsuarios = New frmImportarUsuarios(Me)
+            End If
+            importarUsuarios.Show()
+            importarUsuarios.BringToFront()
+            importarUsuarios.Left = 0
+            importarUsuarios.Top = 0
+        Else
+            MsgBox("Permisos insuficientes para realizar operación", MsgBoxStyle.Information, "Atención")
         End If
-        importarUsuarios.Show()
-        importarUsuarios.BringToFront()
-        importarUsuarios.Left = 0
-        importarUsuarios.Top = 0
     End Sub
 
     Private Sub logUsuariosMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mLogsUsuarios.Click
@@ -145,15 +153,19 @@ Public Class frmSistema
     End Sub
 
     Private Sub abmEquiposMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mAbmEquipos.Click
-        If abmEquipos Is Nothing Then
-            abmEquipos = New frmAbmEquipo(Me)
-        ElseIf abmEquipos.IsDisposed Then
-            abmEquipos = New frmAbmEquipo(Me)
+        If Sistema.autentica(Sistema.usuarioLogueado, Sistema.acceso.EQUIPOS_CONSULTA) Then
+            If abmEquipos Is Nothing Then
+                abmEquipos = New frmAbmEquipo(Me)
+            ElseIf abmEquipos.IsDisposed Then
+                abmEquipos = New frmAbmEquipo(Me)
+            End If
+            abmEquipos.Show()
+            abmEquipos.BringToFront()
+            abmEquipos.Left = 0
+            abmEquipos.Top = 0
+        Else
+            MsgBox("Permisos insuficientes para realizar operación", MsgBoxStyle.Information, "Atención")
         End If
-        abmEquipos.Show()
-        abmEquipos.BringToFront()
-        abmEquipos.Left = 0
-        abmEquipos.Top = 0
     End Sub
 
     Private Sub listadoEquiposMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mListadoEquipos.Click
@@ -182,19 +194,28 @@ Public Class frmSistema
 
 
     Private Sub mConsultaLogs_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mConsultaLogs.Click
-        If consultaLogs Is Nothing Then
-            consultaLogs = New frmConsultaLog(Me)
-        ElseIf consultaLogs.IsDisposed Then
-            consultaLogs = New frmConsultaLog(Me)
+        If Sistema.autentica(Sistema.usuarioLogueado, Sistema.acceso.LOGS_ADMIN) Or _
+        Sistema.autentica(Sistema.usuarioLogueado, Sistema.acceso.LOGS_APLICACIONES) Or _
+        Sistema.autentica(Sistema.usuarioLogueado, Sistema.acceso.LOGS_APLICACIONES_SISTEMA) Then
+            If consultaLogs Is Nothing Then
+                consultaLogs = New frmConsultaLog(Me)
+            ElseIf consultaLogs.IsDisposed Then
+                consultaLogs = New frmConsultaLog(Me)
+            End If
+            consultaLogs.Show()
+            consultaLogs.BringToFront()
+            consultaLogs.Left = 0
+            consultaLogs.Top = 0
+        Else
+            MsgBox("Permisos insuficientes para realizar operación", MsgBoxStyle.Information, "Atención")
         End If
-        consultaLogs.Show()
-        consultaLogs.BringToFront()
-        consultaLogs.Left = 0
-        consultaLogs.Top = 0
-
     End Sub
 
     Private Sub frmSistema_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+    End Sub
+
+    Private Sub ToolsMenu_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolsMenu.Click
 
     End Sub
 End Class

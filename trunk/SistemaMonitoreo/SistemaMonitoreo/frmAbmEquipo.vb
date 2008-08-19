@@ -9,6 +9,8 @@ Public Class frmAbmEquipo
     End Sub
 
     Private Sub frmAbmEquipo_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'DBDataSet.Grupos' table. You can move, or remove it, as needed.
+        Me.GruposTableAdapter.Fill(Me.DBDataSet.Grupos)
         cargarListaEquipos(Sistema.listaEquipos())
     End Sub
 
@@ -54,19 +56,24 @@ Public Class frmAbmEquipo
     End Sub
 
     Private Sub btnGuardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGuardar.Click
-        If controlarDatos() Then
-            Dim uEquipo As New Equipo(txtID.Text.ToString)
-            uEquipo.nombre = txtNombre.Text
-            uEquipo.destino = txtDestino.Text
-            uEquipo.dominio = txtDominio.Text
-            uEquipo.IP = txtIP.Text
-            uEquipo.guardar()
-            txtFiltroEquipos.Text = ""
-            limpiarDatos()
-            cargarListaEquipos(Sistema.listaEquipos())
+        If Sistema.autentica(Sistema.usuarioLogueado, Sistema.acceso.EQUIPOS_ALTA) Then
+            If controlarDatos() Then
+                Dim uEquipo As New Equipo(txtID.Text.ToString)
+                uEquipo.nombre = txtNombre.Text
+                uEquipo.destino = txtDestino.Text
+                uEquipo.dominio = txtDominio.Text
+                uEquipo.IP = txtIP.Text
+                uEquipo.guardar()
+                txtFiltroEquipos.Text = ""
+                limpiarDatos()
+                cargarListaEquipos(Sistema.listaEquipos())
+            Else
+                MsgBox("Datos incorrectos, imposible guardar equipo", MsgBoxStyle.Critical, "Error")
+            End If
         Else
-            MsgBox("Datos incorrectos, imposible guardar equipo", MsgBoxStyle.Critical, "Error")
+            MsgBox("Permisos insuficientes para realizar operación", MsgBoxStyle.Information, "Atención")
         End If
+
 
 
     End Sub
@@ -85,14 +92,26 @@ Public Class frmAbmEquipo
     End Function
 
     Private Sub txtEliminar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtEliminar.Click
-        If MsgBox("Seguro que desea eliminar el equipo?", MsgBoxStyle.Question Or MsgBoxStyle.YesNo, "Borrar Equipo") = MsgBoxResult.Yes Then
-            Dim uEquipo As New Equipo(txtID.Text.ToString)
-            uEquipo.borrar()
-            Me.cargarListaEquipos(Sistema.listaEquipos())
-            Me.limpiarDatos()
-            'MsgBox("No existe el Equipo", MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, "Error")
-            'MsgBox("No se puede borrar el registro", MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, "Error")
+        If Sistema.autentica(Sistema.usuarioLogueado, Sistema.acceso.EQUIPOS_ALTA) Then
+            If MsgBox("Seguro que desea eliminar el equipo?", MsgBoxStyle.Question Or MsgBoxStyle.YesNo, "Borrar Equipo") = MsgBoxResult.Yes Then
+                Dim uEquipo As New Equipo(txtID.Text.ToString)
+                uEquipo.borrar()
+                Me.cargarListaEquipos(Sistema.listaEquipos())
+                Me.limpiarDatos()
+                'MsgBox("No existe el Equipo", MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, "Error")
+                'MsgBox("No se puede borrar el registro", MsgBoxStyle.Critical Or MsgBoxStyle.OkOnly, "Error")
+            End If
+        Else
+            MsgBox("Permisos insuficientes para realizar operación", MsgBoxStyle.Information, "Atención")
         End If
 
+    End Sub
+
+    Private Sub txtDestino_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtDestino.TextChanged
+
+    End Sub
+
+    Private Sub btnCerrar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCerrar.Click
+        Me.Close()
     End Sub
 End Class

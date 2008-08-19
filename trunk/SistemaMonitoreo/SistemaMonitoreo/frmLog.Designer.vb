@@ -24,14 +24,15 @@ Partial Class frmLog
         Me.Progress = New System.Windows.Forms.ProgressBar
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker
         Me.lblLog = New System.Windows.Forms.Label
+        Me.btnCerrar = New System.Windows.Forms.Button
         Me.SuspendLayout()
         '
         'btnProcesar
         '
-        Me.btnProcesar.Location = New System.Drawing.Point(281, 13)
+        Me.btnProcesar.Location = New System.Drawing.Point(197, 9)
         Me.btnProcesar.Margin = New System.Windows.Forms.Padding(4)
         Me.btnProcesar.Name = "btnProcesar"
-        Me.btnProcesar.Size = New System.Drawing.Size(165, 28)
+        Me.btnProcesar.Size = New System.Drawing.Size(127, 32)
         Me.btnProcesar.TabIndex = 0
         Me.btnProcesar.Text = "Procesar"
         Me.btnProcesar.UseVisualStyleBackColor = True
@@ -39,7 +40,7 @@ Partial Class frmLog
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(13, 9)
+        Me.Label1.Location = New System.Drawing.Point(13, 16)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(167, 18)
@@ -48,9 +49,9 @@ Partial Class frmLog
         '
         'Progress
         '
-        Me.Progress.Location = New System.Drawing.Point(38, 67)
+        Me.Progress.Location = New System.Drawing.Point(12, 61)
         Me.Progress.Name = "Progress"
-        Me.Progress.Size = New System.Drawing.Size(379, 23)
+        Me.Progress.Size = New System.Drawing.Size(447, 23)
         Me.Progress.TabIndex = 3
         '
         'BackgroundWorker1
@@ -65,11 +66,22 @@ Partial Class frmLog
         Me.lblLog.Size = New System.Drawing.Size(0, 18)
         Me.lblLog.TabIndex = 4
         '
+        'btnCerrar
+        '
+        Me.btnCerrar.Location = New System.Drawing.Point(332, 9)
+        Me.btnCerrar.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnCerrar.Name = "btnCerrar"
+        Me.btnCerrar.Size = New System.Drawing.Size(127, 32)
+        Me.btnCerrar.TabIndex = 18
+        Me.btnCerrar.Text = "Cerrar"
+        Me.btnCerrar.UseVisualStyleBackColor = True
+        '
         'frmLog
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(459, 140)
+        Me.ClientSize = New System.Drawing.Size(469, 103)
+        Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.lblLog)
         Me.Controls.Add(Me.Progress)
         Me.Controls.Add(Me.Label1)
@@ -88,4 +100,5 @@ Partial Class frmLog
     Friend WithEvents Progress As System.Windows.Forms.ProgressBar
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents lblLog As System.Windows.Forms.Label
+    Friend WithEvents btnCerrar As System.Windows.Forms.Button
 End Class

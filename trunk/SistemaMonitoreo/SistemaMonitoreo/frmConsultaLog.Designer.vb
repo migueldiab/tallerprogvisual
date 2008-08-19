@@ -28,11 +28,12 @@ Partial Class frmConsultaLog
         Me.Label2 = New System.Windows.Forms.Label
         Me.chkTipo = New System.Windows.Forms.CheckBox
         Me.chkFecha = New System.Windows.Forms.CheckBox
+        Me.btnCerrar = New System.Windows.Forms.Button
         Me.SuspendLayout()
         '
         'btnVerReporte
         '
-        Me.btnVerReporte.Location = New System.Drawing.Point(641, 37)
+        Me.btnVerReporte.Location = New System.Drawing.Point(692, 9)
         Me.btnVerReporte.Margin = New System.Windows.Forms.Padding(4)
         Me.btnVerReporte.Name = "btnVerReporte"
         Me.btnVerReporte.Size = New System.Drawing.Size(127, 32)
@@ -75,6 +76,7 @@ Partial Class frmConsultaLog
         Me.rdbAplicacion.TabStop = True
         Me.rdbAplicacion.Text = "Aplicacion"
         Me.rdbAplicacion.UseVisualStyleBackColor = True
+        Me.rdbAplicacion.Visible = False
         '
         'rdbSeguridad
         '
@@ -86,6 +88,7 @@ Partial Class frmConsultaLog
         Me.rdbSeguridad.TabStop = True
         Me.rdbSeguridad.Text = "Seguridad"
         Me.rdbSeguridad.UseVisualStyleBackColor = True
+        Me.rdbSeguridad.Visible = False
         '
         'rdbSistema
         '
@@ -97,6 +100,7 @@ Partial Class frmConsultaLog
         Me.rdbSistema.TabStop = True
         Me.rdbSistema.Text = "Sistema"
         Me.rdbSistema.UseVisualStyleBackColor = True
+        Me.rdbSistema.Visible = False
         '
         'Label2
         '
@@ -127,11 +131,22 @@ Partial Class frmConsultaLog
         Me.chkFecha.Text = "Fecha"
         Me.chkFecha.UseVisualStyleBackColor = True
         '
+        'btnCerrar
+        '
+        Me.btnCerrar.Location = New System.Drawing.Point(692, 49)
+        Me.btnCerrar.Margin = New System.Windows.Forms.Padding(4)
+        Me.btnCerrar.Name = "btnCerrar"
+        Me.btnCerrar.Size = New System.Drawing.Size(127, 32)
+        Me.btnCerrar.TabIndex = 17
+        Me.btnCerrar.Text = "Cerrar"
+        Me.btnCerrar.UseVisualStyleBackColor = True
+        '
         'frmConsultaLog
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(832, 474)
+        Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.chkFecha)
         Me.Controls.Add(Me.chkTipo)
         Me.Controls.Add(Me.Label2)
@@ -159,4 +174,5 @@ Partial Class frmConsultaLog
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents chkTipo As System.Windows.Forms.CheckBox
     Friend WithEvents chkFecha As System.Windows.Forms.CheckBox
+    Friend WithEvents btnCerrar As System.Windows.Forms.Button
 End Class
