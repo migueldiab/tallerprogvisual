@@ -155,14 +155,24 @@ Public Class Usuario
             Return False
         End If
     End Function
+    Public Function borrarPermisos() As Boolean
+        Dim pPermisos As New pPertenenciaUsuario
+        pPermisos.borrarPermisos(Me.id)
+        Return True
+    End Function
     ' Función   : Elimina un usuario de la BD
     ' Entrada   : 
     ' Salida    : 
     ' Notas     :
     Public Function borrar() As Boolean
         Dim pUsuario As New pUsuario
+        Dim pPermisos As New pPertenenciaUsuario
         If pUsuario.Borrar(Me.id) = Persistente.errorBD.ok Then
-            Return True
+            If pPermisos.borrarPermisos(Me.id) = Persistente.errorBD.ok Then
+                Return True
+            Else
+                Return False
+            End If
         Else
             Return False
         End If
