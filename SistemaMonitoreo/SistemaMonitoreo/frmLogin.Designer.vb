@@ -87,7 +87,6 @@ Partial Class frmLogin
         Me.txtContrasenia.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtContrasenia.Size = New System.Drawing.Size(328, 26)
         Me.txtContrasenia.TabIndex = 3
-        Me.txtContrasenia.Text = "Administrador"
         '
         'btnOK
         '

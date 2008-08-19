@@ -19,8 +19,9 @@ Public Class frmLogin
             If Usuario.login(txtContrasenia.Text) Then
                 Dim ventanaPrincipal As New frmSistema(Usuario)
                 ' Llamada a Ventana Principal
-                ventanaPrincipal.ShowDialog()
+                Me.Dispose()
                 Me.Close()
+                ventanaPrincipal.ShowDialog()
             Else
                 lblError.Text = "La contraseña no es válida"
                 lblError.Visible = True
