@@ -90,6 +90,7 @@
     </Compile>
     <Compile Include="TipoEvento.vb" />
     <Compile Include="Usuario.vb" />
+    <Compile Include="utilsArchivos.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">

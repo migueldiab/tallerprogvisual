@@ -104,7 +104,6 @@ Public Class Log
 
 
 #Region "Metodos Persistencia"
-
     Public Function Guardar() As Boolean
         Dim unPLog As New pLog
         If (unPLog.Guardar(Me.ToDataSet) = Persistente.errorBD.ok) Then
@@ -124,7 +123,7 @@ Public Class Log
     End Function
 #End Region
 
-#Region "from y to datarow"
+#Region "From/To DataSet"
     Sub FromDataSet(ByVal objeto As DataSet)
         Dim unDSLog As dsLog
         Dim unaFila As dsLog.RegistroLogsRow = Nothing
@@ -140,7 +139,7 @@ Public Class Log
                 Me.Category = unaFila.Category
                 Me.OrigenEvento = unaFila.OrigenEvento
                 Me.EventoCapturado = unaFila.EventoCapturado
-              
+
             End If
         Catch ex As Exception
             Throw ex

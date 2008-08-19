@@ -2,15 +2,15 @@ Imports System.Windows.Forms
 Imports Dominio
 
 Public Class frmSistema
-    Dim importarLogs As System.Windows.Forms.Form
-    Dim abmEquipos As System.Windows.Forms.Form
-    Dim listadoEquipos As System.Windows.Forms.Form
-    Dim abmGrupos As System.Windows.Forms.Form
-    Dim abmUsuarios As System.Windows.Forms.Form
-    Dim importarUsuarios As System.Windows.Forms.Form
-    Dim permisosUsuario As System.Windows.Forms.Form
-    Dim logUsuarios As System.Windows.Forms.Form
-    Dim consultaLogs As System.Windows.Forms.Form
+    Public importarLogs As System.Windows.Forms.Form
+    Public abmEquipos As System.Windows.Forms.Form
+    Public listadoEquipos As System.Windows.Forms.Form
+    Public abmGrupos As System.Windows.Forms.Form
+    Public abmUsuarios As System.Windows.Forms.Form
+    Public importarUsuarios As System.Windows.Forms.Form
+    Public permisosUsuario As System.Windows.Forms.Form
+    Public logUsuarios As System.Windows.Forms.Form
+    Public consultaLogs As System.Windows.Forms.Form
 
 
     Public Sub New(ByVal Usuario As Usuario)

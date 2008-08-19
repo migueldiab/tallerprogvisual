@@ -120,42 +120,16 @@ Public Class Usuario
         End If
     End Function
 
-
-
-    ' Función   : Busca un usuario único en base a una ID. Al ser clave primaria retorna una única coincidencia
-    ' Entrada   : ID de Usuario
-    ' Salida    : objeto Usuario
-    ' Notas     :
-    'Public Shared Function buscarUsuario(ByVal id As String) As Usuario
-    '    Dim pUsuario As New pUsuario
-    '    Dim uUsuario As New Usuario
-    '    uUsuario = CType(pUsuario.buscar(CType(id, Object)), Usuario)
-
-    '    Return uUsuario
-    'End Function
-    ' Función   : Devuelve los usuarios cuyo nombre coincida con un filtro parcial
-    ' Entrada   : filter : nombre de usuario a buscar
-    ' Salida    : Lita con todos los usuarios que coincidan con el filtro
-    ' Notas     :
-    'Public Shared Function listaUsuarios(ByVal filter As String) As DataRowCollection
-    '    Dim lista As DataRowCollection
-    '    Dim pUsuario As New pUsuario
-    '    If filter <> "" Then
-    '        lista = pUsuario.buscar(filter)
-    '    Else
-    '        lista = pUsuario.buscar()
-    '    End If
-    '    Return lista
-    'End Function
     ' Función   : Guarda el usuario actual en la BD
     ' Entrada   : 
     ' Salida    : 
     ' Notas     :
     Public Function guardar() As Boolean
-
         Dim pUsuario As New pUsuario
         Dim pPermisos As New pPertenenciaUsuario
-        If (pUsuario.Guardar(Me.ToUsuarioDataSet) = Persistente.errorBD.ok) Then
+        If (pUsuario.Guardar(Me.ToDataSet) = Persistente.errorBD.ok) Then
+            Dim tempUsuario As Usuario = Sistema.buscarUsuario(nombre)
+            Me.id = tempUsuario.id
             If Not Me.grupos Is Nothing Then
                 If (pPermisos.Guardar(Me.ToPertenenciaGrupoDataSet) = Persistente.errorBD.ok) Then
                     Return True
@@ -163,6 +137,20 @@ Public Class Usuario
                     Return False
                 End If
             End If
+        Else
+            Return False
+        End If
+    End Function
+
+    Public Function agregarPermiso(ByVal idGrupo As String) As Boolean
+        Dim pPermisos As New pPertenenciaUsuario
+        Dim ds As New dsPertenenciaGrupo
+        Dim unPermiso As dsPertenenciaGrupo.PertenenciaGruposRow
+        unPermiso = ds.PertenenciaGrupos.NewPertenenciaGruposRow
+        unPermiso.idGrupo = Integer.Parse(idGrupo)
+        unPermiso.idUsuario = Integer.Parse(Me.id)
+        If (pPermisos.Agregar(unPermiso) = Persistente.errorBD.ok) Then
+            Return True
         Else
             Return False
         End If
@@ -180,18 +168,7 @@ Public Class Usuario
         End If
     End Function
 
-    'Public Function ToDataSet() As DataSet
-    '    Dim ds As New dsUsuario
-    '    Dim unaFila As dsUsuario.UsuariosRow
-    '    unaFila = ds.Usuarios.NewUsuariosRow
-    '    unaFila.Id = Integer.Parse(Me.id)
-    '    unaFila.Nombre = Me.nombre
-    '    unaFila.Contrasenia = Me.contrasenia
-    '    ds.Usuarios.Rows.Add(unaFila)
-    '    Return ds
-    'End Function
-
-    Public Function ToUsuarioDataSet() As dsUsuario.UsuariosRow
+    Public Function ToDataSet() As dsUsuario.UsuariosRow
         Dim ds As New dsUsuario
         Dim unaFila As dsUsuario.UsuariosRow
         unaFila = ds.Usuarios.NewUsuariosRow
@@ -201,6 +178,19 @@ Public Class Usuario
         Return unaFila
 
     End Function
+    Public Function FromDataSet(ByVal fila As DataRow) As Usuario
+        Try
+            Dim uUsuario As New Usuario
+            uUsuario.id = fila.Item(IdxCampos.ID).ToString
+            uUsuario.nombre = fila.Item(IdxCampos.NOMBRE).ToString
+            uUsuario.contrasenia = fila.Item(IdxCampos.CONTRASENIA).ToString
+            Return uUsuario
+        Catch ex As Exception
+            Debug.Print("dsUsuario no se pudo convretir a Usuario : " & ex.ToString)
+            Return Nothing
+        End Try
+    End Function
+
     Public Function ToPertenenciaGrupoDataSet() As dsPertenenciaGrupo
         Dim ds As New dsPertenenciaGrupo
         For Each grupo As Grupo In mGrupos
@@ -212,6 +202,7 @@ Public Class Usuario
         Next
         Return ds
     End Function
+
 #End Region
 
 End Class

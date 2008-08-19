@@ -24,6 +24,7 @@ Partial Class frmSistema
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSistema))
         Me.MenuStrip = New System.Windows.Forms.MenuStrip
         Me.FileMenu = New System.Windows.Forms.ToolStripMenuItem
+        Me.BloquearToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.EditMenu = New System.Windows.Forms.ToolStripMenuItem
@@ -78,7 +79,6 @@ Partial Class frmSistema
         Me.StatusStrip = New System.Windows.Forms.StatusStrip
         Me.ToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
-        Me.BloquearToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.MenuStrip.SuspendLayout()
         Me.ToolStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
@@ -103,15 +103,23 @@ Partial Class frmSistema
         Me.FileMenu.Size = New System.Drawing.Size(62, 20)
         Me.FileMenu.Text = "&Archivo"
         '
+        'BloquearToolStripMenuItem
+        '
+        Me.BloquearToolStripMenuItem.Name = "BloquearToolStripMenuItem"
+        Me.BloquearToolStripMenuItem.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Shift) _
+                    Or System.Windows.Forms.Keys.B), System.Windows.Forms.Keys)
+        Me.BloquearToolStripMenuItem.Size = New System.Drawing.Size(216, 22)
+        Me.BloquearToolStripMenuItem.Text = "Bloquear"
+        '
         'ToolStripSeparator5
         '
         Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-        Me.ToolStripSeparator5.Size = New System.Drawing.Size(149, 6)
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(213, 6)
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(216, 22)
         Me.ExitToolStripMenuItem.Text = "E&xit"
         '
         'EditMenu
@@ -489,14 +497,6 @@ Partial Class frmSistema
         Me.ToolStripStatusLabel.Name = "ToolStripStatusLabel"
         Me.ToolStripStatusLabel.Size = New System.Drawing.Size(44, 17)
         Me.ToolStripStatusLabel.Text = "Status"
-        '
-        'BloquearToolStripMenuItem
-        '
-        Me.BloquearToolStripMenuItem.Name = "BloquearToolStripMenuItem"
-        Me.BloquearToolStripMenuItem.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Shift) _
-                    Or System.Windows.Forms.Keys.B), System.Windows.Forms.Keys)
-        Me.BloquearToolStripMenuItem.Size = New System.Drawing.Size(216, 22)
-        Me.BloquearToolStripMenuItem.Text = "Bloquear"
         '
         'frmSistema
         '

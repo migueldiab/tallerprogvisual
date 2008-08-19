@@ -89,31 +89,7 @@ Public Class Grupo
     Public Overrides Function ToString() As String
         Return Me.nombre.ToString() + " (" + Me.id.ToString + ")"
     End Function
-    ' Función   : Busca un grupo único en base a una ID. Al ser clave primaria retorna una única coincidencia
-    ' Entrada   : ID de Grupo
-    ' Salida    : objeto Grupo
-    ' Notas     :
-    Public Shared Function buscarGrupo(ByVal id As String) As Grupo
-        Dim pGrupo As New pGrupo
-        Dim uGrupo As New Grupo
-        uGrupo = CType(pGrupo.buscarPorId(id), Grupo)
 
-        Return uGrupo
-    End Function
-    ' Función   : Devuelve los grupos cuyo nombre coincida con un filtro parcial
-    ' Entrada   : filter : nombre de grupo a buscar
-    ' Salida    : Lita con todos los grupos que coincidan con el filtro
-    ' Notas     :
-    Public Shared Function listaGrupos(ByVal nombre As String) As DataRowCollection
-        Dim lista As DataRowCollection
-        Dim pGrupo As New pGrupo
-        If nombre <> "" Then
-            lista = pGrupo.buscarPorNombre(nombre)
-        Else
-            lista = pGrupo.buscar()
-        End If
-        Return lista
-    End Function
     ' Función   : Guarda el grupo actual en la BD
     ' Entrada   : 
     ' Salida    : 
@@ -140,17 +116,6 @@ Public Class Grupo
         End If
     End Function
 
-    'Public Function ToDataSet() As DataSet
-    '    Dim ds As New dsGrupo
-    '    Dim unaFila As dsGrupo.GruposRow
-    '    unaFila = ds.Grupos.NewGruposRow
-    '    unaFila.Id = Integer.Parse(Me.id)
-    '    unaFila.Nombre = Me.nombre
-    '    unaFila.Contrasenia = Me.contrasenia
-    '    ds.Grupos.Rows.Add(unaFila)
-    '    Return ds
-    'End Function
-
     Public Function ToDataSet() As dsGrupo.GruposRow
         Dim ds As New dsGrupo
         Dim unaFila As dsGrupo.GruposRow
@@ -160,10 +125,21 @@ Public Class Grupo
         unaFila.PermisosSobreEquipos = Me.equipos
         unaFila.PermisosSobreUsuarios = Me.usuarios
         unaFila.PermisosSobreLogs = Me.logs().ToString
-
-
         Return unaFila
-
+    End Function
+    Public Function FromDataSet(ByVal fila As DataRow) As Grupo
+        Try
+            Dim uGrupo As New Grupo
+            uGrupo.id = fila.Item(IdxCampos.ID).ToString
+            uGrupo.nombre = fila.Item(IdxCampos.NOMBRE).ToString
+            uGrupo.equipos = fila.Item(IdxCampos.EQUIPOS).ToString
+            uGrupo.usuarios = fila.Item(IdxCampos.USUARIOS).ToString
+            uGrupo.logs = Integer.Parse(fila.Item(IdxCampos.LOGS).ToString)
+            Return uGrupo
+        Catch ex As Exception
+            Debug.Print("dsGrupo no se pudo convretir a Grupo : " & ex.ToString)
+            Return Nothing
+        End Try
     End Function
     Public Overrides Function Equals(ByVal obj As Object) As Boolean
         Try

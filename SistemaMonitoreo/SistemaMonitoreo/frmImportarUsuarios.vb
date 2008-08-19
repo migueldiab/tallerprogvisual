@@ -53,50 +53,23 @@ Public Class frmImportarUsuarios
 
 
     Private Sub btnImportar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnImportar.Click
-        Dim openFileDialog1 As New OpenFileDialog()
+        Dim abrirArchivo As New OpenFileDialog()
 
-        openFileDialog1.InitialDirectory = "c:\"
-        openFileDialog1.Filter = "Comma Separated Values (*.csv)|*.csv|All files (*.*)|*.*"
-        openFileDialog1.FilterIndex = 2
-        openFileDialog1.RestoreDirectory = True
+        abrirArchivo.InitialDirectory = "c:\"
+        abrirArchivo.Filter = "Comma Separated Values (*.csv)|*.csv|All files (*.*)|*.*"
+        abrirArchivo.FilterIndex = 1
+        abrirArchivo.RestoreDirectory = False
 
-        If openFileDialog1.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
-            Using archivoImportar As New Microsoft.VisualBasic.FileIO.TextFieldParser(openFileDialog1.OpenFile())
-                archivoImportar.TextFieldType = FileIO.FieldType.Delimited
-                archivoImportar.SetDelimiters(",")
-                Dim fila As String()
-                While Not archivoImportar.EndOfData
-                    Try
-                        fila = archivoImportar.ReadFields()
-                        If (fila.Length = Sistema.REGISTOS_IMPORTAR_CSV) Then
-                            Dim uUsuario As New Usuario(txtID.Text.ToString)
-                            If fila.GetValue(0).ToString.Length >= Sistema.LARGO_MIN_USUARIO And fila.GetValue(1).ToString.Length > 4 And fila.GetValue(2).ToString.Length > Sistema.LARGO_MIN_PASSWORD Then
-                                txtNombre.Text = fila.GetValue(0).ToString
-                                txtContrasenia.Text = fila.GetValue(1).ToString
-                                txtRepetir.Text = fila.GetValue(1).ToString
-                                uUsuario.contrasenia = txtContrasenia.Text
-                                uUsuario.nombre = txtNombre.Text
-                                uUsuario.guardar()
-
-                            Else
-                                'Nombres cortos
-                            End If
-                        Else
-                            'no hay 3 campos
-                        End If
-                    Catch ex As Microsoft.VisualBasic.FileIO.MalformedLineException
-                        Debug.Write("Linea " & ex.Message & " no es válida.")
-                    End Try
-                End While
-                cargarListaUsuarios(Sistema.listaUsuarios())
-            End Using
-
+        If abrirArchivo.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
+            Sistema.importarUsuarios(abrirArchivo.OpenFile(), abrirArchivo.FileName & ".log")
+            cargarListaUsuarios(Sistema.listaUsuarios())
         End If
+
 
 
     End Sub
 
-    Private Sub OpenFileDialog1_FileOk(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles OpenFileDialog1.FileOk
+    Private Sub OpenFileDialog1_FileOk(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles abrirArchivo.FileOk
 
     End Sub
 
