@@ -252,6 +252,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Interfaz.cd" />
     <None Include="DBDataSet.xsc">
       <DependentUpon>DBDataSet.xsd</DependentUpon>
     </None>

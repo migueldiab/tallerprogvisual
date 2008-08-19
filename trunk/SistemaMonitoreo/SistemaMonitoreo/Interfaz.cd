@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Tahoma" Size="9.75" />
+  <Class Name="GUI.frmAbmEquipo">
+    <Position X="7" Y="5" Width="2.75" />
+    <TypeIdentifier>
+      <FileName>frmAbmEquipo.vb</FileName>
+      <HashCode>AACAgACIsKCACwAAAACAgJNCCCAhBAAAAgAAAIAwAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="GUI.frmAbmGrupo">
+    <Position X="3.5" Y="5" Width="2.75" />
+    <TypeIdentifier>
+      <FileName>frmAbmGrupo.vb</FileName>
+      <HashCode>IACAQACQMKyACBAIAACQAAEKACEgBAAJAQAAAIAQBAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="GUI.frmAbmUsuario">
+    <Position X="10.25" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>frmAbmUsuario.vb</FileName>
+      <HashCode>AACBAACAMaDACEAAAACABAECACEwBAAAAAAAAIEQAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="GUI.frmConsultaLog">
+    <Position X="0.5" Y="4" Width="2.5" />
+    <TypeIdentifier>
+      <FileName>frmConsultaLog.vb</FileName>
+      <HashCode>ABKGAAAAEKAAEYABIACACACCAAAAAAADAAAAAAAIBAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="GUI.frmImportarUsuarios">
+    <Position X="10.25" Y="5.25" Width="2.75" />
+    <TypeIdentifier>
+      <FileName>frmImportarUsuarios.vb</FileName>
+      <HashCode>AACBAACAMaDAAEACAACABACCACAwACAAAAAAAAEEAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="GUI.frmLog">
+    <Position X="0.5" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <FileName>frmLog.vb</FileName>
+      <HashCode>AACAAYBAEKAAEEAAAACAAAAiAAACAAAAAAAAAACBAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="GUI.frmLog.TipoLogs" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>frmLog.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+  </Class>
+  <Class Name="GUI.frmLogin">
+    <Position X="6.75" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>frmLogin.vb</FileName>
+      <HashCode>AAAAAQQAASAAAIAAAACAAAACAAAAAkAACACAAAAAAAQ=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="GUI.frmLogUsuarios">
+    <Position X="13.75" Y="5.25" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>frmLogUsuarios.vb</FileName>
+      <HashCode>AAAAAAAAACAAAAAAACCAAAACAAAAABAEAAAAAAAEAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="GUI.frmPermisosUsuarios">
+    <Position X="13" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <FileName>frmPermisosUsuarios.vb</FileName>
+      <HashCode>IACAAACAMKDECEgAAACAQAEKACAwAAEAAAABAAEQAIA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="GUI.frmSistema" Collapsed="true">
+    <Position X="6.25" Y="4" Width="3" />
+    <TypeIdentifier>
+      <FileName>frmSistema.vb</FileName>
+      <HashCode>gYEUD6hDoCAKEHFCAmCECUoKwhEFDQBHeDgQQwSMADY=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Module Name="GUI.SistemaMonitoreo">
+    <Position X="6.25" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <FileName>SistemaMonitoreo.vb</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+    </TypeIdentifier>
+  </Module>
+</ClassDiagram>
