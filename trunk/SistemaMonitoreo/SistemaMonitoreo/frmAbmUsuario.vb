@@ -91,7 +91,7 @@ Public Class frmAbmUsuario
     Private Sub txtEliminar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtEliminar.Click
         If Sistema.autentica(Sistema.usuarioLogueado, Sistema.acceso.USUARIOS_ALTA) Then
             If MsgBox("Seguro que desea eliminar el usuario?", MsgBoxStyle.Question Or MsgBoxStyle.YesNo, "Borrar Usuario") = MsgBoxResult.Yes Then
-                Dim uUsuario As New Usuario(txtID.Text.ToString)
+                Dim uUsuario As New Usuario(txtNombre.Text.ToString)
                 uUsuario.borrar()
                 Me.cargarListaUsuarios(Sistema.listaUsuarios())
                 Me.limpiarDatos()

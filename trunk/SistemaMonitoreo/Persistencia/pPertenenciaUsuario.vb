@@ -61,6 +61,31 @@ Public Class pPertenenciaUsuario : Inherits Persistente
             Return errorBD.errorGeneral
         End Try
     End Function
+    Public Function Agregar(ByVal uPermiso As dsPertenenciaGrupo.PertenenciaGruposRow) As Persistente.errorBD
+        Try
+            Dim ds As DataSet
+            Dim query As String
+            query = "SELECT COUNT(*) FROM PertenenciaGrupos WHERE " & _
+                        " idUsuario = " & uPermiso.idUsuario & " AND " & _
+                        " idGrupo = " & uPermiso.idGrupo
+            Debug.Print(query)
+            ds = EjecutarSQL(query)
+            If ds.Tables(0).Rows(0).Item(0).ToString = "0" Then
+                query = "INSERT INTO PertenenciaGrupos (idUsuario, idGrupo) VALUES (" _
+                            & uPermiso.idUsuario() & "," _
+                            & uPermiso.idGrupo() & ")"
+                Debug.Print(query)
+                EjecutarSQL(query)
+                Return errorBD.ok
+            Else
+                Return errorBD.claveDuplicada
+            End If
+
+        Catch ex As Exception
+            Debug.WriteLine(ex.Message)
+            Return errorBD.errorGeneral
+        End Try
+    End Function
 
     Public Overrides Function proximoId() As Integer
 
