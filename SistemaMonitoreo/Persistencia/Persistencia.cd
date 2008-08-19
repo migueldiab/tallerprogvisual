@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Tahoma" Size="9.75" />
+  <Class Name="Persistencia.pEquipo">
+    <Position X="10.75" Y="4" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>pEquipo.vb</FileName>
+      <HashCode>AAAQggAAAAAAAAAAAAgAAAAAAAIAAAAAAAAABAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Persistencia.Persistente">
+    <Position X="6" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>Persistente.vb</FileName>
+      <HashCode>AAAQggACoAAAAgAAAAgAAAAAAAIAAIAAkEAADAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <NestedTypes>
+      <Enum Name="Persistencia.Persistente.errorBD" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Persistente.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+  </Class>
+  <Class Name="Persistencia.pGrupo">
+    <Position X="2" Y="4" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>pGrupo.vb</FileName>
+      <HashCode>AAAQggAAAAAAAAAAAAgAAAAAAAIAAAAAAAAABAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Persistencia.pLog">
+    <Position X="7.75" Y="5.75" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>pLog.vb</FileName>
+      <HashCode>AAAQggAAAAQAAAAAAAgAAAAAAAIAAAAAIAAABAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Persistencia.pPertenenciaUsuario">
+    <Position X="10.75" Y="0.75" Width="2" />
+    <TypeIdentifier>
+      <FileName>pPertenenciaUsuario.vb</FileName>
+      <HashCode>AABQggAQAAAAAAAAAAgAAAAAAAIAAAAAAAAABAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Persistencia.pTipoEntradaEvento">
+    <Position X="1" Y="1" Width="2" />
+    <TypeIdentifier>
+      <FileName>pTipoEntradaEvento.vb</FileName>
+      <HashCode>AAAQggAAAAAAAAAAAAgAAAAAAAIAAAAAAAAABAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Persistencia.pUsuario">
+    <Position X="4.75" Y="5.75" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>pUsuario.vb</FileName>
+      <HashCode>AAAQggAAAAAAAAAAAAgAAAAAAAIAAAAAAAAABAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+</ClassDiagram>
