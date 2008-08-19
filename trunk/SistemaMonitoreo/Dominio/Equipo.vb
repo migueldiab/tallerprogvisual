@@ -96,7 +96,7 @@ Public Class Equipo
     Public Shared Function buscarEquipo(ByVal id As String) As Equipo
         Dim pEquipo As New pEquipo
         Dim uEquipo As New Equipo
-        uEquipo = CType(pEquipo.buscar(CType(id, Object)), Equipo)
+        uEquipo = CType(pEquipo.buscarPorId(id), Equipo)
 
         Return uEquipo
     End Function
@@ -108,7 +108,7 @@ Public Class Equipo
         Dim lista As DataRowCollection
         Dim pEquipo As New pEquipo
         If filter <> "" Then
-            lista = pEquipo.buscar(filter)
+            lista = pEquipo.buscarPorNombre(filter)
         Else
             lista = pEquipo.buscar()
         End If

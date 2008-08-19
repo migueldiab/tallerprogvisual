@@ -127,7 +127,7 @@ Public Class Log
 #Region "from y to datarow"
     Sub FromDataSet(ByVal objeto As DataSet)
         Dim unDSLog As dsLog
-        Dim unaFila As dsLog.RegistroLogsRow
+        Dim unaFila As dsLog.RegistroLogsRow = Nothing
         unDSLog = CType(objeto, dsLog)
         Try
             If Not unaFila Is Nothing Then

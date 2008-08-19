@@ -30,7 +30,7 @@ Public Class pUsuario : Inherits Persistente
         Return Nothing
     End Function
 
-    Public Overloads Overrides Function buscar(ByVal clave As Object) As Object
+    Public Overloads Overrides Function buscarPorId(ByVal id As String) As Object
         'Dim lista As New ArrayList
         'Dim ds As DataSet
 
@@ -48,7 +48,7 @@ Public Class pUsuario : Inherits Persistente
         Return Nothing
     End Function
 
-    Public Overloads Overrides Function buscar(ByVal filtro As String) As DataRowCollection
+    Public Overloads Overrides Function buscarPorNombre(ByVal filtro As String) As DataRowCollection
         Dim query As String
         Dim drc As DataRowCollection
         Try
@@ -74,8 +74,8 @@ Public Class pUsuario : Inherits Persistente
             Dim busqueda As DataRowCollection
 
             unUsuario = CType(objeto, dsUsuario.UsuariosRow)
-            busqueda = Me.buscar(unUsuario.Nombre)
-            If busqueda.Count = 0 Then
+            busqueda = Me.buscarPorNombre(unUsuario.Nombre)
+            If busqueda Is Nothing Then
                 query = "INSERT INTO Usuarios (nombre, contrasenia) VALUES (" _
                     & "'" & unUsuario.Nombre() & "'," _
                     & "'" & unUsuario.Contrasenia() & "')"

@@ -32,15 +32,15 @@ Public Class pGrupo : Inherits Persistente
         Return Nothing
     End Function
 
-    Public Overloads Overrides Function buscar(ByVal clave As Object) As Object
+    Public Overloads Overrides Function buscarPorId(ByVal id As String) As Object
         Return Nothing
     End Function
 
-    Public Overloads Overrides Function buscar(ByVal filtro As String) As DataRowCollection
+    Public Overloads Overrides Function buscarPorNombre(ByVal nombre As String) As DataRowCollection
         Dim query As String
         Try
             query = "SELECT * FROM grupos " _
-                    & " WHERE nombre = '" & filtro & "';"
+                    & " WHERE nombre = '" & nombre & "';"
             Debug.Print(query)
             Return EjecutarSQL(query).Tables(0).Rows
         Catch ex As Exception
@@ -56,7 +56,7 @@ Public Class pGrupo : Inherits Persistente
             Dim busqueda As DataRowCollection
 
             unGrupo = CType(objeto, dsGrupo.GruposRow)
-            busqueda = Me.buscar(unGrupo.Nombre)
+            busqueda = Me.buscarPorNombre(unGrupo.Nombre)
             If busqueda.Count = 0 Then
                 query = "INSERT INTO Grupos (nombre, permisosSobreUsuarios, permisosSobreEquipos, permisosSobreLogs) VALUES (" _
                     & "'" & unGrupo.Nombre() & "'," _

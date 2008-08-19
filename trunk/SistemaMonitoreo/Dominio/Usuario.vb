@@ -60,7 +60,7 @@ Public Class Usuario
         If id <> "" Then
             Dim pUsuario As New pUsuario
             Dim Usuarios As DataRowCollection
-            Usuarios = pUsuario.buscar(id)
+            Usuarios = pUsuario.buscarPorNombre(id)
             If Usuarios Is Nothing Then
                 Me.nombre = ""
                 Me.contrasenia = ""
@@ -74,7 +74,10 @@ Public Class Usuario
                 Me.id = usuario.Item(IdxCampos.ID).ToString
                 Me.nombre = usuario.Item(IdxCampos.NOMBRE).ToString
                 Me.contrasenia = usuario.Item(IdxCampos.CONTRASENIA).ToString
-                Me.grupos = Nothing
+                Dim pPermisos As New pPertenenciaUsuario
+                'Me.grupos = pPermisos.buscarPorUsuario(usuario.Item(IdxCampos.ID).ToString)
+                Me.grupos = Me.obtenerGrupos(usuario.Item(IdxCampos.ID).ToString())
+
             End If
         End If
     End Sub
@@ -100,7 +103,7 @@ Public Class Usuario
         Dim arrayGrupos As New ArrayList
         Dim rawDataPermisos As DataRowCollection
         Dim pPermisos As New pPertenenciaUsuario
-        rawDataPermisos = pPermisos.buscar(id)
+        rawDataPermisos = CType(pPermisos.buscarPorUsuario(id), DataRowCollection)
         If rawDataPermisos Is Nothing Then
             Return Nothing
         Else
@@ -151,9 +154,15 @@ Public Class Usuario
     Public Function guardar() As Boolean
 
         Dim pUsuario As New pUsuario
+        Dim pPermisos As New pPertenenciaUsuario
         If (pUsuario.Guardar(Me.ToUsuarioDataSet) = Persistente.errorBD.ok) Then
-            'And (pPertenenciaUsuario.Guardar(Me.ToPertenenciaGrupoDataSet) = Persistente.errorBD.ok) Then
-            Return True
+            If Not Me.grupos Is Nothing Then
+                If (pPermisos.Guardar(Me.ToPertenenciaGrupoDataSet) = Persistente.errorBD.ok) Then
+                    Return True
+                Else
+                    Return False
+                End If
+            End If
         Else
             Return False
         End If
